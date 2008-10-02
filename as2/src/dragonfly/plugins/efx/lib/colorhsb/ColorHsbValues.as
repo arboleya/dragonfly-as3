@@ -3,6 +3,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Define values of ColorHsbEfx.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see ColorHsbEfx
  */
 class dragonfly.plugins.efx.lib.colorhsb.ColorHsbValues extends Values {

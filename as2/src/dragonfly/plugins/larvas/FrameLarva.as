@@ -3,7 +3,9 @@ import dragonfly.body.Flight;
 import dragonfly.plugins.larvas.lib.frame.*;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.FrameLarva extends Larva {
 	
 	// [ CONSTRUCTOR ] *******************************************************/
@@ -40,7 +42,7 @@ class dragonfly.plugins.larvas.FrameLarva extends Larva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function frame (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ FrameEgg, FrameEgg.FRAME ].concat( arguments ) );
+	public function frame (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( FrameEgg, FrameEgg.FRAME, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 }

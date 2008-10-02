@@ -167,7 +167,7 @@ class cocktail.lib.data.ds.LinkedList {
 	 * @param	params	function params
 	 * @param	head	node to start the lambda (default is list.head)
 	 */
-	public function deach (action : Function, params : Object, head:Node) {
+	public function deach (action : Function, params : Object, head:Node) : Void {
 		if(! this._length) return;
 		
 		var walker:Node = head || this.head;

@@ -8,7 +8,9 @@ import dragonfly.plugins.larvas.lib.color.values.ColorRgbValues;
 import dragonfly.plugins.larvas.lib.color.ColorManager;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.ColorFlightEvent extends FlightEvent {
 	
 	// [ VARS ] **************************************************************/

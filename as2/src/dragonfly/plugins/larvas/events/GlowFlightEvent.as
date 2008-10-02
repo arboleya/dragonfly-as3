@@ -1,11 +1,11 @@
-﻿
-import dragonfly.body.Egg;
+﻿import dragonfly.body.Egg;
 import cocktail.lib.data.ds.LinkedList;
 import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.filters.eggs.GlowEgg;
 
-
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.GlowFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

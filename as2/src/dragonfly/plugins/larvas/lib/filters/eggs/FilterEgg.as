@@ -5,6 +5,8 @@ import dragonfly.plugins.larvas.lib.filters.FiltersManager;
 
 /**
  * Define the base of FilterEggs.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.body.core.Egg
  */
 class dragonfly.plugins.larvas.lib.filters.eggs.FilterEgg extends Egg {

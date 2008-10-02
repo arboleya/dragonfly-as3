@@ -5,6 +5,8 @@ import dragonfly.body.events.DragonflyEvent;
 
 /**
  * Dragonfly engine dispatches LarvaEvent objects wherever flight evs occurs.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see DragonflyEvent.
  */
 class dragonfly.body.events.LarvaEvent extends DragonflyEvent {
@@ -44,7 +46,7 @@ class dragonfly.body.events.LarvaEvent extends DragonflyEvent {
 	public function read ( prop : String ) : Object {
 		var value : Object;
 		
-		this._eggs.each( function ( egg : Egg ) {
+		this._eggs.each( function ( egg : Egg ) : Void {
 			if ( egg.prop == prop && value == undefined) {
 				value = egg.getValue();
 			}
@@ -65,7 +67,7 @@ class dragonfly.body.events.LarvaEvent extends DragonflyEvent {
 	public function get flightObj () : Object {
 		var obj : Object = new Object;
 		
-		this._eggs.each( function ( egg : Egg ) {
+		this._eggs.each( function ( egg : Egg ) : Void {
 			obj[ egg.prop ] = egg.getValue();
 		} );
 		

@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Conf;
 
 /**
  * Configure values for BlurFilter effects.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.BlurValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.BlurEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

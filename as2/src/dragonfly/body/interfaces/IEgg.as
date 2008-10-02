@@ -1,5 +1,7 @@
 /**
  * IEgg defines core methods of Egg values operation.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 interface dragonfly.body.interfaces.IEgg {
 	

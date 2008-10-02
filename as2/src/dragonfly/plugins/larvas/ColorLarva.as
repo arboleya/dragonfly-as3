@@ -8,7 +8,9 @@ import dragonfly.plugins.larvas.lib.color.values.ColorRgbValues;
 import dragonfly.plugins.larvas.lib.color.values.ColorTransformValues;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.ColorLarva extends Larva {
 	
 	// [VARS] ******************************************************************/
@@ -88,7 +90,7 @@ class dragonfly.plugins.larvas.ColorLarva extends Larva {
 		//trace ( "hex-start: " + [ _start.r, _start.g, _start.b ]  ) ;
 		//trace ( "hex-end: "+ [ _end.r, _end.g, _end.b ] );
 		
-		return this.rgb.apply(this, [ _start, _end ].concat( arguments.slice( 2 ) ) );
+		return this.rgb.apply(this, [ _start, _end, duration, delay, equation, equationArgs, forceInit ] );
 	}
 	
 	/**
@@ -124,7 +126,7 @@ class dragonfly.plugins.larvas.ColorLarva extends Larva {
 		//_start = new ColorTransformValues( 1, 1, 1, 1, 0, 0, 0, 0 );
 		_end = new ColorTransformValues( 0, 0, 0, 1, end.r, end.g, end.b, 0 );
 		
-		return this.transform.apply( this, [_start, _end].concat( arguments.slice( 2 ) ) );
+		return this.transform.apply( this, [_start, _end, duration, delay, equation, equationArgs, forceInit] );
 	}
 	
 	/**
@@ -140,7 +142,7 @@ class dragonfly.plugins.larvas.ColorLarva extends Larva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function transform ( start : ColorTransformValues, end : ColorTransformValues, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean ) : Flight {
+	public function transform ( start : ColorTransformValues, end : ColorTransformValues, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
 		var prop : String;
 		var eggClass : Function;
 		
@@ -149,13 +151,13 @@ class dragonfly.plugins.larvas.ColorLarva extends Larva {
 		eggClass = ColorEgg;
 		
 		// just to be collected by the openedFlight
-		this.lay( ColorEgg, ColorEgg.RGB, 0, 1, duration, delay, equation, equationArgs, forceInit, [ this._colorManager ], false );
-		this.lay( ColorEgg, ColorEgg.HEX, 0, 1, duration, delay, equation, equationArgs, forceInit, [ this._colorManager ], false );
+		this.lay( ColorEgg, ColorEgg.RGB, 0, 1, duration, delay, equation, equationArgs, forceInit, fps, useFrames, [ this._colorManager ] );
+		this.lay( ColorEgg, ColorEgg.HEX, 0, 1, duration, delay, equation, equationArgs, forceInit, fps, useFrames, [ this._colorManager ] );
 		
 		for ( prop in start ) {
 			if ( prop == prop.toUpperCase() ) {
 				//trace ( "lay: (prop("+ prop +") = start("+ start[prop] +"), end("+ end[prop] +")" );
-				this.lay( ColorEgg, eggClass[ prop ], start[ prop ], end[ prop ], duration, delay, equation, equationArgs, forceInit, [ this._colorManager ] );
+				this.lay( ColorEgg, eggClass[ prop ], start[ prop ], end[ prop ], duration, delay, equation, equationArgs, forceInit, fps, useFrames, [ this._colorManager ] );
 			}
 		}
 		

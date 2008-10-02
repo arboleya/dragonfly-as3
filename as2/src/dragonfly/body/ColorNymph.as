@@ -1,6 +1,13 @@
 ﻿import dragonfly.body.Converter;
 import dragonfly.body.Nymph;
 
+/**
+ * Color nymph class is who do hexadecimal color tweens
+ * 
+ * @author nybras | nybras@codeine.it
+ * @author henrique | henrique@codeine.it
+ * @see Nymph 
+ */
 class dragonfly.body.ColorNymph extends Nymph {
 	
 	/**
@@ -31,7 +38,6 @@ class dragonfly.body.ColorNymph extends Nymph {
 	 */
 	private function getValue(timer : Number, start : Number, end : Number) : Number {
 		var i:String;
-		var args:Array;
 		var rgb_values:Array;
 		var rgb_start:Array;
 		var rgb_end:Array;

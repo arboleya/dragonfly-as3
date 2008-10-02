@@ -4,7 +4,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.frame.FrameEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.FrameFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

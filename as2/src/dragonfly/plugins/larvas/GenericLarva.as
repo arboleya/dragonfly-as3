@@ -3,7 +3,9 @@ import dragonfly.body.Flight;
 import dragonfly.plugins.larvas.lib.generic.*;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.GenericLarva extends Larva {
 	
 	// [ CONSTRUCTOR ] *******************************************************/
@@ -37,13 +39,12 @@ class dragonfly.plugins.larvas.GenericLarva extends Larva {
 	 * @param delay Delay before start the Egg transition, in milleseconds.
 	 * @param equation Equation for the Egg transition.
 	 * @param equationArgs EquationArgs to be applied to the given Equation.
-	 * @param friesPrevCalls EquationArgs to be applied to the given Equation.
 	 * @param forceInit If <code>true</code>, the start value is initialized imediatelly, even if the tween has a delay.
 	 * @param useFrames If <code>true</code> 'onEnterFreame' mode used, otherwise (<code>true</code>) 'setInterval' mode is used.
 	 * 
 	 * @return The egg flight.
 	 */
-	public function fly (prop : String, start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, friesPrevCalls : Boolean, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ GenericEgg, prop ].concat( arguments.slice( 1 ) ) );
+	public function fly (prop : String, start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( GenericEgg, prop, start, end, duration, delay, equation , equationArgs , forceInit, fps, useFrames );
 	}
 }

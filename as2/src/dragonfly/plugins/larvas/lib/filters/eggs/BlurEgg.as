@@ -6,6 +6,8 @@ import dragonfly.plugins.larvas.lib.filters.FiltersManager;
 
 /**
  * Define the flight of BlurEgg.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.body.core.Flight
  * @see dragonfly.plugins.larvas.lib.filters.eggs.FilterEgg
  */

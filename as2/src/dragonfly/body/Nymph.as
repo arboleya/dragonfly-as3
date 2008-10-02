@@ -11,6 +11,8 @@ import cocktail.lib.events.EventListener;
 
 /**
  * Nymph class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.Nymph extends EventDispatcher {
 	
@@ -229,11 +231,9 @@ class dragonfly.body.Nymph extends EventDispatcher {
 	 * Updates the Nymph Engine.
 	 */
 	private function updater () : Void {
-		var value:Number;
 		var values:Array;
 		var output:Object;
 		var timer:Number;
-		var args:Array;
 		var i:Number;
 		var len:Number;
 		

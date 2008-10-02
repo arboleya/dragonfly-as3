@@ -7,6 +7,8 @@ import dragonfly.plugins.larvas.lib.generic.GenericEgg;
 
 /**
  * MovieClipEgg class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.lib.movieclip.MovieClipEgg extends GenericEgg {
 	

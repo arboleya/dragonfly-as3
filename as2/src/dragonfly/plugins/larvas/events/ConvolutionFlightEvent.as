@@ -6,7 +6,9 @@ import dragonfly.plugins.larvas.lib.filters.eggs.ConvolutionEgg;
 //import dragonfly.plugins.larvas.lib.frame.FrameEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.ConvolutionFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

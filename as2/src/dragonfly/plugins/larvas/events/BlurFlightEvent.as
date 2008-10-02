@@ -5,7 +5,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.filters.eggs.BlurEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.BlurFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

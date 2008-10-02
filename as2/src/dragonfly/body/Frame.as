@@ -9,6 +9,8 @@ import cocktail.utils.Delegate;
 
 /**
  * Frame class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.Frame extends EventDispatcher {
 	
@@ -27,8 +29,8 @@ class dragonfly.body.Frame extends EventDispatcher {
 	 * Create a Frame object.
 	 */
 	public function Frame () {
-		if ( _level0.DragonflyFrameBroadcaster instanceof MovieClip ) {
-			this.broadcaster = _level0.DragonflyFrameBroadcaster;
+		if ( _level0[ "DragonflyFrameBroadcaster" ] instanceof MovieClip ) {
+			this.broadcaster = _level0[ "DragonflyFrameBroadcaster" ];
 		} else {
 			this.broadcaster = _level0.createEmptyMovieClip("DragonflyFrameBroadcaster" , _level0.getNextHighestDepth());
 		}

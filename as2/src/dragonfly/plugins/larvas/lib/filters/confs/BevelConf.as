@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Conf;
 
 /**
  * Configure values for BevelFilter effects.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.BevelValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.BevelEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

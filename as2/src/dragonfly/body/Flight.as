@@ -5,12 +5,14 @@ import dragonfly.body.events.FlightEvent;
 import cocktail.lib.events.EventListener;
 import cocktail.lib.events.EventDispatcher;
 
-import	cocktail.lib.data.ds.LinkedList
+import	cocktail.lib.data.ds.LinkedList;
 
 
 
 /**
  * Fligh is a event listener of larva behaviors.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.Flight extends EventDispatcher {
 	
@@ -184,8 +186,8 @@ class dragonfly.body.Flight extends EventDispatcher {
 	 */
 	public function cloneFrom (flight : Flight) : Void {
 		if (!flight.ed_listeners.length) return;
-		flight.ed_listeners.each( function ( listener : EventListener ) {
-			this.addEventListener(listener.type, listener.method, listener.scope, listener.args);
+		flight.ed_listeners.each( function ( listener : EventListener ) : Void {
+			this[" addEventListener "](listener.type, listener.method, listener.scope, listener.args);
 		}, this );
 	}
 }

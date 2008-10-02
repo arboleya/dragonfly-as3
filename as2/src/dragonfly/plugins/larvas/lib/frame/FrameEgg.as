@@ -1,14 +1,14 @@
-﻿import dragonfly.body.Egg;
-import dragonfly.body.Larva;
+﻿import cocktail.lib.data.ds.Node;
+
+import dragonfly.body.Egg;
 import dragonfly.body.Flight;
+import dragonfly.body.Larva;
 import dragonfly.plugins.larvas.events.FrameFlightEvent;
 
-import cocktail.lib.data.ds.Node;
-
-
-
 /**
- * FrameEgg class.s
+ * FrameEgg classs
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.lib.frame.FrameEgg extends Egg {
 	
@@ -46,7 +46,7 @@ class dragonfly.plugins.larvas.lib.frame.FrameEgg extends Egg {
 	 * @param value Returns the new value for the prop.
 	 */
 	public function setValue (value : Object) : Void {
-		this._targets.each(function ( target : MovieClip, node : Node) : Void {
+		this._targets.each(function ( target : MovieClip ) : Void {
 			target.gotoAndStop(Math.round(Number(value)));
 		}, this);
 	}
@@ -57,6 +57,6 @@ class dragonfly.plugins.larvas.lib.frame.FrameEgg extends Egg {
 	 * @return The current prop/value.
 	 */
 	public function getValue () : Object {
-		return this._targets.head.data._currentframe;
+		return MovieClip( this._targets.head.data )._currentframe;
 	}
 }

@@ -2,6 +2,8 @@ import cocktail.lib.events.Event;
 
 /**
  * Dragonfly engine dispatches FrameEvent objects wherever of a frame event occur.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.events.FrameEvent extends Event {
 

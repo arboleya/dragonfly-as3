@@ -5,7 +5,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.filters.eggs.DisplacementMapEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.DisplacementMapFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

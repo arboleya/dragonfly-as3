@@ -6,7 +6,9 @@ import dragonfly.plugins.efx.lib.colorhsb.ColorHsbValues;
 import flash.filters.ColorMatrixFilter;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.efx.ColorHsbEfx extends Efx {
 	
 	/** [VARS] ************************************************************************

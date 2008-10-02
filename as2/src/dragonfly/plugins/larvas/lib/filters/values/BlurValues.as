@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Define values of BlurEgg.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see BlurEgg
  * @see Values
  */

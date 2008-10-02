@@ -5,6 +5,8 @@ import dragonfly.body.events.DragonflyEvent;
 
 /**
  * Dragonfly engine dispatches EggEvent objects wherever egg evs occur.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see DragonflyEvent.
  */
 class dragonfly.body.events.EggEvent extends DragonflyEvent {

@@ -3,7 +3,7 @@ import dragonfly.body.Larva;
 
 
 /**
- * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.Dragonfly {
 	

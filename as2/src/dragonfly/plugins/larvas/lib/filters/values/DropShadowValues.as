@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Define values of DropShadowEgg.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see DropShadowEgg
  * @see Values
  */

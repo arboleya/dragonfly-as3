@@ -4,6 +4,8 @@
 
 /**
  * DragonflyEvent is used for the base class for the creation of Dragonfly engine evs.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.events.DragonflyEvent extends Event {
 	

@@ -12,6 +12,7 @@ import dragonfly.plugins.larvas.lib.filters.FiltersManager;
 /**
  * The Larva implementation from Flash filters. 
  * 
+ * @author nybras | nybras@codeine.it
  * @see Larva
  */
 class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
@@ -91,7 +92,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 			start = conf.start[prop];
 			end = conf.end[prop];
 			if (start != undefined || end != undefined) {
-				this.lay( eggClass, eggClass[prop], start, end, duration, delay, equation, equationArgs, forceInit, [ this._filtersManager ] );
+				this.lay( eggClass, eggClass[prop], start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames, [ this._filtersManager ] );
 			}
 		}
 		
@@ -147,7 +148,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function bevel (conf : BevelConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(BevelEgg, conf);
-		return  this.applyFilterEggValues(BevelEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(BevelEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -170,7 +171,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function blur (conf : BlurConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(BlurEgg, conf);
-		return  this.applyFilterEggValues(BlurEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(BlurEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -192,7 +193,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 * @see ColorMatrixFilter
 	 */
 	public function colorMatrix (start : Array, end : Array, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
-		return this.lay(ColorMatrixEgg, ColorMatrixEgg.MATRIX, start, end, duration, delay, equation, equationArgs, forceInit, [this._filtersManager]);
+		return this.lay(ColorMatrixEgg, ColorMatrixEgg.MATRIX, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -215,7 +216,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function convolution (conf : ConvolutionConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(ConvolutionEgg, conf);
-		return  this.applyFilterEggValues(ConvolutionEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(ConvolutionEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -238,7 +239,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function displacementMap (conf : DisplacementMapConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(DisplacementMapEgg, conf);
-		return  this.applyFilterEggValues(DisplacementMapEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(DisplacementMapEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -261,7 +262,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function dropShadow (conf : DropShadowConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(DropShadowEgg, conf);
-		return  this.applyFilterEggValues(DropShadowEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(DropShadowEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -284,7 +285,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function glow (conf : GlowConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(GlowEgg, conf);
-		return  this.applyFilterEggValues(GlowEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(GlowEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -307,7 +308,7 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function gradientBevel (conf : GradientConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(GradientBevelEgg, conf);
-		return  this.applyFilterEggValues(GradientBevelEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(GradientBevelEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 	
 	/**
@@ -330,6 +331,6 @@ class dragonfly.plugins.larvas.FiltersLarva extends MovieClipLarva {
 	 */
 	public function gradientGlow (conf : GradientConf, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean) : Flight {
 		this.applyFilterEggConf(GradientGlowEgg, conf);
-		return  this.applyFilterEggValues(GradientGlowEgg, conf, duration, delay, equation, equationArgs, forceInit);
+		return  this.applyFilterEggValues(GradientGlowEgg, conf, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 	}
 }

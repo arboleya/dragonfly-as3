@@ -1,6 +1,9 @@
 import cocktail.lib.data.ds.LinkedList;
 import cocktail.lib.data.ds.Node;
 
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.efx.lib.timeline.TimelineFunction {
 	
 	// [ PRIVATE - properties ] **********************************************/

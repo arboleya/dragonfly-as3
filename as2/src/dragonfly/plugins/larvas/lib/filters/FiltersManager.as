@@ -14,6 +14,7 @@ import cocktail.lib.data.ds.LinkedList;
 
 /**
  * Provides general handle for flash filters.
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.lib.filters.FiltersManager {
 	

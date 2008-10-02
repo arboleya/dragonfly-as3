@@ -1,6 +1,11 @@
 ﻿
-
-
+/**
+ * Class to hold some basic types of conversion.
+ * Usually used by Nymph class.
+ * 
+ * @author nybras | nybras@codeine.it
+ * @see	Nymph
+ */
 class dragonfly.body.Converter {
 	
 	
@@ -45,7 +50,7 @@ class dragonfly.body.Converter {
 			(hex >> 16),
 			(hex >> 8 & 0xFF),
 			(hex & 0xFF)
-		)
+		);
 	}
 
 }
