@@ -2,8 +2,10 @@
 
 /**
  * Define values of ColorTransformEgg.
-  * @see ColorTransformEgg
-  * @see Values
+ * 
+ * @author nybras | nybras@codeine.it
+ * @see ColorTransformEgg
+ * @see Values
  */
 class dragonfly.plugins.larvas.lib.color.values.ColorTransformValues extends Values {
 	

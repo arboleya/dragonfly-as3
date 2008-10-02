@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Define values of GlowEgg.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see GlowEgg
  * @see Values
  */

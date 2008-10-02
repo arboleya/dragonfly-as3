@@ -5,6 +5,8 @@ import flash.geom.Point;
 
 /**
  * Configure values for DisplacementMap effects.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.DisplacementMapValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.DisplacementMapEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

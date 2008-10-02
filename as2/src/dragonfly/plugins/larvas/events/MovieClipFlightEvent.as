@@ -4,7 +4,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.movieclip.MovieClipEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.MovieClipFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

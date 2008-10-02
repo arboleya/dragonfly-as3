@@ -6,6 +6,8 @@ import dragonfly.body.Larva;
 
 /**
  * GenericEgg class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.lib.generic.GenericEgg extends Egg {
 	
@@ -34,8 +36,9 @@ class dragonfly.plugins.larvas.lib.generic.GenericEgg extends Egg {
 	 * @param value Returns the new value for the prop.
 	 */
 	public function setValue (value : Object) : Void {
+		var prop : String = this.prop;
 		this._targets.each(function (target : Object) : Void {
-			target[this.prop] = value;
+			target[ prop ] = value;
 		}, this);
 	}
 	

@@ -4,7 +4,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.sound.SoundEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.SoundFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

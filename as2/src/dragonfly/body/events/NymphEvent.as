@@ -2,6 +2,8 @@
 
 /**
  * Dragonfly engine dispatches NymphEvent objects wherever of a nimph evs occur.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see DragonflyEvent.
  */
 class dragonfly.body.events.NymphEvent extends DragonflyEvent {

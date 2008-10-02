@@ -7,6 +7,8 @@ import dragonfly.plugins.larvas.events.SoundFlightEvent;
 
 /**
  * SoundEgg class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.lib.sound.SoundEgg extends Egg {
 	

@@ -1,9 +1,11 @@
 ﻿import cocktail.lib.data.ds.LinkedList;
 import cocktail.utils.SetTimeout;
+
 import flash.geom.ColorTransform;
 
-
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.lib.color.ColorManager {
 	
 	private var _targets : LinkedList;
@@ -24,7 +26,7 @@ class dragonfly.plugins.larvas.lib.color.ColorManager {
 	 */
 	function ColorManager ( targets : LinkedList ) {
 		this._targets = targets;
-		this._colorTransform = this._targets.head.data.transform.colorTransform;
+		this._colorTransform = MovieClip(this._targets.head.data).transform.colorTransform;
 	}
 	
 	
@@ -42,7 +44,6 @@ class dragonfly.plugins.larvas.lib.color.ColorManager {
 	 * Refreshes all targets / transforms.
 	 */
 	private function refresh () : Void {
-		var arr : Array;
 		this._targets.each(this.each_refresh, this);
 	}
 	

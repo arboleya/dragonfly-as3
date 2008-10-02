@@ -13,7 +13,9 @@ import cocktail.utils.Delegate;
 import com.robertpenner.easing.Linear;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.efx.TimelineEfx extends Efx {
 	
 	/** [VARS] ************************************************************************
@@ -61,7 +63,7 @@ class dragonfly.plugins.efx.TimelineEfx extends Efx {
 	public function addFrameFunction ( frame:Number, func:Function, scope:Object, args:Array, expires:Boolean, executions:Number ):TimelineFunction {
 		var tf:TimelineFunction;
 		
-		tf = new TimelineFunction(frame, func, scope, args, expires, executions)
+		tf = new TimelineFunction(frame, func, scope, args, expires, executions);
 		return tf.setNodeStack(this._functions.append(tf), this._functions);
 	}
 	
@@ -75,8 +77,8 @@ class dragonfly.plugins.efx.TimelineEfx extends Efx {
 		this._functions.each(Delegate.create(this.each_removeFrameFunction, this, [func, frame]));
 	}
 	
-	public function removeAllFrameFunctions () {
-		this._functions.each(function(data) { data.destroy() } );
+	public function removeAllFrameFunctions () : Void {
+		this._functions.each(function(data : TimelineFunction) : Void { data.destroy(); } );
 	}
 	/**
 	 * 

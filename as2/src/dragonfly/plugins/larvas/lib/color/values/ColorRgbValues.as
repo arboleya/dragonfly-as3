@@ -1,6 +1,8 @@
 ﻿
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.lib.color.values.ColorRgbValues {
 	
 	// [ PUBLIC - properties ] ***********************************************/

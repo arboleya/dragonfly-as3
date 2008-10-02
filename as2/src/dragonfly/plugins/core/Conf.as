@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Configure the values for filters effects.
+ * 
+ * @author nybras | nybras@codeine.it
  */ 
 class dragonfly.plugins.core.Conf {
 	

@@ -9,7 +9,9 @@ import flash.geom.ColorTransform;
 import flash.geom.Transform;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.efx.BrightEfx extends Efx {
 	
 	/** [VARS] ************************************************************************
@@ -115,11 +117,10 @@ class dragonfly.plugins.efx.BrightEfx extends Efx {
 	 * @param	delay	Delay before start the Egg transition, in milleseconds
 	 * @param	equation	Equation for the Egg transition
 	 * @param	equationArgs	EquationArgs to be applied to the given Equation
-	 * @param	friesPrevCalls	EquationArgs to be applied to the given Equation
 	 * @param	forceInit	If TRUE, the start value is initialized imediatelly, even if the tween has a delay
 	 * @return	The efx flight
 	 */
-	public function fly (start:Number , end:Number , duration:Number , delay:Number , equation:Function , equationArgs:Array , friesPrevCalls:Boolean , forceInit:Boolean):Flight {
+	public function fly (start:Number , end:Number , duration:Number , delay:Number , equation:Function , equationArgs:Array , forceInit:Boolean):Flight {
 		var flight : Flight;
 		
 		if (start != null) {
@@ -128,7 +129,7 @@ class dragonfly.plugins.efx.BrightEfx extends Efx {
 			this.bright = 100;
 		}
 		
-		flight = this._larva.fly("bright" , start , end , duration , delay , equation , equationArgs , friesPrevCalls , forceInit);
+		flight = this._larva.fly("bright" , start , end , duration , delay , equation , equationArgs , forceInit );
 		flight.addCompleteListener ( this.resetEfx, this );
 		
 		return flight;

@@ -16,6 +16,8 @@ import cocktail.lib.events.EventDispatcher;
 
 /**
  * Egg class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.Egg extends EventDispatcher implements IEgg {
 	

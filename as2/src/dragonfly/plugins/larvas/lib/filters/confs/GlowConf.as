@@ -3,6 +3,7 @@ import dragonfly.plugins.core.Conf;
 /**
  * Configure values for Glow effects.
  * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.GlowValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.GlowEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

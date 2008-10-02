@@ -5,7 +5,9 @@ import dragonfly.body.events.FlightEvent;
 import dragonfly.plugins.larvas.lib.filters.eggs.BevelEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.events.BevelFlightEvent extends FlightEvent {
 	
 	// [ CONSTRUCTOR ] *******************************************************/

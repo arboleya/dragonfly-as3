@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Conf;
 
 /**
  * Configure values for Convolution effects.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.ConvolutionValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.ConvolutionEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

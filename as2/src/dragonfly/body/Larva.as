@@ -14,6 +14,8 @@ import cocktail.lib.events.EventDispatcher;
 
 /**
  * Larva class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	
@@ -167,7 +169,7 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 */
 	public function getTimeLeft () : Number {
 		var timeLeft:Number = 0;
-		this._eggs.each(function( egg:Egg ) {
+		this._eggs.each(function( egg:Egg ) : Void {
 			timeLeft = Math.max(egg.timeLeft, timeLeft);
 		});
 		return timeLeft;
@@ -183,21 +185,21 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 * Holds the running eggs.
 	 */
 	public function hold () : Void {
-		this._eggs.each(function(egg:Egg) { egg.unhold(); } );
+		this._eggs.each(function(egg:Egg) : Void { egg.unhold(); } );
 	}
 	
 	/**
 	 * Unholds the running eggs.
 	 */
 	public function unhold () : Void {
-		this._eggs.each(function(egg:Egg) { egg.hold(); } );
+		this._eggs.each(function(egg:Egg) : Void { egg.hold(); } );
 	}
 	
 	/**
 	 * Resets the running eggs.
 	 */
 	public function reset () : Void {
-		this._eggs.each(function(egg:Egg) { egg.fries(); } );
+		this._eggs.each(function(egg:Egg): Void { egg.fries(); } );
 	}
 	
 	
@@ -209,7 +211,7 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 */
 	public function get active () : Number {
 		var active : Number = 0;
-		this._eggs.each(function(egg:Egg) {
+		this._eggs.each(function(egg:Egg) : Void {
 			if (egg.active) active ++;
 		} );
 		return active;
@@ -251,17 +253,22 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 * @param equationArgs EquationArgs to be applied to the given Equation.
 	 * @param forceInit	If <code>true</code>, the start value is initialized imediatelly, even if the tween has a delay.
 	 * @param extraEggArgs Extra arguments you need in your Egg's Contructor, besides the defaults [prop, larva, flight].
+	 * @param fps 
+	 * @param useFrames 
 	 * 
 	 * @return	The layed egg.
 	 */
-	private function lay ( eggClass : Function, prop : String, start : Object, end : Object, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, extraEggArgs : Array ) : Flight {
+	private function lay ( eggClass : Function, prop : String, start : Object, end : Object, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean, extraEggArgs : Array ) : Flight {
 		var egg:Egg;
 		
 		if (!delay && this._eggs.length) {
 			this.friePrevEggs( eggClass, prop );
 		}
 		
-		egg = Egg.lay(this, eggClass, prop, start, end, duration, delay, equation, equationArgs, forceInit, this.fps, this._useFrames, extraEggArgs);
+		fps = ( fps == undefined ? this.fps : fps );
+		useFrames = ( useFrames == undefined ? this._useFrames : useFrames );
+		
+		egg = Egg.lay(this, eggClass, prop, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames, extraEggArgs);
 		egg.setNodeStack( this._eggs.append(egg), this._eggs);
 		
 		if ( !this._flightOpen ) {
@@ -279,7 +286,7 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 * @param	excludeEgg	Egg you want to protect from being fried.
 	 */
 	private function friePrevEggs ( eggClass : Function, prop : String, excludeEgg : Egg ) : Void {
-		this._eggs.each( function( egg:Egg ) {
+		this._eggs.each( function( egg:Egg ) : Void {
 			if ( ( egg instanceof eggClass ) && egg.prop == prop && egg != excludeEgg ) {
 				egg.fries();
 			}
@@ -329,8 +336,9 @@ class dragonfly.body.Larva extends EventDispatcher implements ILarva {
 	 * 
 	 * @param ev The EggEvent.
 	 */
-	private function egg_onUpdate (event :  EggEvent) : Void {
+	private function egg_onUpdate ( event :  EggEvent ) : Void {
 		this.dispatchEvent( new LarvaEvent( LarvaEvent.UPDATE, this._eggs ) );
+		event;
 	}
 	
 	/**

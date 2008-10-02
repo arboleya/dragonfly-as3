@@ -2,6 +2,8 @@ import dragonfly.plugins.core.Values;
 
 /**
  * Define values of GradientBevelEgg and GradientGlow.
+ * 
+ * @author nybras | nybras@codeine.it
  * @see GradientBevelEgg
  * @see GradientGlowEgg
  * @see Values

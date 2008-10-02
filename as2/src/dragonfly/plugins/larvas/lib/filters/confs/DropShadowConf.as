@@ -4,6 +4,7 @@ import dragonfly.plugins.core.Conf;
 /**
  * Configure values for DropShadow effects.
  * 
+ * @author nybras | nybras@codeine.it
  * @see dragonfly.plugins.larvas.lib.filters.values.DropShadowValues
  * @see dragonfly.plugins.larvas.lib.filters.eggs.DropShadowEgg
  * @see dragonfly.plugins.larvas.lib.filters.confs.Conf

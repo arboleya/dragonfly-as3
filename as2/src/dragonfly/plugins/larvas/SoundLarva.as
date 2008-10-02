@@ -3,7 +3,9 @@ import dragonfly.body.Larva;
 import dragonfly.plugins.larvas.lib.sound.SoundEgg;
 
 
-
+/**
+ * @author nybras | nybras@codeine.it
+ */
 class dragonfly.plugins.larvas.SoundLarva extends Larva {
 	
 	// [ CONSTRUCTOR ] *******************************************************/
@@ -40,7 +42,7 @@ class dragonfly.plugins.larvas.SoundLarva extends Larva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function sound (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ SoundEgg, SoundEgg.VOLUME ].concat( arguments.slice( 1 ) ) );
+	public function sound (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( SoundEgg, SoundEgg.VOLUME, start, end, duration, delay, equation , equationArgs , forceInit, fps, useFrames);
 	}
 }

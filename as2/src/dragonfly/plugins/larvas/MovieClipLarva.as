@@ -6,6 +6,8 @@ import dragonfly.plugins.larvas.lib.movieclip.MovieClipEgg;
 
 /**
  * MovieClipLarva class.
+ * 
+ * @author nybras | nybras@codeine.it
  */
 class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	
@@ -44,8 +46,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight
 	 */
-	public function x (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.X ].concat( arguments ) );
+	public function x (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.X, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -61,8 +63,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function y (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.Y ].concat( arguments ) );
+	public function y (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.Y, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -80,10 +82,10 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return	The egg flight.
 	 */
-	public function xy (startX : Number, startY : Number, endX : Number, endY : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
+	public function xy (startX : Number, startY : Number, endX : Number, endY : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
 		this.openFlight();
-		this.x( startX, endX, duration, delay, equation, equationArgs, forceInit );
-		this.y( startY, endY, duration, delay, equation, equationArgs, forceInit );
+		this.x( startX, endX, duration, delay, equation, equationArgs, forceInit , fps , useFrames );
+		this.y( startY, endY, duration, delay, equation, equationArgs, forceInit , fps , useFrames );
 		return this.closeFlight();
 	}
 	
@@ -100,8 +102,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return	The egg flight.
 	 */
-	public function xscale (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.ALPHA ].concat( arguments ) );
+	public function xscale (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.ALPHA, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -117,8 +119,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return	The egg flight.
 	 */
-	public function yscale (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.YSCALE ].concat( arguments ) );
+	public function yscale (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.YSCALE, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -136,10 +138,10 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return	The egg flight.
 	 */
-	public function xyscale (startX : Number, startY : Number, endX : Number, endY : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
+	public function xyscale (startX : Number, startY : Number, endX : Number, endY : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
 		this.openFlight();
-		this.xscale(startX, endX, duration, delay, equation, equationArgs, forceInit);
-		this.yscale(startY, endY, duration, delay, equation, equationArgs, forceInit);
+		this.xscale(startX, endX, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
+		this.yscale(startY, endY, duration, delay, equation, equationArgs, forceInit, fps, useFrames);
 		return this.closeFlight();
 	}
 	
@@ -156,8 +158,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function width (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.WIDTH ].concat( arguments ) );
+	public function width (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.WIDTH, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -174,8 +176,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function height (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.HEIGHT ].concat( arguments ) );
+	public function height (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.HEIGHT, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -191,8 +193,8 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight
 	 */
-	public function alpha (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.ALPHA ].concat( arguments ) );
+	public function alpha (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.ALPHA, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 	
 	/**
@@ -208,7 +210,7 @@ class dragonfly.plugins.larvas.MovieClipLarva extends GenericLarva {
 	 * 
 	 * @return The egg flight.
 	 */
-	public function rotation (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean) : Flight {
-		return this.lay.apply( this, [ MovieClipEgg, MovieClipEgg.ROTATION ].concat( arguments ) );
+	public function rotation (start : Number, end : Number, duration : Number, delay : Number, equation : Function, equationArgs : Array, forceInit : Boolean, fps : Number, useFrames : Boolean ) : Flight {
+		return this.lay( MovieClipEgg, MovieClipEgg.ROTATION, start, end, duration, delay, equation, equationArgs, forceInit, fps, useFrames );
 	}
 }
