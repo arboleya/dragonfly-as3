@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head><title>dragonfly.body.interfaces.IEgg - Dragonfly API Documentation</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
+document.quicknavBasePath="../../../index-files";
+//--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><link href="package-summary.html" title="Package dragonfly.body.interfaces" rel="up"/><link href="../../../dragonfly/body/Converter.html" title="Class dragonfly.body.Converter" rel="prev"/><link href="../../../dragonfly/body/interfaces/IEfx.html" title="Interface dragonfly.body.interfaces.IEfx" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/></head><body><h1>Interface dragonfly.body.interfaces.IEgg</h1><div class="type_hierachy"><ul><li><strong>dragonfly.body.interfaces.IEgg</strong></li></ul></div><div class="type_description"><h2>Description</h2><p>
+ IEgg defines core methods of Egg values operation.
+ </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#getValue" title="public function getValue():Object">getValue()</a>, <a href="#setValue" title="public function setValue(value:Object):Void">setValue()</a>, <a href="#shoke" title="public function shoke(start:Object, end:Object, duration:Number, delay:Number, equation:Function, equationArgs:Array, forceInit:Boolean, fps:Number, useFrames:Boolean):Void">shoke()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="shoke"></a><h3>shoke</h3><code class="method_synopsis">public function <strong class="method_name">shoke</strong>(start:<span class="unresolved_type_name">Object</span>, end:<span class="unresolved_type_name">Object</span>, duration:<span class="unresolved_type_name">Number</span>, delay:<span class="unresolved_type_name">Number</span>, equation:<span class="unresolved_type_name">Function</span>, equationArgs:<span class="unresolved_type_name">Array</span>, forceInit:<span class="unresolved_type_name">Boolean</span>, fps:<span class="unresolved_type_name">Number</span>, useFrames:<span class="unresolved_type_name">Boolean</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
+ This method usually don't need to be overwriten by childs classes
+ in case you need to make a different use of some prop/value, try to call
+ the super-method with the same arguments before, so the queue execution
+ won't get broken.
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>start</code></td><td>Start value for the Egg transition.
+ </td></tr><tr><td><code>end</code></td><td>End value for the Egg transition.
+ </td></tr><tr><td><code>duration</code></td><td>Duration value for the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>delay</code></td><td>Delay before start the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>equation</code></td><td>Equation for the Egg transition.
+ </td></tr><tr><td><code>equationArgs</code></td><td>EquationArgs to be applied to the given Equation.
+ </td></tr><tr><td><code>forceInit</code></td><td>If TRUE, the start value is initialized imediatelly, even if the tween has a delay.
+ </td></tr><tr><td><code>fps</code></td><td>If useFrames is <code>false</code>, you can set the refresh interval for the 'setInterval' mode (default value is 30).
+ </td></tr><tr><td><code>useFrames</code></td><td>If <code>true</code> 'onEnterFreame' mode used, otherwise (<code>false</code>) 'setInterval' mode is used.
+	 </td></tr></table></div></div><div class="method_details"><a name="getValue"></a><h3>getValue</h3><code class="method_synopsis">public function <strong class="method_name">getValue</strong>():<span class="unresolved_type_name">Object</span></code><div class="method_info"><p>
+ These methods MUST to be overwriten by childs classes, it's obrigatory
+ jusr because it can be such specific for each egg you create. That way,
+ you can easilly create any kind of Egg you need... in other words: freedom.
+ 
+ Check the existent eggs as examples to fill these two methods, take a breath,
+ and follow your intuition.
+	 </p></div></div><div class="method_details alt_row"><a name="setValue"></a><h3>setValue</h3><code class="method_synopsis">public function <strong class="method_name">setValue</strong>(value:<span class="unresolved_type_name">Object</span>):<span class="void_name">Void</span></code><div class="method_info"></div></div></div></div><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Dragonfly API Documentation" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package dragonfly.body.interfaces" class="button">Package</a></li><li><span class="button nav_current">Class</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

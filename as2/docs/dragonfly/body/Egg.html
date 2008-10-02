@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head><title>dragonfly.body.Egg - Dragonfly API Documentation</title><script src="../../quicknav.js" type="text/javascript"></script><script><!--
+document.quicknavBasePath="../../index-files";
+//--></script><link href="../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../overview-summary.html" title="Overview" rel="top"/><link href="package-summary.html" title="Package dragonfly.body" rel="up"/><link href="../../dragonfly/body/events/LarvaEvent.html" title="Class dragonfly.body.events.LarvaEvent" rel="prev"/><link href="../../dragonfly/body/Flight.html" title="Class dragonfly.body.Flight" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/></head><body><h1>Class dragonfly.body.Egg</h1><div class="type_hierachy"><ul><li><strong>dragonfly.body.Egg</strong></li></ul></div><div class="interfaces"><h2>Implemented Interfaces</h2><code><a href="../../dragonfly/body/interfaces/IEgg.html" class="interface_name" title="Interface dragonfly.body.interfaces.IEgg">IEgg</a></code> </div><div class="type_description"><h2>Description</h2><p>
+ Egg class.
+ </p></div><div class="type_indexes"><div class="field_index"><h2>Field Index</h2><a href="#active" title="public active:Boolean">active</a>, <a href="#flight" title="public flight:Flight">flight</a>, <a href="#parentEggs" title="public parentEggs:LinkedList">parentEggs</a>, <a href="#prop" title="public prop:String">prop</a>, <a href="#timeLeft" title="public timeLeft:Number">timeLeft</a></div><div class="method_index"><h2>Method Index</h2><div><code>new <a href="#Egg" title="public function Egg(prop:String, larva:Larva, flight:Flight)">Egg()</a></code></div><a href="#fries" title="public function fries():Void">fries()</a>, <a href="#getValue" title="public function getValue():Object">getValue()</a>, <a href="#hold" title="public function hold():Void">hold()</a>, <a href="#lay" title="static public function lay(larva:Larva, eggClass:Function, prop:String, start:Object, end:Object, duration:Number, delay:Number, equation:Function, equationArgs:Array, forceInit:Boolean, fps:Number, useFrames:Boolean, extraEggArgs:Array):Egg">lay()</a>, <a href="#reset" title="public function reset():Void">reset()</a>, <a href="#setNodeStack" title="public function setNodeStack(node:Node, stack:LinkedList):Void">setNodeStack()</a>, <a href="#setValue" title="public function setValue(value:Object):Void">setValue()</a>, <a href="#shoke" title="public function shoke(start:Object, end:Object, duration:Number, delay:Number, equation:Function, equationArgs:Array, forceInit:Boolean, fps:Number, useFrames:Boolean):Void">shoke()</a>, <a href="#unhold" title="public function unhold():Void">unhold()</a></div></div><div class="type_details"><div class="constructor_detail_list"><h2>Constructor Detail</h2><div class="method_details"><a name="Egg"></a><h3>Egg</h3><code class="method_synopsis">public function <strong class="method_name">Egg</strong>(prop:<span class="unresolved_type_name">String</span>, larva:<a href="../../dragonfly/body/Larva.html" class="class_name" title="Class dragonfly.body.Larva">Larva</a>, flight:<a href="../../dragonfly/body/Flight.html" class="class_name" title="Class dragonfly.body.Flight">Flight</a>)</code><div class="method_info"><p>
+ Create a Egg object.
+ 
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>prop</code></td><td>Prop of the egg.
+ </td></tr><tr><td><code>larva</code></td><td>Larva that owns the egg.
+ </td></tr><tr><td><code>flight</code></td><td>Larva flight.
+	 </td></tr></table></div></div></div><div class="field_detail_list"><h2>Field Detail</h2><a name="parentEggs"></a><h3>parentEggs</h3><div class="field_details"><code class="field_synopsis">public <strong class="field_name">parentEggs</strong>:<span class="unresolved_type_name">LinkedList</span> <em class="read_write_only">[Read Only]</em></code><div class="field_info">
+ Returns the parent eggs in the same larva, including itself
+	 </div></div><a name="active"></a><h3>active</h3><div class="field_details"><code class="field_synopsis">public <strong class="field_name">active</strong>:<span class="unresolved_type_name">Boolean</span> <em class="read_write_only">[Read Only]</em></code><div class="field_info">
+ Egg.IS_ACTIVE.
+ 
+ </div></div><a name="timeLeft"></a><h3>timeLeft</h3><div class="field_details"><code class="field_synopsis">public <strong class="field_name">timeLeft</strong>:<span class="unresolved_type_name">Number</span> <em class="read_write_only">[Read Only]</em></code><div class="field_info">
+ Egg.TIME_LEFT.
+ 
+ </div></div><a name="prop"></a><h3>prop</h3><div class="field_details"><code class="field_synopsis">public <strong class="field_name">prop</strong>:<span class="unresolved_type_name">String</span> <em class="read_write_only">[Read Only]</em></code><div class="field_info">
+ Egg.PROP.
+ 
+ </div></div><a name="flight"></a><h3>flight</h3><div class="field_details"><code class="field_synopsis">public <strong class="field_name">flight</strong>:<a href="../../dragonfly/body/Flight.html" class="class_name" title="Class dragonfly.body.Flight">Flight</a> <em class="read_write_only">[Read Only]</em></code><div class="field_info">
+ Egg.LarvaListener.
+ 
+ </div></div></div><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="lay"></a><h3>lay</h3><code class="method_synopsis">static public function <strong class="method_name">lay</strong>(larva:<a href="../../dragonfly/body/Larva.html" class="class_name" title="Class dragonfly.body.Larva">Larva</a>, eggClass:<span class="unresolved_type_name">Function</span>, prop:<span class="unresolved_type_name">String</span>, start:<span class="unresolved_type_name">Object</span>, end:<span class="unresolved_type_name">Object</span>, duration:<span class="unresolved_type_name">Number</span>, delay:<span class="unresolved_type_name">Number</span>, equation:<span class="unresolved_type_name">Function</span>, equationArgs:<span class="unresolved_type_name">Array</span>, forceInit:<span class="unresolved_type_name">Boolean</span>, fps:<span class="unresolved_type_name">Number</span>, useFrames:<span class="unresolved_type_name">Boolean</span>, extraEggArgs:<span class="unresolved_type_name">Array</span>):<a href="../../dragonfly/body/Egg.html" class="class_name" title="Class dragonfly.body.Egg">Egg</a></code><div class="method_info"><p>
+ Lays a new instance of any Egg (since you pass the class).
+ 
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>eggClass</code></td><td>The eggClass you want to lay a new instance.
+ </td></tr><tr><td><code>prop</code></td><td>The egg 'prop' you want to lay.
+ </td></tr><tr><td><code>start</code></td><td>Start value for the Egg transition.
+ </td></tr><tr><td><code>end</code></td><td>End value for the Egg transition.
+ </td></tr><tr><td><code>duration</code></td><td>Duration value for the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>delay</code></td><td>Delay before start the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>equation</code></td><td>Equation for the Egg transition.
+ </td></tr><tr><td><code>equationArgs</code></td><td>EquationArgs to be applied to the given Equation.
+ </td></tr><tr><td><code>forceInit</code></td><td>If <code>true</code>, the start value is initialized imediatelly, even if the tween has a delay.
+ </td></tr><tr><td><code>fps</code></td><td>If useFrames is <code>false</code>, you can set the refresh interval for the <code>'setInterval'</code> mode (default=30).
+ </td></tr><tr><td><code>useFrames</code></td><td>If <code>true</code>'onEnterFreame' mode used, otherwise (<code>false</code>) <code>'setInterval'</code> mode is used.
+ </td></tr><tr><td><code>extraEggArgs</code></td><td>Extra arguments you need in your Egg's Contructor, besides the defaults [prop, larva, flight].
+ 
+ </td></tr></table><h4>Return</h4><p class="extra_info">	A new instance of the given 'eggClass'.
+	 </p></div></div><div class="method_details"><a name="shoke"></a><h3>shoke</h3><code class="method_synopsis">public function <strong class="method_name">shoke</strong>(start:<span class="unresolved_type_name">Object</span>, end:<span class="unresolved_type_name">Object</span>, duration:<span class="unresolved_type_name">Number</span>, delay:<span class="unresolved_type_name">Number</span>, equation:<span class="unresolved_type_name">Function</span>, equationArgs:<span class="unresolved_type_name">Array</span>, forceInit:<span class="unresolved_type_name">Boolean</span>, fps:<span class="unresolved_type_name">Number</span>, useFrames:<span class="unresolved_type_name">Boolean</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
+ Shoke the egg.
+ 
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>start</code></td><td>Start value for the Egg transition.
+ </td></tr><tr><td><code>end</code></td><td>End value for the Egg transition.
+ </td></tr><tr><td><code>duration</code></td><td>Duration value for the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>delay</code></td><td>Delay before start the Egg transition, in milleseconds.
+ </td></tr><tr><td><code>equation</code></td><td>Equation for the Egg transition.
+ </td></tr><tr><td><code>equationArgs</code></td><td>EquationArgs to be applied to the given Equation.
+ </td></tr><tr><td><code>forceInit</code></td><td>If <code>true</code>, the start value is initialized imediatelly, even if the tween has a delay.
+ </td></tr><tr><td><code>fps</code></td><td>If useFrames is <code>false</code>, you can set the refresh interval for the <code>'setInterval'</code> mode (default=30).
+ </td></tr><tr><td><code>useFrames</code></td><td>If <code>true</code> <code>'onEnterFreame'</code> mode used, otherwise (<code>false</code>) <code>'setInterval'</code> mode is used.
+	 </td></tr></table><h4>Specified By</h4><p class="extra_info"><a href="../../dragonfly/body/interfaces/IEgg.html#shoke" title="public function shoke(start:Object, end:Object, duration:Number, delay:Number, equation:Function, equationArgs:Array, forceInit:Boolean, fps:Number, useFrames:Boolean):Void">shoke()</a> in <a href="../../dragonfly/body/interfaces/IEgg.html" class="interface_name" title="Interface dragonfly.body.interfaces.IEgg">dragonfly.body.interfaces.IEgg</a></p></div></div><div class="method_details alt_row"><a name="setNodeStack"></a><h3>setNodeStack</h3><code class="method_synopsis">public function <strong class="method_name">setNodeStack</strong>(node:<span class="unresolved_type_name">Node</span>, stack:<span class="unresolved_type_name">LinkedList</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
+ sets the egg node/stack
+ 
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>node</code></td><td>Egg node.
+ </td></tr><tr><td><code>stack</code></td><td>Egg stack.
+	 </td></tr></table></div></div><div class="method_details"><a name="setValue"></a><h3>setValue</h3><code class="method_synopsis">public function <strong class="method_name">setValue</strong>(value:<span class="unresolved_type_name">Object</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
+ Sets the Egg prop/value.
+ 
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>value</code></td><td>The new prop value.
+	 </td></tr></table><h4>Specified By</h4><p class="extra_info"><a href="../../dragonfly/body/interfaces/IEgg.html#setValue" title="public function setValue(value:Object):Void">setValue()</a> in <a href="../../dragonfly/body/interfaces/IEgg.html" class="interface_name" title="Interface dragonfly.body.interfaces.IEgg">dragonfly.body.interfaces.IEgg</a></p></div></div><div class="method_details alt_row"><a name="getValue"></a><h3>getValue</h3><code class="method_synopsis">public function <strong class="method_name">getValue</strong>():<span class="unresolved_type_name">Object</span></code><div class="method_info"><p>
+ Returns the current prop/value.
+ 
+ </p><h4>Return</h4><p class="extra_info"> The current prop/value.
+	 </p><h4>Specified By</h4><p class="extra_info"><a href="../../dragonfly/body/interfaces/IEgg.html#getValue" title="public function getValue():Object">getValue()</a> in <a href="../../dragonfly/body/interfaces/IEgg.html" class="interface_name" title="Interface dragonfly.body.interfaces.IEgg">dragonfly.body.interfaces.IEgg</a></p></div></div><div class="method_details"><a name="hold"></a><h3>hold</h3><code class="method_synopsis">public function <strong class="method_name">hold</strong>():<span class="void_name">Void</span></code><div class="method_info"><p>
+ Hold the egg animation.
+	 </p></div></div><div class="method_details alt_row"><a name="unhold"></a><h3>unhold</h3><code class="method_synopsis">public function <strong class="method_name">unhold</strong>():<span class="void_name">Void</span></code><div class="method_info"><p>
+ Unhold the egg animation.
+	 </p></div></div><div class="method_details"><a name="reset"></a><h3>reset</h3><code class="method_synopsis">public function <strong class="method_name">reset</strong>():<span class="void_name">Void</span></code><div class="method_info"><p>
+ Resets the egg animation.
+	 </p></div></div><div class="method_details alt_row"><a name="fries"></a><h3>fries</h3><code class="method_synopsis">public function <strong class="method_name">fries</strong>():<span class="void_name">Void</span></code><div class="method_info"><p>
+ Destroy the egg.
+	 </p></div></div></div></div><ul class="main_nav" id="main_nav"><li><a href="../../overview-summary.html" title="Overview of Dragonfly API Documentation" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package dragonfly.body" class="button">Package</a></li><li><span class="button nav_current">Class</span></li><li><a href="../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
