@@ -114,7 +114,7 @@ class dragonfly.Dragonfly {
 	}
 	
 	/**
-	* kills the given Larva instance
+	* kill the given Larva instance
 	* 
 	* @param	larva	The larva instance to be murdered
 	*/
