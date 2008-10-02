@@ -1,0 +1,108 @@
+body {
+	padding-left: 10px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", "Trebuchet MS", Geneva, Arial, sans-serif;
+	font-size: 12px;
+}
+h1 {
+	font-size: 18px;
+}
+h2, caption {
+	padding: 4px;
+	color: #ffffff;
+	padding-left: 8px;
+	background-color: #285090;
+	font-weight: bold;
+	font-size: 12px;
+}
+h3, h4 {
+	font-size: 13px;
+}
+a {
+	color: #285090;
+}
+a:hover {
+	color: #a30000;
+}
+.field_synopsis, .method_synopsis {
+	padding-left: 20px;
+}
+.field_info, .method_info {
+	padding-top: 10px;
+}
+.method_details {
+	border-bottom: 1px solid #285090;
+}
+.method_details p {
+	margin-top: 3px;
+	padding: 0px;
+}
+.main_nav {
+	margin-left: 0px;
+	padding-left: 0px;
+	font-weight: bold;
+	font-size: 12px;
+}
+.main_nav li {
+	padding: 8px;
+	padding-left: 0px;
+	display: inline;
+}
+.main_nav span {
+	color: #000000;
+}
+table.summary_list {
+	border-collapse: collapse;
+	width: 100%;
+}
+table.summary_list td {
+	padding: 4px;
+	font-size: 12px;
+	border: 1px solid #285090;
+	padding-left: 8px;
+}
+table td.summary_list_id {
+	width: 160px;
+}
+table td.summary_list_comment {
+	width: auto;
+}
+table.summary_list caption {
+	padding: 4px;
+	text-align: left;
+	padding-left: 8px;
+	margin-left: -1px;
+	background-color: #285090;
+	font-weight: bold;
+	font-size: 12px;
+}
+ul.navigation_list {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+ul.navigation_list li {
+	margin-bottom: 4px;
+	list-style: none;
+}
+.footer {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: smaller;
+}
+.lineno {
+	color: #666666;
+	border-right: 1px solid #666666;
+	margin-right: 5px;
+}
+.comment { 
+	color: #008000; 
+}
+.comment.doc { 
+	color: #008000; 
+}
+.str_const, .num_const { 
+	color: #ff00ff; 
+}
+.key { 
+	font-weight: bolder; 
+	color: #000099;
+}
