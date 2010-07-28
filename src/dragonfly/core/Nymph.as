@@ -141,7 +141,7 @@ package dragonfly.core
 		 */
 		public function get time_left() : Number 
 		{
-			return Math.max( 0, (_duration - _timer) );
+			return Math.max( 0, ( _duration - _timer ) );
 		}
 
 		/**
