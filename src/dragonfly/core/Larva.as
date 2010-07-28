@@ -232,9 +232,16 @@ package dragonfly.core
 		) : Flight
 		{
 			var flight : Flight;
+			var larva : Larva;
+			var children_eggs : Array;
 			
 			flight = new Flight( );
-			for each( var egg : Egg in _flights )
+			
+			children_eggs = [];
+			for each( larva in _larvas )
+				children_eggs = children_eggs.concat( larva._flights );
+			
+			for each( var egg : Egg in _flights.concat( children_eggs ) )
 				flight.add_egg( egg._shoke(
 					duration * 1000,
 					delay,
