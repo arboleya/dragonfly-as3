@@ -8,6 +8,7 @@ package dragonfly.core
 	{
 		private var _targets : Array;
 		private var _flights : Array;
+		private var _larvas : Array;
 		private var _eggs : Array;
 		private var _use_frames : Boolean;
 		private var _fps : Number;
@@ -33,6 +34,7 @@ package dragonfly.core
 			_eggs = [];
 			_targets = [];
 			_flights = [];
+			_larvas = [];
 			
 			_targets.push( target );
 			_use_frames = use_frames;
@@ -47,7 +49,13 @@ package dragonfly.core
 		 */
 		public function add_target(target : * ) : * 
 		{
+			var larva : Larva;
+			
+			for each( larva in _larvas )
+				larva._targets.push( target );
+			
 			_targets.push( target );
+			
 			return target;
 		}
 
@@ -57,7 +65,13 @@ package dragonfly.core
 		 */
 		public function remove_target(target : * ) : void 
 		{
+			var larva : Larva;
+			
+			for each( larva in _larvas )
+				ArrayUtil.del( larva._targets, target );
+			
 			ArrayUtil.del( _targets, target );
+			
 			if ( !this._targets.length ) 
 				trace( "WARNING: Your larva has no target!" );
 		}
@@ -67,6 +81,11 @@ package dragonfly.core
 		 */
 		public function remove_all_targets() : void 
 		{
+			var larva : Larva;
+			
+			for each( larva in _larvas )
+				larva._targets = [ targets[ 0 ] ];
+			
 			_targets = [ targets[ 0 ] ];
 		}
 
@@ -86,6 +105,15 @@ package dragonfly.core
 		public function get targets() : Array 
 		{
 			return _targets;
+		}
+		 
+		/**
+		 * Returns the larva's targets.
+		 * @return The larva's targets.
+		 */
+		public function get larvas() : Array 
+		{
+			return _larvas;
 		} 
 
 		/**
@@ -148,6 +176,12 @@ package dragonfly.core
 		public function get active() : Number 
 		{
 			var active_eggs : Number;
+			var larva : Larva;
+			
+			active_eggs = 0;
+			
+			for each( larva in _larvas )
+				active_eggs += larva.active;
 			
 			for each( var egg : Egg in _eggs )
 				if( egg.active ) active_eggs++;
@@ -212,6 +246,22 @@ package dragonfly.core
 			
 			_flights = [];
 			return flight;
+		}
+		
+		protected function _plug_larva( larva_class : Class ) : Larva 
+		{
+			var larva : Larva;
+			_larvas.push( larva = new ( larva_class )(
+				default_target,
+				_use_frames,
+				fps
+			) );
+			return larva; 
+		}
+		
+		protected function _unplug_larva( larva : Larva ) : void 
+		{
+			ArrayUtil.del( _larvas, larva );
 		}
 	}
 }
