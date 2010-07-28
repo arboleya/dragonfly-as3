@@ -45,7 +45,7 @@ package dragonfly.core
 			_prop = prop;
 			_larva = larva;
 			_end = end;
-			_start = start || _larva.default_target[ _prop ];
+			_start = start || _get_start_value();
 		}
 
 		internal function _shoke(
@@ -66,16 +66,16 @@ package dragonfly.core
 		{
 			_active = true;
 			
-			if( hasOwnProperty( "start" ) )
-				this[ "start" ]( bullet );
+			if( hasOwnProperty( "before_render" ) )
+				this[ "before_render" ]( bullet );
 			
 			gunz_on_start.shoot( bullet );
 		}
 
 		private function _tween_progress( bullet : NymphBullet ) : void 
 		{
-			if( hasOwnProperty( "progress" ) )
-				this[ "progress" ]( bullet );
+			if( hasOwnProperty( "render" ) )
+				this[ "render" ]( bullet );
 			
 			gunz_on_progress.shoot( bullet );
 		}
@@ -84,12 +84,12 @@ package dragonfly.core
 		{
 			_active = false;
 			
-			if( hasOwnProperty( "complete" ) )
-				this[ "complete" ]( bullet );
+			if( hasOwnProperty( "after_render" ) )
+				this[ "after_render" ]( bullet );
 			
 			gunz_on_complete.shoot( bullet );
 		}
-
+		
 		public function hold() : Egg 
 		{
 			_nymph.hold( );
@@ -121,6 +121,11 @@ package dragonfly.core
 		public function get active() : Boolean 
 		{
 			return _active;
+		}
+		
+		protected function _get_start_value() : *
+		{
+			return _larva.default_target[ _prop ];
 		}
 	}
 }
