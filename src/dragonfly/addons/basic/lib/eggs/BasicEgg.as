@@ -1,4 +1,4 @@
-package dragonfly.addons.basic 
+package dragonfly.addons.basic.lib.eggs 
 {
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
@@ -32,7 +32,7 @@ package dragonfly.addons.basic
 			super( prop, larva, end, start );
 		}
 
-		public function progress( bullet : NymphBullet ) : void
+		public function render( bullet : NymphBullet ) : void
 		{
 			for each( var target : * in targets )
 				target[ _prop ] = bullet.value;
