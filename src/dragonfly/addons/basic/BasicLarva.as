@@ -1,5 +1,6 @@
 package dragonfly.addons.basic 
 {
+	import dragonfly.addons.basic.lib.eggs.BasicEgg;
 	import dragonfly.core.Larva;
 
 	
