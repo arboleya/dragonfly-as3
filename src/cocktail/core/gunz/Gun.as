@@ -106,7 +106,7 @@ package cocktail.core.gunz
 			if( _victims.length ) do
 			{
 				victim = Victim( _victims[ i ] );
-				victim.scream( bullet || new Bullet( ) );
+				victim.scream( bullet || bullet );
 			} while( ++i < _victims.length );
 			
 			return bullet;

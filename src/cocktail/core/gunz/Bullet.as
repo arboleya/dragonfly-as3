@@ -182,6 +182,9 @@ package cocktail.core.gunz
 			do
 			{
 				prop = props[ i ];
+				
+				if( !prop ) continue;
+				
 				output += "\t" + prop.@name + " : ";
 				output += String( prop.@type ).split( "::" ).pop( ) + " = ";
 				output += this[ prop.@name ] + ";\n";

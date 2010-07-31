@@ -74,10 +74,10 @@ package cocktail.core.gunz
 		 * Listens to all queued Gun's, checking if all Gun's already finished
 		 * or not, and if it's the last, shoots a complete Gun.
 		 */
-		private function _gun_shot( ...bullet ) : void
+		private function _gun_shot( bullet : Bullet ) : void
 		{
 			if( ++_fired == _items.length )
-				gunz_complete.shoot( );
+				gunz_complete.shoot( bullet );
 		}
 	}
 }
