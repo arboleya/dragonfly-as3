@@ -22,20 +22,30 @@ package dragonfly.core
 	 */
 	public class Nymph
 	{
-		private var _active : Boolean;
-		private var _timeout : Timeout;
-		private var _inititalized : Boolean;
-		private var _start : Number;
-		private var _end : Number;
+		/* ----- TWEEN VARIABLES -------------------------------------------- */
+		private var _start : *;
+		private var _end : *;
 		private var _duration : Number;
 		private var _equation : Function;
 		private var _equation_args : Array;
 		private var _fps : Number;
 		private var _use_frames : Boolean;
+		
+		/* ----- CONTROLS VARIABLES ----------------------------------------- */
+		private var _egg : Egg;
+		private var _target : *;
+		private var _prop : String;
+		private var _active : Boolean;
+		private var _timeout : Timeout;
+		private var _inititalized : Boolean;
+		
+		/* ----- TIMING VARIABLES ------------------------------------------- */
 		private var _timer : Number;
 		private var _updating : Number;
 		private var _last_update_timer : Number;
+		private var _is_multiple : Boolean;
 		
+		/* ----- GUNZ ------------------------------------------------------- */
 		public var gunz : Gunz;
 		public var gunz_on_start : Gun;
 		public var gunz_on_progress : Gun;
@@ -45,6 +55,7 @@ package dragonfly.core
 
 		
 		
+		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Nymph() 
 		{
 			gunz = new Gunz( this );
@@ -58,18 +69,22 @@ package dragonfly.core
 		/**
 		 * Configures the Nymph object.
 		 * 
+		 * @param egg
 		 * @param start
 		 * @param end
 		 * @param duration
+		 * @param delay
 		 * @param equation
-		 * @param colorMode
-		 * @param EggListener
-		 * @param equationArgs
+		 * @param equation_args
 		 * @param fps
+		 * @param use_frames
 		 */
 		public function config(
-			start : Number,
-			end : Number,
+			egg : Egg,
+			target : *,
+			prop : *,
+			start : *,
+			end : *,
 			duration : Number, 
 			delay : Number,
 			equation : Function,
@@ -78,6 +93,9 @@ package dragonfly.core
 			use_frames : Boolean
 		) : void
 		{
+			_egg = egg;
+			_target = target;
+			_prop = prop;
 			_start = start;
 			_end = end;
 			_duration = Math.max( duration, 1 );
@@ -92,10 +110,10 @@ package dragonfly.core
 			}
 			else
 				_equation_args = [];
-				
 			
 			_fps = (isNaN( fps ) ? Dragonfly.default_fps : fps);
 			_use_frames = (use_frames || Dragonfly.use_frames);
+			_is_multiple = ( start is Array && end is Array );
 			
 			_timeout = new Timeout( _init, Math.max( delay, 1 ), null, true );
 		}
@@ -155,7 +173,7 @@ package dragonfly.core
 			
 			_start_updater( );
 			
-			gunz_on_start.shoot( new NymphBullet( _start ) );
+			gunz_on_start.shoot( new NymphBullet( _target, _prop, _start ) );
 		}
 
 		/**
@@ -164,8 +182,8 @@ package dragonfly.core
 		 */
 		public function kick() : void 
 		{
-			var end : Number;
-			var start : Number;
+			var end : *;
+			var start : *;
 			
 			start = _start;
 			end = _end;
@@ -175,13 +193,13 @@ package dragonfly.core
 			if ( !_inititalized ) 
 			{
 				_timeout.abort( );
-				gunz_on_start.shoot( new NymphBullet( start ) );
+				gunz_on_start.shoot( new NymphBullet( _target, _prop, start ) );
 			} 
 			else 
 			{
 				_stop_updater( );
-				gunz_on_progress.shoot( new NymphBullet( end ) );
-				gunz_on_start.shoot( new NymphBullet( end ) );
+				gunz_on_progress.shoot( new NymphBullet( _target, _prop, end ) );
+				gunz_on_start.shoot( new NymphBullet( _target, _prop, end ) );
 			}
 		}
 
@@ -219,12 +237,15 @@ package dragonfly.core
 		 */
 		private function _refresh() : void 
 		{
-			gunz_on_progress.shoot( new NymphBullet( _value ) );
+			var bullet : NymphBullet;
+			
+			bullet = new NymphBullet( _target, _prop, _value );
+			gunz_on_progress.shoot( bullet );
 			
 			if ( _timer >= _duration ) 
 			{
 				_stop_updater( );
-				gunz_on_complete.shoot( new NymphBullet( _value ) );
+				gunz_on_complete.shoot( bullet );
 			} 
 			else if( _use_frames )
 				_timer++;
@@ -239,16 +260,36 @@ package dragonfly.core
 		 * Get value with desired easing.
 		 * @return The current tween color.
 		 */
-		private function get _value() : Number 
+		private function get _value() : * 
 		{
 			var params : Array;
 			var timer : Number;
+			var end : *;
+			var start : *; 
+			var output: Array; 
+			var i : int;
 			
 			timer = Math.min( _timer, _duration );
-			params = [ timer, _start, (_end - _start), _duration ];
-			params = params.concat( _equation_args );
 			
-			return Number( _equation.apply( this, params ) );
+			if( ! _is_multiple )
+			{
+				params = [ timer, _start, (_end - _start), _duration ];
+				params = params.concat( _equation_args );
+				return Number( _equation.apply( this, params ) );
+			}
+			
+			output = [];
+			for(; i < ( _start as Array ).length; i++ )
+			{
+				start = _start[ i ];
+				end = _end[ i ];
+				params = [ timer, start, ( end -  start ), _duration ];
+				params = params.concat( _equation_args );
+				
+				output.push( _equation.apply( this, params ) );
+			}
+			
+			return output;
 		}
 	}
 }

@@ -18,9 +18,10 @@ package dragonfly.core
 		public var gunz_on_progress : Gun;
 		public var gunz_on_complete : Gun;
 		protected var _prop : String;
+		protected var __prop_target : *;
 		protected var _larva : Larva;
-		protected var _end : Number;
-		protected var _start : Number;
+		protected var _end : *;
+		protected var _start : *;
 		public var _active : Boolean;
 
 		
@@ -28,8 +29,8 @@ package dragonfly.core
 		public function Egg(
 			prop : String,
 			larva : Larva,
-			end : Number,
-			start : Number = undefined
+			end : *,
+			start : * = null
 		) 
 		{
 			_nymph = new Nymph( );
@@ -57,8 +58,19 @@ package dragonfly.core
 			equation_args : *
 		) : Egg
 		{
-			_nymph.config( _start, _end, duration, delay, equation, equation_args, fps, use_frames );
-			
+			_nymph.config(
+				this,
+				__prop_target,
+				_prop,
+				_start,
+				_end,
+				duration,
+				delay,
+				equation,
+				equation_args,
+				fps,
+				use_frames
+			);
 			return this;
 		}
 
@@ -126,6 +138,16 @@ package dragonfly.core
 		protected function _get_start_value() : *
 		{
 			return _larva.default_target[ _prop ];
+		}
+		
+		protected function get _prop_target() : *
+		{
+			return __prop_target;
+		}
+		
+		protected function set _prop_target( value : * ) : void
+		{
+			__prop_target = value;
 		}
 	}
 }

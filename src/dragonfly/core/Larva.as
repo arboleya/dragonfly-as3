@@ -12,6 +12,7 @@ package dragonfly.core
 		private var _eggs : Array;
 		private var _use_frames : Boolean;
 		private var _fps : Number;
+		private var __property_target : *;
 
 		
 		
@@ -40,7 +41,7 @@ package dragonfly.core
 			_use_frames = use_frames;
 			_fps = fps;
 		}
-
+		
 		/**
 		 * Adds a target into the Larva.
 		 * @param Target	The target to be added.
@@ -208,8 +209,8 @@ package dragonfly.core
 		protected function _lay(
 			egg_class : Class,
 			egg_type : String,
-			end : Number,
-			start : Number
+			end : *,
+			start : *
 		) : Egg
 		{
 			var egg : Egg;
@@ -221,7 +222,7 @@ package dragonfly.core
 			
 			return egg;
 		}
-
+		
 		public function fly(
 			duration : Number,
 			delay : Number = undefined,
