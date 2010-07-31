@@ -6,13 +6,13 @@ package dragonfly.core
 	
 	public class Larva
 	{
+		internal var _initialized : Boolean;
 		private var _targets : Array;
 		private var _flights : Array;
 		private var _larvas : Array;
 		private var _eggs : Array;
 		private var _use_frames : Boolean;
 		private var _fps : Number;
-		private var __property_target : *;
 
 		
 		
@@ -41,7 +41,7 @@ package dragonfly.core
 			_use_frames = use_frames;
 			_fps = fps;
 		}
-		
+
 		/**
 		 * Adds a target into the Larva.
 		 * @param Target	The target to be added.
@@ -107,7 +107,7 @@ package dragonfly.core
 		{
 			return _targets;
 		}
-		 
+
 		/**
 		 * Returns the larva's targets.
 		 * @return The larva's targets.
@@ -222,7 +222,7 @@ package dragonfly.core
 			
 			return egg;
 		}
-		
+
 		public function fly(
 			duration : Number,
 			delay : Number = undefined,
@@ -243,19 +243,21 @@ package dragonfly.core
 				children_eggs = children_eggs.concat( larva._flights );
 			
 			for each( var egg : Egg in _flights.concat( children_eggs ) )
-				flight.add_egg( egg._shoke(
-					duration * 1000,
-					delay,
-					equation,
-					fps,
-					use_frames,
-					equation_args
-				) );
+				flight.add_egg(
+					egg._shoke(
+						duration * 1000,
+						delay,
+						equation,
+						fps,
+						use_frames,
+						equation_args
+					)
+				);
 			
 			_flights = [];
 			return flight;
 		}
-		
+
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
@@ -266,10 +268,15 @@ package dragonfly.core
 			) );
 			return larva; 
 		}
-		
+
 		protected function _unplug_larva( larva : Larva ) : void 
 		{
 			ArrayUtil.del( _larvas, larva );
+		}
+		
+		public function get initialized() : Boolean
+		{
+			return _initialized;
 		}
 	}
 }

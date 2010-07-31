@@ -77,6 +77,7 @@ package dragonfly.core
 		private function _tween_start( bullet : NymphBullet ) : void 
 		{
 			_active = true;
+			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
 				this[ "before_render" ]( bullet );
