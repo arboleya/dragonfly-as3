@@ -9,14 +9,24 @@ package dragonfly.core.gunz
 	 */
 	public class NymphBullet extends Bullet 
 	{
-		public var value : Number;
+		public var target : *;
+		public var prop : *;
+		public var value : *;
+		public var is_multiple : Boolean;
 
 		
 		
-		public function NymphBullet( value : Number = undefined )
+		public function NymphBullet(
+			target : *,
+			prop : String, 
+			value : * = undefined
+		)
 		{
 			super( );
+			this.target = target;
+			this.prop = prop;
 			this.value = value;
+			is_multiple = ( value is Array && ( value as Array ).length );
 		}
 	}
 }

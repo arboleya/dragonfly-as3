@@ -1,17 +1,20 @@
 package dragonfly.core.gunz 
 {
-	import cocktail.core.gunz.Bullet;
 
 	
 	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class FlightBullet extends Bullet 
+	public class FlightBullet extends NymphBullet 
 	{
-		public function FlightBullet()
+		public function FlightBullet(
+			target : *,
+			prop : String, 
+			value : * = undefined
+		)
 		{
-			super( );
+			super( target, prop, value );
 		}
 	}
 }

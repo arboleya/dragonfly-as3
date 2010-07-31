@@ -1,11 +1,11 @@
 package dragonfly.core 
 {
-	import cocktail.core.gunz.Bullet;
 	import cocktail.core.gunz.Gun;
 	import cocktail.core.gunz.Gunz;
 	import cocktail.core.gunz.GunzGroup;
 
 	import dragonfly.core.gunz.FlightBullet;
+	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -34,12 +34,12 @@ package dragonfly.core
 			_gunz_group_complete.gunz_complete.add( _shoot, gunz_on_complete );
 		}
 
-		private function _shoot( bullet : Bullet ) : void
+		private function _shoot( bullet : NymphBullet ) : void
 		{
 			var flight : FlightBullet;
 			var gun : Gun;
 			
-			flight = new FlightBullet( );
+			flight = new FlightBullet( bullet.target, bullet.prop, bullet.value );
 			gun = Gun( bullet.params );
 			 
 			if( gun.type == "start" )
@@ -50,7 +50,7 @@ package dragonfly.core
 					_started = true;
 			}
 			
-			gun.shoot( bullet );
+			gun.shoot( flight );
 		}
 
 		public function add_egg( egg : Egg ) : Flight
