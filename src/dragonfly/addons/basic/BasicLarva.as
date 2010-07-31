@@ -19,7 +19,7 @@ package dragonfly.addons.basic
 			super( target, use_frames, fps );
 		}
 
-		/* XY */
+		/* XYZ */
 		public function x(
 			end : Number,
 			start : Number = undefined
@@ -37,7 +37,7 @@ package dragonfly.addons.basic
 			_lay( BasicEgg, BasicEgg.Y, end, start );
 			return this;
 		}
-
+		
 		public function xy(
 			end_x : Number,
 			end_y : Number,
@@ -49,7 +49,15 @@ package dragonfly.addons.basic
 			y( end_y, start_y );
 			return this;
 		}
-
+		public function z(
+			end : Number,
+			start : Number = undefined
+		) : BasicLarva
+		{
+			_lay( BasicEgg, BasicEgg.Z, end, start );
+			return this;
+		}
+		
 		/* ALPHA */
 		public function alpha(
 			end : Number,
@@ -76,6 +84,15 @@ package dragonfly.addons.basic
 		) : BasicLarva
 		{
 			_lay( BasicEgg, BasicEgg.YSCALE, end, start );
+			return this;
+		}
+		
+		public function zscale(
+			end : Number,
+			start : Number = undefined
+		) : BasicLarva
+		{
+			_lay( BasicEgg, BasicEgg.ZSCALE, end, start );
 			return this;
 		}
 
