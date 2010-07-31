@@ -5,9 +5,10 @@ package dragonfly.addons.filters
 	import dragonfly.addons.filters.lib.BlurLarva;
 	import dragonfly.addons.filters.lib.ConvolutionLarva;
 	import dragonfly.addons.filters.lib.DisplacementMapLarva;
-	import dragonfly.addons.filters.lib.DropShadowLarva;
+	import dragonfly.addons.filters.lib.DropshadowLarva;
 	import dragonfly.addons.filters.lib.GlowLarva;
-	import dragonfly.addons.filters.lib.GradientLarva;
+	import dragonfly.addons.filters.lib.GradientBevelLarva;
+	import dragonfly.addons.filters.lib.GradientGlowLarva;
 	import dragonfly.core.Larva;
 
 	import flash.display.DisplayObject;
@@ -24,11 +25,12 @@ package dragonfly.addons.filters
 		private var _blur : BlurLarva;
 		private var _convolution : ConvolutionLarva;
 		private var _displacement_map : DisplacementMapLarva;
-		private var _dropshadow : DropShadowLarva;
+		private var _dropshadow : DropshadowLarva;
 		private var _glow : GlowLarva;
-		private var _gradient : GradientLarva;
-		
+		private var _gradient_bevel : GradientBevelLarva;
+		private var _gradient_glow : GradientGlowLarva;
 		private var _sub_larvas : Array;
+
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
@@ -47,9 +49,10 @@ package dragonfly.addons.filters
 				_blur = BlurLarva( _plug_larva( BlurLarva ) ),
 				_convolution = ConvolutionLarva( _plug_larva( ConvolutionLarva ) ),
 				_displacement_map = DisplacementMapLarva( _plug_larva( DisplacementMapLarva ) ),
-				_dropshadow = DropShadowLarva( _plug_larva( DropShadowLarva ) ),
+				_dropshadow = DropshadowLarva( _plug_larva( DropshadowLarva ) ),
 				_glow = GlowLarva( _plug_larva( GlowLarva ) ),
-				_gradient = GradientLarva( _plug_larva( GradientLarva ) )
+				_gradient_bevel = GradientBevelLarva( _plug_larva( GradientBevelLarva ) ),
+				_gradient_glow = GradientGlowLarva( _plug_larva( GradientGlowLarva ) )
 			];
 			
 			for each( larva in _sub_larvas )
@@ -66,7 +69,7 @@ package dragonfly.addons.filters
 			for each( larva in _sub_larvas )
 			{
 				trace( larva, larva.initialized );
-				 if( larva.initialized )
+				if( larva.initialized )
 					filters.push( larva[ "filter" ] );
 			}
 			
@@ -94,7 +97,7 @@ package dragonfly.addons.filters
 			return _displacement_map;
 		}
 
-		public function get dropshadow() : DropShadowLarva
+		public function get dropshadow() : DropshadowLarva
 		{
 			return _dropshadow;
 		}
@@ -104,9 +107,14 @@ package dragonfly.addons.filters
 			return _glow;
 		}
 
-		public function get gradient() : GradientLarva
+		public function get gradient_glow() : GradientGlowLarva
 		{
-			return _gradient;
+			return _gradient_glow;
+		}
+
+		public function get gradient_bevel() : GradientBevelLarva
+		{
+			return _gradient_bevel;
 		}
 	}
 }
