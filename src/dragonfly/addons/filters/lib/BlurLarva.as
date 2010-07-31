@@ -13,8 +13,6 @@ package dragonfly.addons.filters.lib
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : BlurFilter;
-		/* ----- FILTER PROPERTIES (non tweenable) -------------------------- */
-		private var _quality : int;
 
 		
 		
@@ -50,11 +48,11 @@ package dragonfly.addons.filters.lib
 		 */
 		public function conf( quality : int ) : BlurLarva 
 		{
-			_filter.quality = ( _quality = quality );
+			_filter.quality = quality;
 			return this;
 		}
 
-		/* ----- X, Y ------------------------------------------------------- */
+		/* ----- ANIMATIONS ------------------------------------------------- */
 		
 		/**
 		 * TODO: write documentation

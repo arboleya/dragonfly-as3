@@ -62,7 +62,7 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- DISTANCE --------------------------------------------------- */
+		/* ----- ANIMATIONS ------------------------------------------------- */
 		
 		/**
 		 * TODO: write documentation
@@ -76,8 +76,6 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- ANGLE ------------------------------------------------------ */
-		
 		/**
 		 * TODO: write documentation
 		 */
@@ -90,8 +88,6 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- HIGHLIGHT -------------------------------------------------- */
-		
 		/**
 		 * TODO: write documentation
 		 */
@@ -116,8 +112,6 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- SHADOW ----------------------------------------------------- */
-		
 		/**
 		 * TODO: write documentation
 		 */
@@ -142,8 +136,6 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- STRENGTH --------------------------------------------------- */
-		
 		/**
 		 * TODO: write documentation
 		 */
@@ -156,8 +148,6 @@ package dragonfly.addons.filters.lib
 			return this;
 		}
 
-		/* ----- BLUR ------------------------------------------------------- */
-		
 		/**
 		 * TODO: write documentation
 		 */

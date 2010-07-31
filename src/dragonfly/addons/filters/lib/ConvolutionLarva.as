@@ -13,13 +13,6 @@ package dragonfly.addons.filters.lib
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : ConvolutionFilter;
-		/* ----- FILTER PROPERTIES (non tweenable) -------------------------- */
-		private var _preserve_alpha : Boolean;
-		private var _clamp : Boolean;
-		private var _matrix_x : Number;
-		private var _matrix_y : Number;
-		private var _color : Number;
-		private var _alpha : Number;
 
 		
 		
@@ -62,16 +55,16 @@ package dragonfly.addons.filters.lib
 			alpha : Number
 		) : ConvolutionLarva 
 		{
-			_filter.preserveAlpha = ( _preserve_alpha = preserve_alpha );
-			_filter.clamp = ( _clamp = clamp );
-			_filter.matrixX = ( _matrix_x = matrix_x );
-			_filter.matrixY = ( _matrix_y = matrix_y );
-			_filter.color = ( _color = color );
-			_filter.alpha = ( _alpha = alpha );
+			_filter.preserveAlpha = preserve_alpha;
+			_filter.clamp = clamp;
+			_filter.matrixX = matrix_x;
+			_filter.matrixY = matrix_y;
+			_filter.color = color;
+			_filter.alpha = alpha;
 			return this;
 		}
 
-		/* ----- X, Y ------------------------------------------------------- */
+		/* ----- ANIMATIONS ------------------------------------------------- */
 		
 		/**
 		 * TODO: write documentation
