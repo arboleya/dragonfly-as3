@@ -5,16 +5,18 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.core.Larva;
 	import dragonfly.core.gunz.NymphBullet;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class GradientBevelEgg extends Egg 
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
-		
-		
+		public static const DISTANCE : String = "distance";
+		public static const ANGLE : String = "angle";
+		public static const BLUR_X : String = "blurX";
+		public static const BLUR_Y : String = "blurY";
+		public static const STRENGTH : String = "strength";
+
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

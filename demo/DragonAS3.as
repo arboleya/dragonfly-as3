@@ -14,26 +14,26 @@ package
 	import flash.events.Event;
 	import flash.net.URLRequest;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class DragonAS3 extends Sprite 
 	{
 		private var _container : MovieClip;
+
 		private var _basic : BasicLarva;
+
 		private var _filter : FilterLarva;
+
 		private var _loader : Loader;
+
 		private var _bmpdata : BitmapData;
 
-		
-		
 		public function DragonAS3()
 		{
 			addChild( _container = new MovieClip( ) );
 			
-			_loader = new Loader();
+			_loader = new Loader( );
 			_loader.contentLoaderInfo.addEventListener( Event.COMPLETE, _init );
 			_loader.load( new URLRequest( "dragonfly.jpg" ) );
 			_loader.scaleX = .5;
@@ -43,14 +43,14 @@ package
 		private function _init( event : Event ) : void 
 		{
 			_bmpdata = new BitmapData( _loader.width, _loader.height );
-//			_bmpdata.draw( _loader.content );
-//			_container.addChild( new Bitmap( _bmpdata, "auto", true ) );
+			// _bmpdata.draw( _loader.content );
+			// _container.addChild( new Bitmap( _bmpdata, "auto", true ) );
 			_container.addChild( _loader );
 			
-			basic_example();
-			filter_example();
+			basic_example( );
+			filter_example( );
 		}
-		
+
 		private function basic_example() : void 
 		{
 			_basic = new BasicLarva( _container );
@@ -84,7 +84,7 @@ package
 					.close
 				.convolution
 					.conf( true, true, 3, 3, undefined, undefined )
-					.matrix( [-4, -2, 0, -2, 1, 2, 0, 2, 4] )
+					.matrix( [ -4, -2, 0, -2, 1, 2, 0, 2, 4 ] )
 					.divisor( 1 )
 					.bias( 0 )
 					.close
@@ -92,13 +92,13 @@ package
 					.close
 				.dropshadow
 					.conf( false, false, false, 3 )
-					.distance( 15, 0)
+					.distance( 15, 0 )
 					.angle( 180, 90 )
 					.color( 0x000033, 0x000033 )
 					.alpha( 1, .8 )
 					.blur_x( 10, 0 )
 					.blur_y( 10, 0 )
-					.strength( 1 ,1 )
+					.strength( 1, 1 )
 					.close
 				.glow
 					.conf( false, false, 3 )
@@ -109,32 +109,40 @@ package
 					.strength( 5, 5 )
 					.close
 				.gradient_bevel
-					// code example here
+					.conf( [ 0xFFFFFF, 0xCCCCCC, 0x000000 ], [ 1, 0, 1 ], [ 0, 128, 255 ], "outer", false, 3 )
+					.distance( 15, 0 )
+					.angle( 360, 0 )
+					.blur_xy( 10, 10, 0, 0 )
+					.strength( 2, 0 )
 					.close
 				.gradient_glow
-					// code example here
+					.conf( [ 0xFFFFFF, 0xFF0000, 0xFFFF00, 0x00CC00 ], [ 0, 1, 1, 0.3 ], [ 0, 63, 126, 255 ], "multiply", false, 3 )
+					.distance( 5, 0 )
+					.angle( 360, 0 )
+					.blur_xy( 10, 10, 0, 0 )
+					.strength( 2, 1 )
 					.close
 				.fly( 2, 0, Quint.easeOut )
 				.add( _complete, _progress, _start );
 		}
-		
+
 		/* ----- LISTENERS -------------------------------------------------- */
 		private function _complete( bullet : FlightBullet ) : void 
 		{
-//			trace( "complete "+ bullet );
-			trace( "complete "+ bullet.target, bullet.prop, bullet.value );
+			//			trace( "complete "+ bullet );
+			trace( "complete " + bullet.target, bullet.prop, bullet.value );
 		}
 
 		private function _progress( bullet : FlightBullet ) : void 
 		{
-//			trace( "progress "+ bullet );
-			trace( "progress "+ bullet.target, bullet.prop, bullet.value );
+			//			trace( "progress "+ bullet );
+			trace( "progress " + bullet.target, bullet.prop, bullet.value );
 		}
 
 		private function _start( bullet : FlightBullet ) : void 
 		{
-//			trace( "start "+ bullet );
-			trace( "start "+ bullet.target, bullet.prop, bullet.value );
+			//			trace( "start "+ bullet );
+			trace( "start " + bullet.target, bullet.prop, bullet.value );
 		}
 	}
 }
