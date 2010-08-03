@@ -1,4 +1,4 @@
-#Sun Jul 25 19:28:27 BRT 2010
+#Mon Aug 02 15:56:49 BRT 2010
 =false
 com.powerflasher.fdt.core.CompilerArguments=-target-player\={playerVersion}\n-library-path {flexSDK}/frameworks/locale/en_US
 com.powerflasher.fdt.core.DefaultOutputFolder=bin
