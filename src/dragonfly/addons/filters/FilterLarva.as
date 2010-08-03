@@ -13,8 +13,6 @@ package dragonfly.addons.filters
 
 	import flash.display.DisplayObject;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -68,7 +66,6 @@ package dragonfly.addons.filters
 			filters = [];
 			for each( larva in _sub_larvas )
 			{
-				trace( larva, larva.initialized );
 				if( larva.initialized )
 					filters.push( larva[ "filter" ] );
 			}
