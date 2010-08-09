@@ -21,13 +21,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function GlowLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function GlowLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new GlowFilter(0, 0, 0, 0, 0, 0, false, false);
 		}
 

@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib
 	import dragonfly.addons.filters.FilterLarva;
 	import dragonfly.core.Larva;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -19,12 +17,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function BaseFilterLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number)
+		public function BaseFilterLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 		}
 
 		/* ----- CORE ------------------------------------------------------- */

@@ -21,13 +21,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function ConvolutionLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function ConvolutionLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target  );
 			_filter = new ConvolutionFilter( 1, 1, [ 1 ], 1, 0 );
 		}
 

@@ -19,13 +19,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function GradientBevelLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function GradientBevelLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new GradientBevelFilter( 0, 0, [ 0x000000 ], [ 0 ], [], 0, 0, 0, 0 );
 		}
 

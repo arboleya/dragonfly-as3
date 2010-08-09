@@ -10,13 +10,9 @@ package dragonfly.addons.basic
 	 */
 	public class BasicLarva extends Larva 
 	{
-		public function BasicLarva(
-			target : *,
-			use_frames : Boolean = false,
-			fps : Number = undefined
-		)
+		public function BasicLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 		}
 
 		/* XYZ */

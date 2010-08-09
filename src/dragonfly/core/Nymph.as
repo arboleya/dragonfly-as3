@@ -4,35 +4,29 @@ package dragonfly.core
 	import cocktail.core.gunz.Gunz;
 	import cocktail.utils.Timeout;
 
-	import dragonfly.Dragonfly;
 	import dragonfly.core.gunz.NymphBullet;
 
 	import com.robertpenner.easing.Linear;
 
 	import flash.display.MovieClip;
 	import flash.events.Event;
-	import flash.utils.clearInterval;
 	import flash.utils.getTimer;
-	import flash.utils.setInterval;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class Nymph
 	{
+		/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
+		private static var _oef : MovieClip = new MovieClip();
 		/* ----- TWEEN VARIABLES -------------------------------------------- */
 		private var _start : *;
 		private var _end : *;
 		private var _duration : Number;
 		private var _equation : Function;
 		private var _equation_args : Array;
-		private var _fps : Number;
-		private var _use_frames : Boolean;
 		
 		/* ----- CONTROLS VARIABLES ----------------------------------------- */
-		private var _egg : Egg;
 		private var _target : *;
 		private var _prop : String;
 		private var _active : Boolean;
@@ -41,7 +35,7 @@ package dragonfly.core
 		
 		/* ----- TIMING VARIABLES ------------------------------------------- */
 		private var _timer : Number;
-		private var _updating : Number;
+		private var _interval : int;
 		private var _last_update_timer : Number;
 		private var _is_multiple : Boolean;
 		
@@ -50,11 +44,8 @@ package dragonfly.core
 		public var gunz_on_start : Gun;
 		public var gunz_on_progress : Gun;
 		public var gunz_on_complete : Gun;
-		
-		private static var _oef_broadcaster : MovieClip = new MovieClip( );
 
-		
-		
+
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Nymph() 
 		{
@@ -62,7 +53,6 @@ package dragonfly.core
 			gunz_on_start = new Gun( gunz, this, "start" );
 			gunz_on_progress = new Gun( gunz, this, "progress" );
 			gunz_on_complete = new Gun( gunz, this, "complete" );
-			
 			_timer = 0;
 		}
 
@@ -80,7 +70,6 @@ package dragonfly.core
 		 * @param use_frames
 		 */
 		public function config(
-			egg : Egg,
 			target : *,
 			prop : *,
 			start : *,
@@ -88,12 +77,9 @@ package dragonfly.core
 			duration : Number, 
 			delay : Number,
 			equation : Function,
-			equation_args : Array,
-			fps : Number,
-			use_frames : Boolean
+			equation_args : Array
 		) : void
 		{
-			_egg = egg;
 			_target = target;
 			_prop = prop;
 			_start = start;
@@ -111,11 +97,13 @@ package dragonfly.core
 			else
 				_equation_args = [];
 			
-			_fps = (isNaN( fps ) ? Dragonfly.default_fps : fps);
-			_use_frames = (use_frames || Dragonfly.use_frames);
+			_interval = 0;
 			_is_multiple = ( start is Array && end is Array );
 			
-			_timeout = new Timeout( _init, Math.max( delay, 1 ), null, true );
+			if( delay )
+				_timeout = new Timeout( _init, delay, null, true );
+			else
+				_init();
 		}
 
 		/**
@@ -194,12 +182,14 @@ package dragonfly.core
 			{
 				_timeout.abort( );
 				gunz_on_start.shoot( new NymphBullet( _target, _prop, start ) );
+				gunz_on_progress.shoot( new NymphBullet( _target, _prop, end ) );
+				gunz_on_complete.shoot( new NymphBullet( _target, _prop, end ) );
 			} 
-			else 
+			else
 			{
 				_stop_updater( );
 				gunz_on_progress.shoot( new NymphBullet( _target, _prop, end ) );
-				gunz_on_start.shoot( new NymphBullet( _target, _prop, end ) );
+				gunz_on_complete.shoot( new NymphBullet( _target, _prop, end ) );
 			}
 		}
 
@@ -210,11 +200,7 @@ package dragonfly.core
 		private function _start_updater() : void 
 		{
 			_active = true;
-			
-			if (_use_frames) 
-				_oef_broadcaster.addEventListener( Event.ENTER_FRAME, _refresh );
-			else 
-				_updating = setInterval( _refresh, _fps );
+			_oef.addEventListener( Event.ENTER_FRAME, _refresh );
 		}
 
 		/**
@@ -224,35 +210,39 @@ package dragonfly.core
 		private function _stop_updater() : void 
 		{
 			_active = false;
-			
-			if ( _use_frames ) 
-				_oef_broadcaster.removeEventListener( Event.ENTER_FRAME, _refresh );
-			else
-				clearInterval( _updating );
+			_oef.removeEventListener( Event.ENTER_FRAME, _refresh );
 		}
 
 		/**
 		 * @private
 		 * Updates the Nymph Engine.
 		 */
-		private function _refresh() : void 
+		private function _refresh( event : Event = null ) : void 
 		{
 			var bullet : NymphBullet;
+			var remaining : Number;
 			
 			bullet = new NymphBullet( _target, _prop, _value );
+			
 			gunz_on_progress.shoot( bullet );
 			
 			if ( _timer >= _duration ) 
 			{
 				_stop_updater( );
 				gunz_on_complete.shoot( bullet );
+				return;
 			} 
-			else if( _use_frames )
-				_timer++;
 			else
-				_timer += ( getTimer( ) - _last_update_timer );
+				_timer += ( _interval = getTimer( ) - _last_update_timer );
 			
-			_last_update_timer = getTimer( );
+			if( ( remaining = _duration - _timer ) < _interval )
+			{
+				_timer = _duration;
+				new Timeout( _refresh, Math.max( remaining, 1 ) );
+				return;
+			}
+			else
+				_last_update_timer = getTimer( );
 		}
 
 		/**

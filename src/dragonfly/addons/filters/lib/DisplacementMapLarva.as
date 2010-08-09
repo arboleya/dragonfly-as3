@@ -23,13 +23,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function DisplacementMapLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function DisplacementMapLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new DisplacementMapFilter( );
 		}
 

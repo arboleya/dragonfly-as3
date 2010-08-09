@@ -21,13 +21,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function DropshadowLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function DropshadowLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new DropShadowFilter( 0, 0, 0, 0, 0, 0, 0, 0 );
 		}
 

@@ -21,13 +21,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function BlurLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function BlurLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new BlurFilter( 0, 0, 4 );
 		}
 

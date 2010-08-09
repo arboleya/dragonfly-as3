@@ -2,8 +2,6 @@ package dragonfly.core
 {
 	import cocktail.utils.ArrayUtil;
 
-	
-	
 	public class Larva
 	{
 		internal var _initialized : Boolean;
@@ -11,8 +9,6 @@ package dragonfly.core
 		private var _flights : Array;
 		private var _larvas : Array;
 		private var _eggs : Array;
-		private var _use_frames : Boolean;
-		private var _fps : Number;
 
 		
 		
@@ -26,11 +22,7 @@ package dragonfly.core
 		 * @param fp If useFrames is <code>false</code>, you can set the refresh
 		 * interval for the <code>'setInterval'</code> mode (default=30).
 		 */
-		public function Larva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function Larva( target : * )
 		{
 			_eggs = [];
 			_targets = [];
@@ -38,8 +30,6 @@ package dragonfly.core
 			_larvas = [];
 			
 			_targets.push( target );
-			_use_frames = use_frames;
-			_fps = fps;
 		}
 
 		/**
@@ -190,22 +180,6 @@ package dragonfly.core
 			return active_eggs;
 		}
 
-		/**
-		 * Returns the larva's fps
-		 */
-		public function get fps() : Number 
-		{
-			return _fps;
-		}
-
-		/**
-		 * Sets the larva's fps
-		 */
-		public function set fps( fps : Number ) : void 
-		{
-			_fps = fps;
-		}
-
 		protected function _lay(
 			egg_class : Class,
 			egg_type : String,
@@ -227,8 +201,6 @@ package dragonfly.core
 			duration : Number,
 			delay : Number = undefined,
 			equation : Function = null,
-			fps : Number = undefined,
-			use_frames : Boolean = false,
 			equation_args : * = null
 		) : Flight
 		{
@@ -248,8 +220,6 @@ package dragonfly.core
 						duration * 1000,
 						delay,
 						equation,
-						fps,
-						use_frames,
 						equation_args
 					)
 				);
@@ -261,11 +231,7 @@ package dragonfly.core
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
-			_larvas.push( larva = new ( larva_class )(
-				default_target,
-				_use_frames,
-				fps
-			) );
+			_larvas.push( larva = new ( larva_class )( default_target ) );
 			return larva; 
 		}
 

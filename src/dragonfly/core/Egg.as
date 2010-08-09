@@ -53,13 +53,10 @@ package dragonfly.core
 			duration : Number,
 			delay : Number,
 			equation : Function,
-			fps : Number,
-			use_frames : Boolean,
 			equation_args : *
 		) : Egg
 		{
 			_nymph.config(
-				this,
 				__prop_target,
 				_prop,
 				_start,
@@ -67,9 +64,7 @@ package dragonfly.core
 				duration,
 				delay,
 				equation,
-				equation_args,
-				fps,
-				use_frames
+				equation_args
 			);
 			return this;
 		}

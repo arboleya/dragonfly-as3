@@ -32,13 +32,9 @@ package dragonfly.addons.filters
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function FilterLarva(
-			target : *,
-			use_frames : Boolean = false,
-			fps : Number = undefined
-		)
+		public function FilterLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			
 			var larva : BaseFilterLarva; 
 			

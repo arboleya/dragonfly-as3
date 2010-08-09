@@ -14,9 +14,9 @@ package dragonfly.addons.basic.lib.eggs
 		public static const X : String = "x";
 		public static const Y : String = "y";
 		public static const Z : String = "z";
-		public static const XSCALE : String = "xscale";
-		public static const YSCALE : String = "yscale";
-		public static const ZSCALE : String = "zscale";
+		public static const XSCALE : String = "scaleX";
+		public static const YSCALE : String = "scaleY";
+		public static const ZSCALE : String = "scaleZ";
 		public static const ALPHA : String = "alpha";
 		public static const ROTATION : String = "rotation";
 

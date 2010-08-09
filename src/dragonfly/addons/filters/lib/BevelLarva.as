@@ -25,13 +25,9 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function BevelLarva(
-			target : *,
-			use_frames : Boolean,
-			fps : Number
-		)
+		public function BevelLarva( target : * )
 		{
-			super( target, use_frames, fps );
+			super( target );
 			_filter = new BevelFilter( 0, 0, 0, 0, 0, 0, 0, 0, 0 );
 		}
 
