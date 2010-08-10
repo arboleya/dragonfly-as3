@@ -2,6 +2,8 @@ package dragonfly.core
 {
 	import cocktail.utils.ArrayUtil;
 
+	import flash.utils.getTimer;
+
 	public class Larva
 	{
 		internal var _initialized : Boolean;
@@ -10,8 +12,8 @@ package dragonfly.core
 		private var _larvas : Array;
 		private var _eggs : Array;
 
-		
-		
+		internal var _call_timer : int;
+
 		/**
 		 * Create a Larva object.
 		 * 
@@ -191,6 +193,9 @@ package dragonfly.core
 			
 			egg = new ( egg_class )( egg_type, this, end, start );
 			
+			if( ! _flights.length )
+				_call_timer = getTimer();
+			
 			_eggs.push( egg );
 			_flights.push( egg );
 			
@@ -215,13 +220,11 @@ package dragonfly.core
 				children_eggs = children_eggs.concat( larva._flights );
 			
 			for each( var egg : Egg in _flights.concat( children_eggs ) )
-				flight.add_egg(
-					egg._shoke(
-						duration * 1000,
-						delay,
-						equation,
-						equation_args
-					)
+				flight._add_egg( egg )._shoke(
+					duration * 1000,
+					delay,
+					equation,
+					equation_args
 				);
 			
 			_flights = [];

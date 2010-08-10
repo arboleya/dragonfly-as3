@@ -1,11 +1,5 @@
 package dragonfly.core 
 {
-	import cocktail.core.gunz.Gun;
-	import cocktail.core.gunz.Gunz;
-	import cocktail.core.gunz.GunzGroup;
-
-	import dragonfly.core.gunz.FlightBullet;
-	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -14,64 +8,84 @@ package dragonfly.core
 	 */
 	public class Flight 
 	{
-		public var gunz : Gunz;
-		public var gunz_on_start : Gun;
-		public var gunz_on_progress : Gun;
-		public var gunz_on_complete : Gun;
-		private var _gunz_group_complete : GunzGroup;
+		/* ----- VARIABLES -------------------------------------------------- */
 		private var _started : Boolean;
+		private var _eggs_num : Number = 0;
+		private var _eggs_completed : Number = 0;
+		/* ----- CALLBACKS -------------------------------------------------- */
+		internal var _on_start : Function;
+		internal var _on_progress : Function;
+		internal var _on_complete : Function;
+		
+		internal var _on_start_params : Array = [];
+		internal var _on_progress_params : Array = [];
+		internal var _on_complete_params : Array = [];
 
 		
 		
-		public function Flight() 
+		/* ----- INITIALIZING ----------------------------------------------- */
+		
+		internal function _add_egg( egg : Egg ) : Egg
 		{
-			gunz = new Gunz( this );
-			gunz_on_start = new Gun( gunz, this, "start" );
-			gunz_on_progress = new Gun( gunz, this, "progress" );
-			gunz_on_complete = new Gun( gunz, this, "complete" );
-			
-			_gunz_group_complete = new GunzGroup( );
-			_gunz_group_complete.gunz_complete.add( _shoot, gunz_on_complete );
+			_eggs_num++;
+			egg._on_start = __on_start;
+			egg._on_progress = __on_progress;
+			egg._on_complete = __on_complete;
+			return egg;
 		}
 
-		private function _shoot( bullet : NymphBullet ) : void
+		private function __on_start() : void 
 		{
-			var flight : FlightBullet;
-			var gun : Gun;
-			
-			flight = new FlightBullet( bullet.target, bullet.prop, bullet.value );
-			gun = Gun( bullet.params );
-			 
-			if( gun.type == "start" )
+			if( ! _started )
 			{
-				if( _started )
-					return;
-				else
-					_started = true;
+				_started = true;
+				if( _on_start == null ) return;
+				_on_start.apply( _on_start.prototype, _on_start_params  );
 			}
-			
-			gun.shoot( flight );
 		}
 
-		public function add_egg( egg : Egg ) : Flight
+		private function __on_progress() : void 
 		{
-			egg.gunz_on_start.add( _shoot, gunz_on_start );
-			egg.gunz_on_progress.add( _shoot, gunz_on_progress );
-			_gunz_group_complete.add( egg.gunz_on_complete );
-			return this;
+			if( _on_progress == null  ) return;
+			_on_progress.apply( _on_progress.prototype, _on_progress_params  );
 		}
 
-		public function add(
-			complete : Function,
-			progress : Function = null,
-			start : Function = null
+		private function __on_complete() : void 
+		{
+			if( ++_eggs_completed >= _eggs_num )
+			{
+				if( _on_complete == null ) return;
+				_on_complete.apply( _on_complete.prototype, _on_complete_params  );
+			}
+		}
+		
+		public function start(
+			callback : Function,
+			params : Array = null
 		) : Flight
 		{
-			gunz_on_complete.add( complete );
-			if( progress != null )
-				gunz_on_progress.add( progress );
-			if( start != null )
-				gunz_on_start.add( start );
+			_on_start = callback;
+			_on_start_params = params;
+			return this;
+		}
+		
+		public function progress(
+			callback : Function,
+			params : Array = null
+		) : Flight
+		{
+			_on_progress = callback;
+			_on_progress_params = params;
+			return this;
+		}
+		
+		public function complete(
+			callback : Function,
+			params : Array = null
+		) : Flight
+		{
+			_on_complete = callback;
+			_on_complete_params = params;
 			return this;
 		}
 	}

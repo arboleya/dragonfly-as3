@@ -3,8 +3,9 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.GradientGlowLarva;
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
-	import dragonfly.core.gunz.NymphBullet;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -48,9 +49,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		public function render( bullet : NymphBullet ) : void
+		public function render( value : * ) : void
 		{
-			_gradient_glow_larva.filter[ _prop ] = bullet.value;
+			_gradient_glow_larva.filter[ _prop ] = value;
 			_gradient_glow_larva.close.refresh( );
 		}
 

@@ -3,7 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.GlowLarva;
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
-	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -52,9 +51,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		public function render( bullet : NymphBullet ) : void
+		public function render( value : * ) : void
 		{
-			_glow_larva.filter[ _prop ] = bullet.value;
+			_glow_larva.filter[ _prop ] = value;
 			_glow_larva.close.refresh( );
 		}
 

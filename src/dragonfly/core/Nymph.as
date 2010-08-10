@@ -1,24 +1,22 @@
 package dragonfly.core 
 {
-	import cocktail.core.gunz.Gun;
-	import cocktail.core.gunz.Gunz;
 	import cocktail.utils.Timeout;
-
-	import dragonfly.core.gunz.NymphBullet;
 
 	import com.robertpenner.easing.Linear;
 
-	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.getTimer;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class Nymph
+	internal class Nymph
 	{
 		/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
-		private static var _oef : MovieClip = new MovieClip();
+		private static const _OEF : Sprite = new Sprite();
 		/* ----- TWEEN VARIABLES -------------------------------------------- */
 		private var _start : *;
 		private var _end : *;
@@ -39,21 +37,16 @@ package dragonfly.core
 		private var _last_update_timer : Number;
 		private var _is_multiple : Boolean;
 		
-		/* ----- GUNZ ------------------------------------------------------- */
-		public var gunz : Gunz;
-		public var gunz_on_start : Gun;
-		public var gunz_on_progress : Gun;
-		public var gunz_on_complete : Gun;
+		/* ----- CALLBACKS -------------------------------------------------- */
+		internal var _on_start : Function;
+		internal var _on_progress : Function;
+		internal var _on_complete : Function;
 
-
+		
+		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Nymph() 
 		{
-			gunz = new Gunz( this );
-			gunz_on_start = new Gun( gunz, this, "start" );
-			gunz_on_progress = new Gun( gunz, this, "progress" );
-			gunz_on_complete = new Gun( gunz, this, "complete" );
-			_timer = 0;
 		}
 
 		/**
@@ -77,7 +70,8 @@ package dragonfly.core
 			duration : Number, 
 			delay : Number,
 			equation : Function,
-			equation_args : Array
+			equation_args : Array,
+			call_timer : Number
 		) : void
 		{
 			_target = target;
@@ -98,6 +92,7 @@ package dragonfly.core
 				_equation_args = [];
 			
 			_interval = 0;
+			_timer = ( getTimer() - call_timer );
 			_is_multiple = ( start is Array && end is Array );
 			
 			if( delay )
@@ -158,10 +153,8 @@ package dragonfly.core
 		{
 			_inititalized = true;
 			_last_update_timer = getTimer( );
-			
 			_start_updater( );
-			
-			gunz_on_start.shoot( new NymphBullet( _target, _prop, _start ) );
+			_on_start();
 		}
 
 		/**
@@ -181,15 +174,15 @@ package dragonfly.core
 			if ( !_inititalized ) 
 			{
 				_timeout.abort( );
-				gunz_on_start.shoot( new NymphBullet( _target, _prop, start ) );
-				gunz_on_progress.shoot( new NymphBullet( _target, _prop, end ) );
-				gunz_on_complete.shoot( new NymphBullet( _target, _prop, end ) );
+				_on_start();
+				_on_progress();
+				_on_complete();
 			} 
 			else
 			{
 				_stop_updater( );
-				gunz_on_progress.shoot( new NymphBullet( _target, _prop, end ) );
-				gunz_on_complete.shoot( new NymphBullet( _target, _prop, end ) );
+				_on_progress( _end );
+				_on_complete();
 			}
 		}
 
@@ -200,7 +193,7 @@ package dragonfly.core
 		private function _start_updater() : void 
 		{
 			_active = true;
-			_oef.addEventListener( Event.ENTER_FRAME, _refresh );
+			_OEF.addEventListener( Event.ENTER_FRAME, _refresh );
 		}
 
 		/**
@@ -209,8 +202,11 @@ package dragonfly.core
 		 */
 		private function _stop_updater() : void 
 		{
+			if( ! _active )
+				return;
+			
 			_active = false;
-			_oef.removeEventListener( Event.ENTER_FRAME, _refresh );
+			_OEF.removeEventListener( Event.ENTER_FRAME, _refresh );
 		}
 
 		/**
@@ -219,30 +215,24 @@ package dragonfly.core
 		 */
 		private function _refresh( event : Event = null ) : void 
 		{
-			var bullet : NymphBullet;
-			var remaining : Number;
-			
-			bullet = new NymphBullet( _target, _prop, _value );
-			
-			gunz_on_progress.shoot( bullet );
+			_on_progress( _value );
 			
 			if ( _timer >= _duration ) 
 			{
+				if( _timeout )
+					_timeout.abort();
+				
 				_stop_updater( );
-				gunz_on_complete.shoot( bullet );
-				return;
-			} 
-			else
-				_timer += ( _interval = getTimer( ) - _last_update_timer );
-			
-			if( ( remaining = _duration - _timer ) < _interval )
-			{
-				_timer = _duration;
-				new Timeout( _refresh, Math.max( remaining, 1 ) );
+				_on_complete( );
 				return;
 			}
-			else
-				_last_update_timer = getTimer( );
+			
+			_timer += ( _interval = ( getTimer( ) - _last_update_timer ) );
+			
+			if( ( _duration - _timer ) < _interval )
+				_timer = _duration;
+			
+			_last_update_timer = getTimer( );
 		}
 
 		/**

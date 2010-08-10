@@ -2,7 +2,6 @@ package dragonfly.addons.basic.lib.eggs
 {
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
-	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -30,12 +29,13 @@ package dragonfly.addons.basic.lib.eggs
 		)
 		{
 			super( prop, larva, end, start );
+			_prop_target = _larva.default_target;
 		}
 
-		public function render( bullet : NymphBullet ) : void
+		public function render( value : * ) : void
 		{
 			for each( var target : * in targets )
-				target[ _prop ] = bullet.value;
+				target[ _prop ] = value;
 		}
 	}
 }

@@ -3,7 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.DisplacementMapLarva;
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
-	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -49,9 +48,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		public function render( bullet : NymphBullet ) : void
+		public function render( value : * ) : void
 		{
-			_displacement_map_larva.filter[ _prop ] = bullet.value;
+			_displacement_map_larva.filter[ _prop ] = value;
 			_displacement_map_larva.close.refresh( );
 		}
 

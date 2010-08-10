@@ -1,9 +1,5 @@
 package dragonfly.core 
 {
-	import cocktail.core.gunz.Gun;
-	import cocktail.core.gunz.Gunz;
-
-	import dragonfly.core.gunz.NymphBullet;
 
 	
 	
@@ -13,10 +9,9 @@ package dragonfly.core
 	public class Egg
 	{
 		internal var _nymph : Nymph;
-		public var gunz : Gunz;
-		public var gunz_on_start : Gun;
-		public var gunz_on_progress : Gun;
-		public var gunz_on_complete : Gun;
+//		internal var _nymph : NymphCache;
+		
+		/* ----- VARIABLE --------------------------------------------------- */
 		protected var _prop : String;
 		protected var __prop_target : *;
 		protected var _larva : Larva;
@@ -24,7 +19,10 @@ package dragonfly.core
 		protected var _start : *;
 		public var _active : Boolean;
 
-		
+		/* ----- CALLBACKS -------------------------------------------------- */
+		internal var _on_start : Function;
+		internal var _on_progress : Function;
+		internal var _on_complete : Function;
 		
 		public function Egg(
 			prop : String,
@@ -34,15 +32,7 @@ package dragonfly.core
 		) 
 		{
 			_nymph = new Nymph( );
-			_nymph.gunz_on_start.add( _tween_start );
-			_nymph.gunz_on_progress.add( _tween_progress );
-			_nymph.gunz_on_complete.add( _tween_complete );
-			
-			gunz = new Gunz( this );
-			gunz_on_start = new Gun( gunz, this, "start" );
-			gunz_on_progress = new Gun( gunz, this, "progress" );
-			gunz_on_complete = new Gun( gunz, this, "complete" );
-			
+//			_nymph = new NymphCache( );
 			_prop = prop;
 			_larva = larva;
 			_end = end;
@@ -56,6 +46,9 @@ package dragonfly.core
 			equation_args : *
 		) : Egg
 		{
+			_nymph._on_start = _tween_start;
+			_nymph._on_progress = _tween_progress;
+			_nymph._on_complete = _tween_complete;
 			_nymph.config(
 				__prop_target,
 				_prop,
@@ -64,38 +57,42 @@ package dragonfly.core
 				duration,
 				delay,
 				equation,
-				equation_args
+				equation_args,
+				_larva._call_timer
 			);
 			return this;
 		}
 
-		private function _tween_start( bullet : NymphBullet ) : void 
+		private function _tween_start() : void 
 		{
 			_active = true;
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
-				this[ "before_render" ]( bullet );
+				this[ "before_render" ]();
 			
-			gunz_on_start.shoot( bullet );
+//			trace( "Egg.onStart" );
+			_on_start();
 		}
-
-		private function _tween_progress( bullet : NymphBullet ) : void 
+		
+		private function _tween_progress( value : * ) : void 
 		{
 			if( hasOwnProperty( "render" ) )
-				this[ "render" ]( bullet );
+				this[ "render" ]( value );
 			
-			gunz_on_progress.shoot( bullet );
+//			trace( "Egg.onProgress" );
+			_on_progress();
 		}
 
-		private function _tween_complete( bullet : NymphBullet ) : void 
+		private function _tween_complete() : void 
 		{
 			_active = false;
 			
 			if( hasOwnProperty( "after_render" ) )
-				this[ "after_render" ]( bullet );
+				this[ "after_render" ]();
 			
-			gunz_on_complete.shoot( bullet );
+//			trace( "Egg.onComplete" );
+			_on_complete();
 		}
 		
 		public function hold() : Egg 

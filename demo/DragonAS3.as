@@ -2,7 +2,6 @@ package
 {
 	import dragonfly.addons.basic.BasicLarva;
 	import dragonfly.addons.filters.FilterLarva;
-	import dragonfly.core.gunz.FlightBullet;
 
 	import com.robertpenner.easing.Expo;
 	import com.robertpenner.easing.Quint;
@@ -13,7 +12,10 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.net.URLRequest;
+	import flash.utils.getTimer;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -28,7 +30,10 @@ package
 		private var _loader : Loader;
 
 		private var _bmpdata : BitmapData;
+		private var _start_timer : int;
 
+		
+		
 		public function DragonAS3()
 		{
 			addChild( _container = new MovieClip( ) );
@@ -48,7 +53,7 @@ package
 			_container.addChild( _loader );
 			
 			basic_example( );
-			filter_example( );
+//			filter_example( );
 		}
 
 		private function basic_example() : void 
@@ -56,11 +61,11 @@ package
 			_basic = new BasicLarva( _container );
 			_basic
 				.x( 200 )
-				.y( 200 )
-				.z( -1 )
-				.alpha( 1, 0 )
+//				.y( 200 )
+//				.z( -1 )
+//				.alpha( 1, 0 )
 				.fly( .5, 0, Expo.easeOut )
-				.add( _complete, _progress, _start );
+				.start( _start ).progress( _progress ).complete( _complete  );
 		}
 
 		private function filter_example() : void 
@@ -122,27 +127,25 @@ package
 					.blur_xy( 10, 10, 0, 0 )
 					.strength( 2, 1 )
 					.close
-				.fly( 2, 0, Quint.easeOut )
-				.add( _complete, _progress, _start );
+				.fly( 2, 0, Quint.easeOut );
+//				.add( _complete, _progress, _start );
 		}
 
 		/* ----- LISTENERS -------------------------------------------------- */
-		private function _complete( bullet : FlightBullet ) : void 
+		private function _complete() : void 
 		{
-			//			trace( "complete "+ bullet );
-			trace( "complete " + bullet.target, bullet.prop, bullet.value );
+			trace( "complete! @ "+ ( getTimer() - _start_timer ) );
 		}
 
-		private function _progress( bullet : FlightBullet ) : void 
+		private function _progress() : void 
 		{
-			//			trace( "progress "+ bullet );
-			trace( "progress " + bullet.target, bullet.prop, bullet.value );
+			trace( "progress!");
 		}
 
-		private function _start( bullet : FlightBullet ) : void 
+		private function _start() : void 
 		{
-			//			trace( "start "+ bullet );
-			trace( "start " + bullet.target, bullet.prop, bullet.value );
+			_start_timer = getTimer();
+			trace( "start!");
 		}
 	}
 }
