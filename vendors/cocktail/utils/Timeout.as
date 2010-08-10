@@ -40,7 +40,7 @@ package cocktail.utils
 
 		public function abort() : void
 		{
-			if( _timer.running )
+			if( _timer && _timer.running )
 				_timer.stop( );
 			
 			_destroy( );
@@ -48,7 +48,8 @@ package cocktail.utils
 
 		private function _destroy() : void
 		{
-			_timer.removeEventListener( TimerEvent.TIMER_COMPLETE, _complete );
+			if( _timer )
+				_timer.removeEventListener( TimerEvent.TIMER_COMPLETE, _complete );
 			_timer = null;
 			_handler = null;
 			_params = null;
@@ -60,6 +61,7 @@ package cocktail.utils
 				_handler( );
 			else
 				_handler.apply( _handler.prototype, [].concat( _params ) );
+			
 			_destroy( );
 		}
 	}
