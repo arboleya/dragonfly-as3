@@ -5,7 +5,7 @@ package com.robertpenner.easing
 	
 	public class Elastic 
 	{
-		public static function easeIn(t : Number, b : Number, c : Number, d : Number, a : Number, p : Number) : Number 
+		public static function easeIn(t : Number, b : Number, c : Number, d : Number, a : Number = 0, p : Number = 0) : Number 
 		{
 			var s : *;
 			if (t == 0) return b;  
@@ -20,7 +20,7 @@ package com.robertpenner.easing
 			return -(a * Math.pow( 2, 10 * (t -= 1) ) * Math.sin( (t * d - s) * (2 * Math.PI) / p )) + b;
 		}
 
-		public static function easeOut(t : Number, b : Number, c : Number, d : Number, a : Number, p : Number) : Number 
+		public static function easeOut(t : Number, b : Number, c : Number, d : Number, a : Number = 0, p : Number = 0) : Number 
 		{
 			var s : *;
 			if (t == 0) return b;  
@@ -35,7 +35,7 @@ package com.robertpenner.easing
 			return (a * Math.pow( 2, -10 * t ) * Math.sin( (t * d - s) * (2 * Math.PI) / p ) + c + b);
 		}
 
-		public static function easeInOut(t : Number, b : Number, c : Number, d : Number, a : Number, p : Number) : Number 
+		public static function easeInOut(t : Number, b : Number, c : Number, d : Number, a : Number = 0, p : Number = 0) : Number 
 		{
 			var s : *;
 			if (t == 0) return b;  
