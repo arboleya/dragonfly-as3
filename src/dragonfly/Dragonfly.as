@@ -1,10 +1,11 @@
 package dragonfly  {
-	/**
+	import dragonfly.core.Vitamin;	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class Dragonfly 
 	{
 		private static var _enabled : Boolean = true;
+		private static var _boost : Number = 0;
 		/**
 		 * Constructor
 		 */
@@ -34,6 +35,13 @@ package dragonfly  {
 		public static function disable() : void 
 		{
 			Dragonfly._enabled = false;
+		}		
+		public static function set boost( value : int ) : void 
+		{			if( ( Dragonfly._boost = value ) )				Vitamin.load( value );
+		}		
+		public static function get boost() : int
+		{
+			return Dragonfly._boost;
 		}
 	}
 }
