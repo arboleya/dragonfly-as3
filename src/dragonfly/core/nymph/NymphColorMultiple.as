@@ -1,6 +1,5 @@
 package dragonfly.core.nymph 
 {
-	import dragonfly.Dragonfly;
 
 	/**
 	 * @author nybras | nybras@codeine.it
@@ -19,10 +18,7 @@ package dragonfly.core.nymph
 			
 			output = [];
 			for(; i < ( _start as Array ).length; i++ )
-				if( Dragonfly.boost )
-					output.push( _quantize( _start[ i ], _end[ i ] ) );
-				else
-					output.push( _compute( _start[ i ], _end[ i ] ) );
+				output.push( _compute( _start[ i ], _end[ i ] ) );
 			
 			return output;
 		}

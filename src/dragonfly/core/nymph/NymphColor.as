@@ -1,6 +1,5 @@
 package dragonfly.core.nymph 
 {
-	import dragonfly.core.Nymph;
 
 	/**
 	 * @author nybras | nybras@codeine.it

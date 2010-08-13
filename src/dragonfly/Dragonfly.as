@@ -1,5 +1,5 @@
 package dragonfly  {
-	import dragonfly.core.Vitamin;	/**
+	import dragonfly.core.nymph.health.Vitamin;	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class Dragonfly 

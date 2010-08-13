@@ -2,6 +2,8 @@ package dragonfly.core
 {
 	import cocktail.utils.ArrayUtil;
 
+	import dragonfly.core.nymph.Nymph;
+
 	import flash.utils.getTimer;
 
 	public class Larva

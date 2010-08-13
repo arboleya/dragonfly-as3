@@ -1,9 +1,10 @@
-package dragonfly.core 
+package dragonfly.core.nymph 
 {
+	import dragonfly.core.nymph.health.Vitamin;
 	import cocktail.utils.Timeout;
 
 	import dragonfly.Dragonfly;
-	import dragonfly.core.nymph.NymphColor;
+	
 
 	import com.robertpenner.easing.Linear;
 

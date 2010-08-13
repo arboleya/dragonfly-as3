@@ -1,4 +1,4 @@
-package dragonfly.core 
+package dragonfly.core.nymph.health 
 {
 	import com.robertpenner.easing.Back;
 	import com.robertpenner.easing.Bounce;
@@ -61,7 +61,7 @@ package dragonfly.core
 					
 					while( time < steps )
 					{
-						params = [ time++, 0, 1, steps ];
+						params = [ time++, 0, 1, steps - 1 ];
 						value = equation.apply( equation.prototype, params );
 						computed.push( value.match( decimal_stripper )[0] );
 					}
