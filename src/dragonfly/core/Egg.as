@@ -1,5 +1,6 @@
 package dragonfly.core 
 {
+	import cocktail.utils.ArrayUtil;
 	import dragonfly.core.nymph.Nymph;
 
 	/**
@@ -89,6 +90,7 @@ package dragonfly.core
 			
 			if( hasOwnProperty( "after_render" ) )
 				this[ "after_render" ]();
+			
 			_on_complete();
 		}
 		
@@ -107,6 +109,9 @@ package dragonfly.core
 		public function fries() : Egg 
 		{
 			_nymph.destroy( );
+			_nymph = null;
+			
+			ArrayUtil.del( _larva.targets, this );
 			return this;
 		}
 
