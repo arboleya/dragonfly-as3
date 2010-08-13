@@ -47,11 +47,11 @@ package
 			
 			_basic = new BasicLarva( _container );
 			_basic
-				.x( 200 )
-				.y( 200 )
-				.z( -1 )
+				.x( 500 )
+				.y( 100 )
 				.alpha( 1, 0 )
-				.fly( .5, 0, Expo.easeOut )
+				.rotation( 90 )
+				.fly( 1, 1, Expo.easeOut )
 				.start( _start ).progress( _progress ).complete( _complete  );
 		}
 		

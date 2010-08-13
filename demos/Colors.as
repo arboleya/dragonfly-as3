@@ -29,6 +29,8 @@ package
 			addChild( _container = new MovieClip( ) );
 			_container.graphics.beginFill( 0x000000, 1 );
 			_container.graphics.drawRect( 0, 0, 150, 150 );
+			_container.x = 200;
+			_container.y = 100;
 			
 			_start_timer = getTimer();
 			
