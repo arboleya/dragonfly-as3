@@ -2,52 +2,53 @@ package dragonfly.core
 {
 	import cocktail.utils.Timeout;
 
+	import dragonfly.Dragonfly;
+	import dragonfly.core.nymph.NymphColor;
+
 	import com.robertpenner.easing.Linear;
 
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.getTimer;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	internal class Nymph
+	public class Nymph
 	{
 		/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
 		private static const _OEF : Sprite = new Sprite();
 		/* ----- TWEEN VARIABLES -------------------------------------------- */
-		private var _start : *;
-		private var _end : *;
-		private var _duration : Number;
-		private var _equation : Function;
-		private var _equation_args : Array;
+		protected var _start : *;
+		protected var _end : *;
+		protected var _duration : Number;
+		protected var _equation : Function;
+		protected var _equation_args : Array;
 		
 		/* ----- CONTROLS VARIABLES ----------------------------------------- */
-		private var _target : *;
-		private var _prop : String;
-		private var _active : Boolean;
-		private var _timeout : Timeout;
-		private var _inititalized : Boolean;
+		protected var _target : *;
+		protected var _prop : String;
+		protected var _active : Boolean;
+		protected var _timeout : Timeout;
+		protected var _inititalized : Boolean;
 		
 		/* ----- TIMING VARIABLES ------------------------------------------- */
-		private var _timer : Number;
-		private var _interval : int;
-		private var _last_update_timer : Number;
-		private var _is_multiple : Boolean;
+		protected var _timer : Number;
+		protected var _interval : int;
+		protected var _last_update_timer : Number;
 		
 		/* ----- CALLBACKS -------------------------------------------------- */
-		internal var _on_start : Function;
-		internal var _on_progress : Function;
-		internal var _on_complete : Function;
+		public var _on_start : Function;
+		public var _on_progress : Function;
+		public var _on_complete : Function;
 
-		
-		
+		/* ----- CACHE ------------------------------------------------------ */
+		protected var _vitamin : Array;
+		protected var _vitamin_capsules : int;
+
+
+
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Nymph() 
-		{
-		}
 
 		/**
 		 * Configures the Nymph object.
@@ -78,7 +79,8 @@ package dragonfly.core
 			_prop = prop;
 			_start = start;
 			_end = end;
-			_duration = Math.max( duration, 1 );
+			
+			_duration =  ( duration * 1000 );
 			_equation = equation || Linear.easeNone;
 			
 			if( equation_args != null )
@@ -91,9 +93,14 @@ package dragonfly.core
 			else
 				_equation_args = [];
 			
+			_vitamin = Vitamin.drop( _equation );
+			_vitamin_capsules = _vitamin.length - 1;
+			
+			if( this is NymphColor )
+				trace( this );
+			
 			_interval = 0;
 			_timer = ( getTimer() - call_timer );
-			_is_multiple = ( start is Array && end is Array );
 			
 			if( delay )
 				_timeout = new Timeout( _init, delay, null, true );
@@ -210,14 +217,13 @@ package dragonfly.core
 		}
 
 		/**
-		 * @private
 		 * Updates the Nymph Engine.
 		 */
 		private function _refresh( event : Event = null ) : void 
 		{
 			_on_progress( _value );
 			
-			if ( _timer >= _duration ) 
+			if ( _timer >= _duration )
 			{
 				if( _timeout )
 					_timeout.abort();
@@ -240,36 +246,40 @@ package dragonfly.core
 		 * Get value with desired easing.
 		 * @return The current tween color.
 		 */
-		private function get _value() : * 
+		protected function get _value() : * 
+		{
+			return _compute( _start, _end );
+		}
+		
+		protected final function _compute( start : *, end : * ) : *
+		{
+			if( Dragonfly.boost )
+				return _quantize( start, end );
+			
+			return _calculate( start, end );
+		}
+		
+		protected function _calculate( start : *, end : * ) : *
 		{
 			var params : Array;
-			var timer : Number;
-			var end : *;
-			var start : *; 
-			var output: Array; 
-			var i : int;
 			
-			timer = Math.min( _timer, _duration );
+			params = [ _timer, start, (end - start), _duration ];
+			params = params.concat( _equation_args );
 			
-			if( ! _is_multiple )
-			{
-				params = [ timer, _start, (_end - _start), _duration ];
-				params = params.concat( _equation_args );
-				return Number( _equation.apply( this, params ) );
-			}
+			return Number( _equation.apply( this, params ) );
+		}
+		
+		protected function _quantize( start : *, end : * ) : * 
+		{
+			var diff : Number;
+			var time : Number;
+			var index : Number;
 			
-			output = [];
-			for(; i < ( _start as Array ).length; i++ )
-			{
-				start = _start[ i ];
-				end = _end[ i ];
-				params = [ timer, start, ( end -  start ), _duration ];
-				params = params.concat( _equation_args );
-				
-				output.push( _equation.apply( this, params ) );
-			}
+			diff = ( end - start );
+			time = ( _timer / _duration );
+			index = Math.floor( time * _vitamin_capsules );
 			
-			return output;
+			return ( _start + ( diff * _vitamin[ index ] ) );
 		}
 	}
 }
