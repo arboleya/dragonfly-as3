@@ -16,6 +16,7 @@ package dragonfly.core
 		private var _started : Boolean;
 		private var _eggs_num : Number = 0;
 		private var _eggs_completed : Number = 0;
+		
 		/* ----- CALLBACKS -------------------------------------------------- */
 		internal var _on_start : Function;
 		internal var _on_progress : Function;
@@ -38,7 +39,10 @@ package dragonfly.core
 			egg._on_complete = __on_complete;
 			return egg;
 		}
-
+		
+		
+		/* ----- HANDLING EVENTS -------------------------------------------- */
+		
 		private function __on_start() : void 
 		{
 			if( ! _started )
@@ -64,12 +68,10 @@ package dragonfly.core
 			}
 		}
 		
-		public function loop ( times : Number = 0 ) : void
-		{
-			_looping = true;
-			_loop_times = times;
-		}
-
+		
+		
+		/* ----- LISTENING -------------------------------------------------- */
+		
 		public function start(
 			callback : Function,
 			params : Array = null
@@ -98,6 +100,16 @@ package dragonfly.core
 			_on_complete = callback;
 			_on_complete_params = params;
 			return this;
+		}
+		
+		
+		
+		/* ----- LOOPING ---------------------------------------------------- */
+		
+		public function loop ( times : Number = 0 ) : void
+		{
+			_looping = true;
+			_loop_times = times;
 		}
 		
 		public function get looping() : Boolean
