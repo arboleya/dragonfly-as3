@@ -1,6 +1,6 @@
-#Mon Aug 02 15:56:49 BRT 2010
+#Fri Aug 13 15:26:02 BRT 2010
 =false
-com.powerflasher.fdt.core.CompilerArguments=-target-player\={playerVersion}\n-library-path {flexSDK}/frameworks/locale/en_US
+com.powerflasher.fdt.core.CompilerArguments=-target-player\={playerVersion}\n-default-background-color \#FFFFFF\n-library-path {flexSDK}/frameworks/locale/en_US
 com.powerflasher.fdt.core.DefaultOutputFolder=bin
 com.powerflasher.fdt.core.Language=AS3
 com.powerflasher.fdt.core.PassClasspath=true
