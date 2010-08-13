@@ -8,6 +8,10 @@ package dragonfly.core
 	 */
 	public class Flight 
 	{
+		/* ----- UTILS ------------------------------------------------------ */
+		internal var _looping : Boolean;
+		internal var _loop_times : Number;
+		
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _started : Boolean;
 		private var _eggs_num : Number = 0;
@@ -28,6 +32,7 @@ package dragonfly.core
 		internal function _add_egg( egg : Egg ) : Egg
 		{
 			_eggs_num++;
+			egg._flight = this;
 			egg._on_start = __on_start;
 			egg._on_progress = __on_progress;
 			egg._on_complete = __on_complete;
@@ -59,6 +64,12 @@ package dragonfly.core
 			}
 		}
 		
+		public function loop ( times : Number = 0 ) : void
+		{
+			_looping = true;
+			_loop_times = times;
+		}
+
 		public function start(
 			callback : Function,
 			params : Array = null
@@ -87,6 +98,16 @@ package dragonfly.core
 			_on_complete = callback;
 			_on_complete_params = params;
 			return this;
+		}
+		
+		public function get looping() : Boolean
+		{
+			return _looping;
+		}
+		
+		public function get loop_times() : Number
+		{
+			return _loop_times;
 		}
 	}
 }

@@ -1,10 +1,10 @@
 package dragonfly.core.nymph 
 {
-	import dragonfly.core.nymph.health.Vitamin;
 	import cocktail.utils.Timeout;
 
 	import dragonfly.Dragonfly;
-	
+	import dragonfly.core.Egg;
+	import dragonfly.core.nymph.health.Vitamin;
 
 	import com.robertpenner.easing.Linear;
 
@@ -43,6 +43,10 @@ package dragonfly.core.nymph
 		public var _on_progress : Function;
 		public var _on_complete : Function;
 
+		/* ----- UTILS ------------------------------------------------------ */
+		protected var _egg : Egg;
+		protected var _loop : Number;
+		
 		/* ----- CACHE ------------------------------------------------------ */
 		protected var _vitamin : Array;
 		protected var _vitamin_capsules : int;
@@ -65,6 +69,7 @@ package dragonfly.core.nymph
 		 * @param use_frames
 		 */
 		public function config(
+			egg : Egg,
 			target : *,
 			prop : *,
 			start : *,
@@ -76,10 +81,12 @@ package dragonfly.core.nymph
 			call_timer : Number
 		) : void
 		{
+			_egg = egg;
 			_target = target;
 			_prop = prop;
 			_start = start;
 			_end = end;
+			_loop = 0;
 			
 			_duration =  ( duration * 1000 );
 			_equation = equation || Linear.easeNone;
@@ -222,10 +229,26 @@ package dragonfly.core.nymph
 		 */
 		private function _refresh( event : Event = null ) : void 
 		{
+			var flag : Boolean;
+			
 			_on_progress( _value );
 			
 			if ( _timer >= _duration )
 			{
+				if( _egg.flight.looping )
+				{
+					flag = ( _egg.flight.loop_times == 0 );
+					flag ||= _loop++ <= _egg.flight.loop_times;
+					 
+					if( flag )
+					{
+						_timer = 1;
+						_on_progress( _value );
+						_timer = 0;
+						return;
+					}
+				}
+			
 				if( _timeout )
 					_timeout.abort();
 				

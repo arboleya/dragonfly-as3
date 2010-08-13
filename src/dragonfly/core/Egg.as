@@ -7,22 +7,24 @@ package dragonfly.core
 	 */
 	public class Egg
 	{
-		/* ----- NYMPH ------------------------------------------------------ */
-		internal var _nymph : Nymph;
 		/* ----- VARIABLES -------------------------------------------------- */
+		private var _active : Boolean;
+		
 		protected var _prop : String;
 		protected var __prop_target : *;
 		protected var _larva : Larva;
 		protected var _end : *;
 		protected var _start : *;
-		public var _active : Boolean;
+		
+		internal var _nymph : Nymph;
+		internal var _flight : Flight;
 
 		/* ----- CALLBACKS -------------------------------------------------- */
 		internal var _on_start : Function;
 		internal var _on_progress : Function;
 		internal var _on_complete : Function;
-		
-		
+
+
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Egg(
 			prop : String,
@@ -50,6 +52,7 @@ package dragonfly.core
 			_nymph._on_progress = _tween_progress;
 			_nymph._on_complete = _tween_complete;
 			_nymph.config(
+				this,
 				__prop_target,
 				_prop,
 				_start,
@@ -70,8 +73,6 @@ package dragonfly.core
 			
 			if( hasOwnProperty( "before_render" ) )
 				this[ "before_render" ]();
-			
-//			trace( "Egg.onStart" );
 			_on_start();
 		}
 		
@@ -79,8 +80,6 @@ package dragonfly.core
 		{
 			if( hasOwnProperty( "render" ) )
 				this[ "render" ]( value );
-			
-//			trace( "Egg.onProgress" );
 			_on_progress();
 		}
 
@@ -90,8 +89,6 @@ package dragonfly.core
 			
 			if( hasOwnProperty( "after_render" ) )
 				this[ "after_render" ]();
-			
-//			trace( "Egg.onComplete" );
 			_on_complete();
 		}
 		
@@ -141,6 +138,11 @@ package dragonfly.core
 		protected function set _prop_target( value : * ) : void
 		{
 			__prop_target = value;
+		}
+		
+		public function get flight() : Flight
+		{
+			return _flight;
 		}
 	}
 }
