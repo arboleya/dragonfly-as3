@@ -1,5 +1,6 @@
 package dragonfly.addons.filters.lib 
 {
+	import dragonfly.core.nymph.NymphMultiple;
 	import dragonfly.addons.filters.lib.eggs.ConvolutionEgg;
 
 	import flash.filters.ConvolutionFilter;
@@ -70,7 +71,7 @@ package dragonfly.addons.filters.lib
 			start : Array = undefined
 		) : ConvolutionLarva
 		{
-			_lay( ConvolutionEgg, ConvolutionEgg.MATRIX, end, start );
+			_lay( ConvolutionEgg, ConvolutionEgg.MATRIX, end, start, NymphMultiple );
 			return this;
 		}
 

@@ -4,8 +4,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -33,10 +31,11 @@ package dragonfly.addons.filters.lib.eggs
 			prop : String,
 			larva : Larva,
 			end : Number,
-			start : Number
+			start : Number,
+			nymph_class : Class
 		)
 		{ 
-			super( prop, larva, end, start );
+			super( prop, larva, end, start, nymph_class );
 			_prop_target = _bevel_larva.filter;
 		}
 

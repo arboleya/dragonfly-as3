@@ -1,5 +1,6 @@
 package dragonfly.addons.filters.lib 
 {
+	import dragonfly.core.nymph.NymphColor;
 	import dragonfly.addons.filters.lib.eggs.DropshadowEgg;
 
 	import flash.filters.DropShadowFilter;
@@ -89,7 +90,7 @@ package dragonfly.addons.filters.lib
 			start : Number = undefined
 		) : DropshadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.COLOR, end, start );
+			_lay( DropshadowEgg, DropshadowEgg.COLOR, end, start, NymphColor );
 			return this;
 		}
 

@@ -186,12 +186,14 @@ package dragonfly.core
 			egg_class : Class,
 			egg_type : String,
 			end : *,
-			start : *
+			start : * = null,
+			nymph_class : Class = null
 		) : Egg
 		{
 			var egg : Egg;
 			
-			egg = new ( egg_class )( egg_type, this, end, start );
+			nymph_class = nymph_class || Nymph;
+			egg = new ( egg_class )( egg_type, this, end, start, nymph_class);
 			
 			if( ! _flights.length )
 				_call_timer = getTimer();
@@ -221,7 +223,7 @@ package dragonfly.core
 			
 			for each( var egg : Egg in _flights.concat( children_eggs ) )
 				flight._add_egg( egg )._shoke(
-					duration * 1000,
+					duration,
 					delay,
 					equation,
 					equation_args

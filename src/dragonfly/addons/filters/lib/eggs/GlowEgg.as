@@ -29,10 +29,11 @@ package dragonfly.addons.filters.lib.eggs
 			prop : String,
 			larva : Larva,
 			end : Number,
-			start : Number
+			start : Number,
+			nymph_class : Class
 		)
 		{
-			super( prop, larva, end, start );
+			super( prop, larva, end, start, nymph_class );
 			_prop_target = _glow_larva.filter;
 		}
 

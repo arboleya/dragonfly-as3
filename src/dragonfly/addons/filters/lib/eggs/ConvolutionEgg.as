@@ -27,10 +27,11 @@ package dragonfly.addons.filters.lib.eggs
 			prop : String,
 			larva : Larva,
 			end : *,
-			start : *
+			start : Number,
+			nymph_class : Class
 		)
 		{
-			super( prop, larva, end, start );
+			super( prop, larva, end, start, nymph_class );
 			_prop_target = _convolution_larva.filter;
 		}
 

@@ -8,10 +8,9 @@ package dragonfly.core
 	 */
 	public class Egg
 	{
+		/* ----- NYMPH ------------------------------------------------------ */
 		internal var _nymph : Nymph;
-//		internal var _nymph : NymphCache;
-		
-		/* ----- VARIABLE --------------------------------------------------- */
+		/* ----- VARIABLES -------------------------------------------------- */
 		protected var _prop : String;
 		protected var __prop_target : *;
 		protected var _larva : Larva;
@@ -24,15 +23,17 @@ package dragonfly.core
 		internal var _on_progress : Function;
 		internal var _on_complete : Function;
 		
+		
+		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Egg(
 			prop : String,
 			larva : Larva,
 			end : *,
-			start : * = null
+			start : *,
+			nymph_class : Class
 		) 
 		{
-			_nymph = new Nymph( );
-//			_nymph = new NymphCache( );
+			_nymph = new ( nymph_class )();
 			_prop = prop;
 			_larva = larva;
 			_end = end;

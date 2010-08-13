@@ -1,8 +1,8 @@
 package dragonfly.addons.filters.lib.eggs 
 {
 	import dragonfly.addons.filters.lib.DropshadowLarva;
-	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
+	import dragonfly.core.Egg;
 
 	
 	
@@ -31,10 +31,11 @@ package dragonfly.addons.filters.lib.eggs
 			prop : String,
 			larva : Larva,
 			end : Number,
-			start : Number
+			start : Number,
+			nymph_class : Class
 		)
 		{
-			super( prop, larva, end, start );
+			super( prop, larva, end, start, nymph_class );
 			_prop_target = _dropshadow_larva.filter;
 		}
 
