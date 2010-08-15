@@ -11,8 +11,9 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.net.URLRequest;
-	import flash.utils.getTimer;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -20,11 +21,9 @@ package
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _loader : Loader;
-		private var _filter : FilterLarva;
 		private var _container : MovieClip;
-
+		private var _filter : FilterLarva;
 		private var _bmpdata : BitmapData;
-		private var _start_timer : int;
 
 		
 		
@@ -43,7 +42,6 @@ package
 			_loader.scaleX = .6;
 			_loader.scaleY = .6;
 		}
-
 
 		private function _init( event : Event ) : void 
 		{
@@ -110,26 +108,23 @@ package
 					.strength( 2, 1 )
 					.close
 				.fly( 3.5, .5, Quint.easeOut )
-				.complete( _complete ).progress( _progress ).start( _start );
+				.on_complete( _complete ).on_progress( _progress ).on_start( _start );
 		}
-
-
 
 		/* ----- LISTENERS -------------------------------------------------- */
 		private function _complete() : void 
 		{
-			trace( "complete! @ "+ ( getTimer() - _start_timer ) );
+			trace( "complete!" );
 		}
 
 		private function _progress() : void 
 		{
-			trace( "progress!");
+			trace( "progress!" );
 		}
 
 		private function _start() : void 
 		{
-			_start_timer = getTimer();
-			trace( "start!");
+			trace( "start!" );
 		}
 	}
 }

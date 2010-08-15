@@ -34,13 +34,13 @@ package
 			trace( "---\nSTART: " + 0 );
 			tmp = new BasicLarva( s );
 			_timer = getTimer( );
-			tmp.x( 500 ).fly( .5, 0, Cubic.easeIn ).complete( _out_dragon, [tmp] );
+			tmp.x( 500 ).fly( .5, 0, Cubic.easeIn ).on_complete( _out_dragon, [tmp] );
 		}
 
 		private function _in_dragon( larva : BasicLarva ) : void 
 		{
 			trace( "---\nIN: " + ( getTimer( ) - _timer ) );
-			larva.x( 500 ).fly( .5, 0, Cubic.easeIn ).complete( _out_dragon, [ larva ] );
+			larva.x( 500 ).fly( .5, 0, Cubic.easeIn ).on_complete( _out_dragon, [ larva ] );
 			_timer = getTimer( );
 		}
 
@@ -48,7 +48,7 @@ package
 		{
 			trace( "OUT: " + ( getTimer( ) - _timer ) );
 			_timer = getTimer( );
-			larva.x( 0 ).fly( .5, 0, Cubic.easeIn ).complete( _in_dragon, [larva] );
+			larva.x( 0 ).fly( .5, 0, Cubic.easeIn ).on_complete( _in_dragon, [larva] );
 		}
 	}
 }

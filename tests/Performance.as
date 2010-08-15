@@ -102,7 +102,7 @@ internal class Rect extends Sprite
 		scaleX = scaleY = .05;
 		
 		duration = .5;
-		scale = r() * 2.5 + 0.5;
+		scale = r() * 2.5;
 		angle = r() * Math.PI * 2;
 		delay = r() * duration;
 		
@@ -113,6 +113,6 @@ internal class Rect extends Sprite
 			.xyscale( scale, scale )
 			.rotation( r() * 360  )
 			.fly( .5, delay, Cubic.easeIn, null )
-			.complete( _tween );
+			.on_complete( _tween );
 	}
 }

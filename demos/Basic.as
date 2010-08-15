@@ -23,56 +23,48 @@ package
 		private var _basic : BasicLarva;
 		private var _container : MovieClip;
 		private var _start_timer : Number;
+
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function Basic()
 		{
-//			Dragonfly.boost = 100;
-			
 			addChild( _container = new MovieClip( ) );
-			
-			_loader = new Loader( );
+			_container.addChild( _loader = new Loader( ) );
 			_loader.contentLoaderInfo.addEventListener( Event.COMPLETE, _init );
 			_loader.load( new URLRequest( "dragonfly.jpg" ) );
 			_loader.scaleX = .5;
 			_loader.scaleY = .5;
 		}
 
-
 		/* ----- INITIALIZING ----------------------------------------------- */
 		private function _init( event : Event ) : void 
 		{
-			_container.addChild( _loader );
-			
-			_start_timer = getTimer();
-			
+			_start_timer = getTimer( );
 			_basic = new BasicLarva( _container );
 			_basic
 				.x( 500 )
 				.y( 100 )
-				.alpha( 1, 0 )
+				.xyscale( 1.5, 1.5 )
 				.rotation( 90 )
-				.fly( 1, 0, Expo.easeOut )
-				.start( _start ).progress( _progress ).complete( _complete  );
+				.fly( 1, 1, Expo.easeOut )
+				.on_start( _start ).on_progress( _progress ).on_complete( _complete );
 		}
-		
-		
-		
+
 		/* ----- LISTENERS -------------------------------------------------- */
 		private function _complete() : void 
 		{
-			trace( "complete! @ "+ ( getTimer() - _start_timer ) );
+			trace( "complete!" );
 		}
 
 		private function _progress() : void 
 		{
-			trace( "progress!");
+			trace( "progress!" );
 		}
 
 		private function _start() : void 
 		{
-			trace( "start!");
+			trace( "start!" );
 		}
 	}
 }
