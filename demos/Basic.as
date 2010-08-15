@@ -11,6 +11,8 @@ package
 	import flash.net.URLRequest;
 	import flash.utils.getTimer;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -51,7 +53,7 @@ package
 				.y( 100 )
 				.alpha( 1, 0 )
 				.rotation( 90 )
-				.fly( 1, 1, Expo.easeOut )
+				.fly( 1, 0, Expo.easeOut )
 				.start( _start ).progress( _progress ).complete( _complete  );
 		}
 		
