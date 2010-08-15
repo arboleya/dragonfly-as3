@@ -12,7 +12,7 @@ package
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class Colors extends Sprite 
+	public class ColorDemo extends Sprite 
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _rect : MovieClip;
@@ -21,7 +21,7 @@ package
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Colors()
+		public function ColorDemo()
 		{
 			addChild( _rect = new MovieClip( ) );
 			_rect.graphics.beginFill( 0 );

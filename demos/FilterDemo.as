@@ -17,7 +17,7 @@ package
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class Filters extends Sprite 
+	public class FilterDemo extends Sprite 
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _loader : Loader;
@@ -28,7 +28,7 @@ package
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Filters()
+		public function FilterDemo()
 		{
 			Dragonfly.boost = 100;
 			

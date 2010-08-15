@@ -3,8 +3,8 @@
 <stringAttribute key="APP_ARGUMENTS" value=""/>
 <stringAttribute key="ARGUMENTS" value=""/>
 <booleanAttribute key="KILL_PREVIUOS_VIEWER" value="false"/>
-<stringAttribute key="MAIN_CLASS" value="demos/Shortcut.as"/>
-<stringAttribute key="OUTPUT" value="demos/bin/Shortcut.swf"/>
+<stringAttribute key="MAIN_CLASS" value="demos/ShortcutDemo.as"/>
+<stringAttribute key="OUTPUT" value="demos/bin/ShortcutDemo.swf"/>
 <booleanAttribute key="PASS_CP" value="true"/>
 <booleanAttribute key="PASS_MAIN_CLASS" value="true"/>
 <booleanAttribute key="PASS_SWCS" value="true"/>
@@ -15,7 +15,7 @@
 <stringAttribute key="PROJECT_NAME" value="dragonfly"/>
 <stringAttribute key="PUBLISHER_ID" value=""/>
 <booleanAttribute key="START_SWF_ENABLED" value="true"/>
-<stringAttribute key="START_SWF_LOCATION" value="demos/bin/Shortcut.swf"/>
+<stringAttribute key="START_SWF_LOCATION" value="demos/bin/ShortcutDemo.swf"/>
 <stringAttribute key="START_SWF_WITH" value="External SWF Viewer"/>
 <booleanAttribute key="USE_PROJECT_COMPILER_ARGUMENTS" value="true"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">

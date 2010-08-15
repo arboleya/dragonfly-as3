@@ -12,7 +12,7 @@ package
 	/**
 	 * @author nybras | me@nybras.com
 	 */	
-	public class Performance extends Sprite 
+	public class PerformanceTest extends Sprite 
 	{
 		private var _larvas : Array;
 		
@@ -21,7 +21,7 @@ package
 		private var _time : Number;
 		private var _fps : Number;
 
-		public function Performance()
+		public function PerformanceTest()
 		{
 			Dragonfly.boost = 100;
 			init( 1500 );

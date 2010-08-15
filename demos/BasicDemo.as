@@ -16,7 +16,7 @@ package
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class Basic extends Sprite 
+	public class BasicDemo extends Sprite 
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _loader : Loader;
@@ -27,7 +27,7 @@ package
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Basic()
+		public function BasicDemo()
 		{
 			addChild( _container = new MovieClip( ) );
 			_container.addChild( _loader = new Loader( ) );

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.powerflasher.fdt.ui.MxmlcGroup">
 <stringAttribute key="APP_ARGUMENTS" value=""/>
 <stringAttribute key="ARGUMENTS" value="-target-player={playerVersion}&#10;-library-path {flexSDK}/frameworks/locale/en_US"/>
 <booleanAttribute key="KILL_PREVIUOS_VIEWER" value="false"/>
-<stringAttribute key="MAIN_CLASS" value="demos/Colors.as"/>
-<stringAttribute key="OUTPUT" value="demos/bin/Colors.swf"/>
+<stringAttribute key="MAIN_CLASS" value="demos/ColorDemo.as"/>
+<stringAttribute key="OUTPUT" value="demos/bin/ColorDemo.swf"/>
 <booleanAttribute key="PASS_CP" value="true"/>
 <booleanAttribute key="PASS_MAIN_CLASS" value="true"/>
 <booleanAttribute key="PASS_SWCS" value="true"/>
@@ -15,7 +15,7 @@
 <stringAttribute key="PROJECT_NAME" value="dragonfly"/>
 <stringAttribute key="PUBLISHER_ID" value=""/>
 <booleanAttribute key="START_SWF_ENABLED" value="true"/>
-<stringAttribute key="START_SWF_LOCATION" value="demos/bin/Colors.swf"/>
+<stringAttribute key="START_SWF_LOCATION" value="demos/bin/ColorDemo.swf"/>
 <stringAttribute key="START_SWF_WITH" value="External SWF Viewer"/>
 <booleanAttribute key="USE_PROJECT_COMPILER_ARGUMENTS" value="true"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">

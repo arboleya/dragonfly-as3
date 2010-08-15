@@ -11,7 +11,7 @@ package
 	/**
 	 * @author nybras | me@nybras.com
 	 */
-	public class Shortcut extends Sprite 
+	public class ShortcutDemo extends Sprite 
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _rect : Sprite;
@@ -19,7 +19,7 @@ package
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Shortcut()
+		public function ShortcutDemo()
 		{
 			_rect = new Sprite( );
 			_rect.graphics.beginFill( Math.random( ) * 0xFFFFFF );
