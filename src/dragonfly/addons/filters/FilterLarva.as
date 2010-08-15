@@ -60,7 +60,6 @@ package dragonfly.addons.filters
 		{
 			var filters : Array;
 			var larva : BaseFilterLarva;
-			var target : DisplayObject;
 			
 			filters = [];
 			for each( larva in _sub_larvas )
@@ -69,7 +68,7 @@ package dragonfly.addons.filters
 					filters.push( larva[ "filter" ] );
 			}
 			
-			target.filters = filters;
+			( target as DisplayObject ).filters = filters;
 		}
 
 		public function get bevel() : BevelLarva

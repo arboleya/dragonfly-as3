@@ -3,7 +3,6 @@ package dragonfly.addons.color.lib.eggs
 	import dragonfly.addons.color.ColorLarva;
 	import dragonfly.addons.interfaces.IEgg;
 	import dragonfly.core.Egg;
-	import dragonfly.core.Larva;
 
 	
 	
@@ -22,15 +21,8 @@ package dragonfly.addons.color.lib.eggs
 		public static const BLUE_OFFSET : String = "blueOffset";
 		public static const ALPHA_OFFSET : String = "alphaOffset";
 
-		public function ColorEgg(
-			larva : Larva,
-			props : Array,
-			types : Array,
-			ends : Array,
-			starts : Array
-		)
+		override public function init() : void
 		{
-			super( larva, props, types, ends, starts );
 			_prop_target = _color_larva.transform;
 		}
 
