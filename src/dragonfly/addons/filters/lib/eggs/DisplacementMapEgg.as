@@ -23,14 +23,14 @@ package dragonfly.addons.filters.lib.eggs
 		 * TODO: write documentation
 		 */
 		public function DisplacementMapEgg(
-			prop : String,
 			larva : Larva,
-			end : *,
-			start : Number,
-			nymph_class : Class
+			props : Array,
+			types : Array,
+			ends : Array,
+			starts : Array
 		)
 		{
-			super( prop, larva, end, start, nymph_class );
+			super( larva, props, types, ends, starts );
 			_prop_target = _displacement_map_larva.filter;
 		}
 
@@ -49,9 +49,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		public function render( value : * ) : void
+		public function render( prop : String, value : * ) : void
 		{
-			_displacement_map_larva.filter[ _prop ] = value;
+			_displacement_map_larva.filter[ prop ] = value;
 			_displacement_map_larva.close.refresh( );
 		}
 
@@ -60,9 +60,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		override protected function _get_start_value() : *
+		override protected function _get_start_value( prop : String ) : *
 		{
-			return _displacement_map_larva.filter[ _prop ];
+			return _displacement_map_larva.filter[ prop ];
 		}
 	}
 }

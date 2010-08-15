@@ -1,6 +1,7 @@
 package dragonfly.addons.basic 
 {
 	import dragonfly.addons.basic.lib.eggs.BasicEgg;
+	import dragonfly.addons.interfaces.ILarva;
 	import dragonfly.core.Larva;
 
 	
@@ -8,7 +9,7 @@ package dragonfly.addons.basic
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class BasicLarva extends Larva 
+	public class BasicLarva extends Larva implements ILarva
 	{
 		public function BasicLarva( target : * )
 		{

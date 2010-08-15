@@ -2,123 +2,42 @@ package dragonfly.core
 {
 	import cocktail.utils.ArrayUtil;
 
-	import dragonfly.core.nymph.Nymph;
+	import flash.utils.Dictionary;
 
-	import flash.utils.getTimer;
-
+	
+	
 	public class Larva
 	{
 		internal var _initialized : Boolean;
-		private var _targets : Array;
-		private var _flights : Array;
-		private var _larvas : Array;
-		private var _eggs : Array;
-
-		internal var _call_timer : int;
-
-		/**
-		 * Create a Larva object.
-		 * 
-		 * @param target	The larva target.
-		 * @param use_frames If <code>true</code> 'onEnterFrame' mode used,
-		 * otherwise (<code>false</code>) <code>'setInterval'</code> mode is
-		 * used.
-		 * @param fp If useFrames is <code>false</code>, you can set the refresh
-		 * interval for the <code>'setInterval'</code> mode (default=30).
-		 */
+		
+		private var _target : *;
+		
+		protected var _laid : Dictionary;
+		protected var _larvas : Array;
+		protected var _eggs : Dictionary;
+		
 		public function Larva( target : * )
 		{
-			_eggs = [];
-			_targets = [];
-			_flights = [];
+			_target = target;
 			_larvas = [];
-			
-			_targets.push( target );
+			_eggs = new Dictionary();
+			_laid = new Dictionary();
 		}
-
-		/**
-		 * Adds a target into the Larva.
-		 * @param Target	The target to be added.
-		 * 
-		 * @return The added target id.
-		 */
-		public function add_target(target : * ) : * 
-		{
-			var larva : Larva;
-			
-			for each( larva in _larvas )
-				larva._targets.push( target );
-			
-			_targets.push( target );
-			
-			return target;
-		}
-
-		/**
-		 * Removes one target from a Larva.
-		 * @param target Target to be removed.
-		 */
-		public function remove_target(target : * ) : void 
-		{
-			var larva : Larva;
-			
-			for each( larva in _larvas )
-				ArrayUtil.del( larva._targets, target );
-			
-			ArrayUtil.del( _targets, target );
-			
-			if ( !this._targets.length ) 
-				trace( "WARNING: Your larva has no target!" );
-		}
-
-		/**
-		 * Removes all targets from a Larva ( except the default target ).
-		 */
-		public function remove_all_targets() : void 
-		{
-			var larva : Larva;
-			
-			for each( larva in _larvas )
-				larva._targets = [ targets[ 0 ] ];
-			
-			_targets = [ targets[ 0 ] ];
-		}
-
-		/**
-		 * Returns the larva's eggs.
-		 * @return The larva's eggs.
-		 */
-		public function get eggs() : Array 
+		
+		public function get eggs() : Dictionary 
 		{
 			return _eggs;
 		} 
 
-		/**
-		 * Returns the larva's targets.
-		 * @return The larva's targets.
-		 */
-		public function get targets() : Array 
+		public function get target() : * 
 		{
-			return _targets;
+			return _target;
 		}
 
-		/**
-		 * Returns the larva's targets.
-		 * @return The larva's targets.
-		 */
 		public function get larvas() : Array 
 		{
 			return _larvas;
 		} 
-
-		/**
-		 * Returns the larva's default target.
-		 * @return The larva's target.
-		 */
-		public function get default_target() : * 
-		{
-			return _targets[ 0 ];
-		}
 
 		/**
 		 * Gets the thotal time left to larva has until get stopped.
@@ -136,31 +55,22 @@ package dragonfly.core
 			return time_left;
 		}
 
-		/**
-		 * Holds the running eggs.
-		 */
 		public function hold() : void 
 		{
 			for each( var egg : Egg in _eggs )
 				egg.hold( );
 		}
 
-		/**
-		 * Unholds the running eggs.
-		 */
 		public function unhold() : void 
 		{
 			for each( var egg : Egg in _eggs )
 				egg.unhold( );
 		}
 
-		/**
-		 * Resets the running eggs.
-		 */
 		public function reset() : void 
 		{
 			for each( var egg : Egg in _eggs )
-				egg.fries( );
+				egg.destroy( );
 		}
 
 		/**
@@ -185,60 +95,81 @@ package dragonfly.core
 		}
 
 		protected function _lay(
-			egg_class : Class,
-			egg_type : String,
+			klass : Class,
+			prop : String,
 			end : *,
 			start : * = null,
-			nymph_class : Class = null
-		) : Egg
+			type : String = null
+		) : void
 		{
-			var egg : Egg;
+			var laid : Object;
+			var key : String;
 			
-			nymph_class = nymph_class || Nymph;
-			egg = new ( egg_class )( egg_type, this, end, start, nymph_class);
+			key = String( klass );
 			
-			if( ! _flights.length )
-				_call_timer = getTimer();
+			if( _laid == null )
+				_laid = new Dictionary();
 			
-			_eggs.push( egg );
-			_flights.push( egg );
+			if( ! _laid.hasOwnProperty( key ) )
+			{
+				_laid[ key ] = {
+					klass:klass,
+					props: [],
+					types: [],
+					starts: [],
+					ends: []
+				};
+			}
 			
-			return egg;
+			laid = _laid[ key ]; 
+			( laid[ "props" ] as Array ).push( prop );
+			( laid[ "types" ] as Array ).push( type || Nymph.NUMERIC );
+			( laid[ "starts" ] as Array ).push( start );
+			( laid[ "ends" ] as Array ).push( end );
 		}
-
+		
 		public function fly(
 			duration : Number,
 			delay : Number = undefined,
 			equation : Function = null,
-			equation_args : * = null
+			equation_args : * = null,
+			flight : Flight = null
 		) : Flight
 		{
-			var flight : Flight;
+			var egg : Egg;
 			var larva : Larva;
-			var children_eggs : Array;
+			var item : Object;
 			
-			flight = new Flight( );
+			flight = ( flight || new Flight( ) );
 			
-			children_eggs = [];
 			for each( larva in _larvas )
-				children_eggs = children_eggs.concat( larva._flights );
+				larva.fly( duration, delay, equation, equation_args, flight );
 			
-			for each( var egg : Egg in _flights.concat( children_eggs ) )
-				flight._add_egg( egg )._shoke(
-					duration,
-					delay,
-					equation,
-					equation_args
+			for each( item in _laid )
+			{
+				egg = new ( item[ "klass" ] )(
+					this,
+					item[ "props" ],
+					item[ "types" ],
+					item[ "ends" ],
+					item[ "starts" ] 
 				);
+				
+				flight._add_egg(
+					egg._shoke( duration, delay, equation, equation_args )
+				);
+				
+				_eggs[ egg ] = this;
+			}
 			
-			_flights = [];
+			_laid = null;
 			return flight;
 		}
 
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
-			_larvas.push( larva = new ( larva_class )( default_target ) );
+			_larvas.push( larva = new ( larva_class )( target ) );
 			return larva; 
 		}
 

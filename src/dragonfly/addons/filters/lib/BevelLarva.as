@@ -1,10 +1,12 @@
 package dragonfly.addons.filters.lib 
 {
 	import dragonfly.addons.filters.lib.eggs.BevelEgg;
-	import dragonfly.core.nymph.NymphColor;
+	import dragonfly.core.Nymph;
 
 	import flash.filters.BevelFilter;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -91,7 +93,7 @@ package dragonfly.addons.filters.lib
 			start : Number = undefined
 		) : BevelLarva
 		{
-			_lay( BevelEgg, BevelEgg.HIGHLIGHTCOLOR, end, start, NymphColor );
+			_lay( BevelEgg, BevelEgg.HIGHLIGHTCOLOR, end, start, Nymph.HEXADECIMAL );
 			return this;
 		}
 
@@ -116,7 +118,7 @@ package dragonfly.addons.filters.lib
 		) : BevelLarva
 		{
 			trace( "SHADOW COLOR" );
-			_lay( BevelEgg, BevelEgg.SHADOWCOLOR, end, start, NymphColor );
+			_lay( BevelEgg, BevelEgg.SHADOWCOLOR, end, start, Nymph.HEXADECIMAL );
 			return this;
 		}
 

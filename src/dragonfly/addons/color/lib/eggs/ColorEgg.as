@@ -1,13 +1,16 @@
 package dragonfly.addons.color.lib.eggs 
 {
 	import dragonfly.addons.color.ColorLarva;
+	import dragonfly.addons.interfaces.IEgg;
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class ColorEgg extends Egg
+	public class ColorEgg extends Egg implements IEgg
 	{
 		public static const RED_MULTIPLIER : String = "redMultiplier";
 		public static const GREEN_MULTIPLIER : String = "greenMultiplier";
@@ -20,20 +23,20 @@ package dragonfly.addons.color.lib.eggs
 		public static const ALPHA_OFFSET : String = "alphaOffset";
 
 		public function ColorEgg(
-			prop : String,
 			larva : Larva,
-			end : Number,
-			start : Number,
-			nymph_class : Class
+			props : Array,
+			types : Array,
+			ends : Array,
+			starts : Array
 		)
 		{
-			super( prop, larva, end, start, nymph_class );
+			super( larva, props, types, ends, starts );
 			_prop_target = _color_larva.transform;
 		}
 
-		public function render( value : * ) : void
+		public function render( prop : String, value : * ) : void
 		{
-			_color_larva.transform[ _prop ] = value;
+			_color_larva.transform[ prop ] = value;
 			_color_larva.refresh();
 		}
 		
@@ -42,9 +45,9 @@ package dragonfly.addons.color.lib.eggs
 			return ColorLarva( _larva );
 		}
 		
-		override protected function _get_start_value() : *
+		override protected function _get_start_value( prop : String ) : *
 		{
-			return _color_larva.transform[ _prop ];
+			return _color_larva.transform[ prop ];
 		}
 	}
 }

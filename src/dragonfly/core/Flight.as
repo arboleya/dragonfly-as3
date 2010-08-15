@@ -1,8 +1,5 @@
 package dragonfly.core 
 {
-
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -14,7 +11,7 @@ package dragonfly.core
 		
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _started : Boolean;
-		private var _eggs_num : Number = 0;
+		private var _eggs : Array = [];
 		private var _eggs_completed : Number = 0;
 		
 		/* ----- CALLBACKS -------------------------------------------------- */
@@ -32,7 +29,7 @@ package dragonfly.core
 		
 		internal function _add_egg( egg : Egg ) : Egg
 		{
-			_eggs_num++;
+			_eggs.push( egg );
 			egg._flight = this;
 			egg._on_start = __on_start;
 			egg._on_progress = __on_progress;
@@ -61,10 +58,18 @@ package dragonfly.core
 
 		private function __on_complete() : void 
 		{
-			if( ++_eggs_completed >= _eggs_num )
+			var egg : Egg;
+			
+			if( ++_eggs_completed >= _eggs.length )
 			{
 				if( _on_complete == null ) return;
 				_on_complete.apply( _on_complete.prototype, _on_complete_params  );
+			}
+			
+			for each( egg in _eggs )
+			{
+				egg.larva.eggs[ egg ] = null;
+				egg.destroy();
 			}
 		}
 		

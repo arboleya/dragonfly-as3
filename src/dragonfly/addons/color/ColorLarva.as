@@ -2,11 +2,13 @@ package dragonfly.addons.color
 {
 	import dragonfly.addons.color.lib.eggs.ColorEgg;
 	import dragonfly.core.Larva;
-	import dragonfly.core.nymph.NymphColor;
+	import dragonfly.core.Nymph;
 
 	import flash.display.DisplayObject;
 	import flash.geom.ColorTransform;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -30,11 +32,11 @@ package dragonfly.addons.color
 			var end_rgb : Array;
 			var start_rgb : Array;
 			
-			end_rgb = NymphColor.hex2rgb( end );
+			end_rgb = Nymph.hex2rgb( end );
 			if( isNaN( start ) )
 				start_rgb = [null, null, null];
 			else
-				start_rgb = NymphColor.hex2rgb( start );
+				start_rgb = Nymph.hex2rgb( start );
 			
 			_lay( ColorEgg, ColorEgg.RED_OFFSET, end_rgb[ 0 ], start_rgb[ 0 ] );
 			_lay( ColorEgg, ColorEgg.GREEN_OFFSET, end_rgb[ 1 ], start_rgb[ 1 ] );
@@ -45,10 +47,7 @@ package dragonfly.addons.color
 		
 		public function refresh () : void
 		{
-			var target : DisplayObject;
-			
-			for each( target in targets )
-				target.transform.colorTransform = transform;
+			( target as DisplayObject ).transform.colorTransform = transform;
 		}
 	}
 }

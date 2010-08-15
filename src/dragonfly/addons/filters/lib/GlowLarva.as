@@ -1,7 +1,7 @@
 package dragonfly.addons.filters.lib 
 {
-	import dragonfly.core.nymph.NymphColor;
 	import dragonfly.addons.filters.lib.eggs.GlowEgg;
+	import dragonfly.core.Nymph;
 
 	import flash.filters.GlowFilter;
 
@@ -65,7 +65,7 @@ package dragonfly.addons.filters.lib
 			start : Number = undefined
 		) : GlowLarva
 		{
-			_lay( GlowEgg, GlowEgg.COLOR, end, start, NymphColor );
+			_lay( GlowEgg, GlowEgg.COLOR, end, start, Nymph.HEXADECIMAL );
 			return this;
 		}
 

@@ -1,12 +1,15 @@
 package dragonfly.addons.basic.lib.eggs 
 {
+	import dragonfly.addons.interfaces.IEgg;
 	import dragonfly.core.Egg;
 	import dragonfly.core.Larva;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class BasicEgg extends Egg
+	public class BasicEgg extends Egg implements IEgg
 	{
 		public static const X : String = "x";
 		public static const Y : String = "y";
@@ -19,21 +22,20 @@ package dragonfly.addons.basic.lib.eggs
 		public static const ROTATION : String = "rotation";
 
 		public function BasicEgg(
-			prop : String,
 			larva : Larva,
-			end : Number,
-			start : Number,
-			nymph_class : Class
+			props : Array,
+			types : Array,
+			ends : Array,
+			starts : Array
 		)
 		{
-			super( prop, larva, end, start, nymph_class );
-			_prop_target = _larva.default_target;
+			super( larva, props, types, ends, starts );
+			_prop_target = _larva.target;
 		}
-
-		public function render( value : * ) : void
+		
+		public function render( prop : String, value : * ) : void
 		{
-			for each( var target : * in targets )
-				target[ _prop ] = value;
+			_larva.target[ prop ] = value;
 		}
 	}
 }

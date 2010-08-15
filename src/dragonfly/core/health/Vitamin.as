@@ -1,4 +1,4 @@
-package dragonfly.core.nymph.health 
+package dragonfly.core.health 
 {
 	import com.robertpenner.easing.Back;
 	import com.robertpenner.easing.Bounce;
@@ -14,6 +14,8 @@ package dragonfly.core.nymph.health
 
 	import flash.utils.Dictionary;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */

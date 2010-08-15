@@ -13,6 +13,8 @@ package dragonfly.addons.filters
 
 	import flash.display.DisplayObject;
 
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -66,8 +68,7 @@ package dragonfly.addons.filters
 					filters.push( larva[ "filter" ] );
 			}
 			
-			for each( target in targets )
-				target.filters = filters;
+			target.filters = filters;
 		}
 
 		public function get bevel() : BevelLarva
