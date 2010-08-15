@@ -231,7 +231,7 @@ package dragonfly.core
 				while( i < _props.length )
 					_on_progress( _props[ i ], _ends[ i++ ] );
 				
-				if( _egg.flight.looping )
+				if( _egg.flight.is_loop )
 				{
 					flag = ( _egg.flight.loop_times == 0 );
 					flag ||= _loop++ <= _egg.flight.loop_times;

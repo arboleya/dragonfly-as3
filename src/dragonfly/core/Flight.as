@@ -5,9 +5,13 @@ package dragonfly.core
 	 */
 	public class Flight 
 	{
-		/* ----- UTILS ------------------------------------------------------ */
-		internal var _looping : Boolean;
+		/* ----- LOOP ------------------------------------------------------- */
+		internal var _loop : Boolean;
 		internal var _loop_times : Number;
+		
+		/* ----- YOYO ------------------------------------------------------- */
+		private var _yoyo : Boolean;
+		private var _yoyo_back_equation : Function;
 		
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _started : Boolean;
@@ -22,7 +26,7 @@ package dragonfly.core
 		internal var _on_start_params : Array = [];
 		internal var _on_progress_params : Array = [];
 		internal var _on_complete_params : Array = [];
-
+		
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
@@ -31,16 +35,16 @@ package dragonfly.core
 		{
 			_eggs.push( egg );
 			egg._flight = this;
-			egg._on_start = __on_start;
-			egg._on_progress = __on_progress;
-			egg._on_complete = __on_complete;
+			egg._on_start = _on_egg_start;
+			egg._on_progress = _on_egg_progress;
+			egg._on_complete = _on_egg_complete;
 			return egg;
 		}
 		
 		
-		/* ----- HANDLING EVENTS -------------------------------------------- */
+		/* ----- HANDLING EGG EVENTS ---------------------------------------- */
 		
-		private function __on_start() : void 
+		private function _on_egg_start() : void 
 		{
 			if( ! _started )
 			{
@@ -50,13 +54,13 @@ package dragonfly.core
 			}
 		}
 
-		private function __on_progress() : void 
+		private function _on_egg_progress() : void 
 		{
 			if( _on_progress == null  ) return;
 			_on_progress.apply( _on_progress.prototype, _on_progress_params  );
 		}
 
-		private function __on_complete() : void 
+		private function _on_egg_complete() : void 
 		{
 			var egg : Egg;
 			
@@ -76,9 +80,9 @@ package dragonfly.core
 		
 		
 		
-		/* ----- LISTENING -------------------------------------------------- */
+		/* ----- AVAILABLE EVENT FOR LISTENING ------------------------------ */
 		
-		public function start(
+		public function on_start(
 			callback : Function,
 			params : Array = null
 		) : Flight
@@ -88,7 +92,7 @@ package dragonfly.core
 			return this;
 		}
 		
-		public function progress(
+		public function on_progress(
 			callback : Function,
 			params : Array = null
 		) : Flight
@@ -98,7 +102,7 @@ package dragonfly.core
 			return this;
 		}
 		
-		public function complete(
+		public function on_complete(
 			callback : Function,
 			params : Array = null
 		) : Flight
@@ -110,22 +114,42 @@ package dragonfly.core
 		
 		
 		
-		/* ----- LOOPING ---------------------------------------------------- */
+		/* ----- LOOPING FEATURE -------------------------------------------- */
 		
 		public function loop ( times : Number = 0 ) : void
 		{
-			_looping = true;
+			_loop = true;
 			_loop_times = times;
 		}
 		
-		public function get looping() : Boolean
+		public function get is_loop() : Boolean
 		{
-			return _looping;
+			return _loop;
 		}
 		
 		public function get loop_times() : Number
 		{
 			return _loop_times;
+		}
+		
+		
+		
+		/* ----- YOYO FEATURE ----------------------------------------------- */
+		
+		public function yoyo ( back_equation : Function ) : void
+		{
+			_yoyo = true;
+			_yoyo_back_equation = back_equation;
+		}
+		
+		public function get is_yoyo() : Boolean
+		{
+			return _loop;
+		}
+		
+		public function get yoyo_back_equation() : Function
+		{
+			return _yoyo_back_equation;
 		}
 	}
 }
