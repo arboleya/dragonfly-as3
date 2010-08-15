@@ -9,6 +9,7 @@ package dragonfly.addons.filters
 	import dragonfly.addons.filters.lib.GlowLarva;
 	import dragonfly.addons.filters.lib.GradientBevelLarva;
 	import dragonfly.addons.filters.lib.GradientGlowLarva;
+	import dragonfly.addons.interfaces.ILarva;
 	import dragonfly.core.Larva;
 
 	import flash.display.DisplayObject;
@@ -18,7 +19,7 @@ package dragonfly.addons.filters
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class FilterLarva extends Larva 
+	public class FilterLarva extends Larva implements ILarva
 	{
 		/* ----- FILTERS INSTANCES ------------------------------------------ */
 		private var _bevel : BevelLarva;

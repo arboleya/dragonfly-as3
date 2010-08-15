@@ -2,7 +2,6 @@ package dragonfly.addons.basic.lib.eggs
 {
 	import dragonfly.addons.interfaces.IEgg;
 	import dragonfly.core.Egg;
-	import dragonfly.core.Larva;
 
 	
 	
@@ -21,18 +20,13 @@ package dragonfly.addons.basic.lib.eggs
 		public static const ALPHA : String = "alpha";
 		public static const ROTATION : String = "rotation";
 
-		public function BasicEgg(
-			larva : Larva,
-			props : Array,
-			types : Array,
-			ends : Array,
-			starts : Array
-		)
+		
+		
+		override public function init() : void
 		{
-			super( larva, props, types, ends, starts );
 			_prop_target = _larva.target;
 		}
-		
+
 		public function render( prop : String, value : * ) : void
 		{
 			_larva.target[ prop ] = value;

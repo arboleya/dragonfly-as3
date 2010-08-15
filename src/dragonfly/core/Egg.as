@@ -1,5 +1,8 @@
 package dragonfly.core 
 {
+
+	
+	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -11,10 +14,11 @@ package dragonfly.core
 		protected var _larva : Larva;
 		protected var __prop_target : *;
 		
+		protected var _indexes : Object;
 		protected var _types : Array;
-		protected var _props : Array;
-		protected var _starts : *;
-		protected var _ends : *;
+		public var _props : Array;
+		protected var _starts : Array;
+		public var _ends : Array;
 		
 		internal var _nymph : Nymph;
 		internal var _flight : Flight;
@@ -26,28 +30,30 @@ package dragonfly.core
 		
 
 		/* ----- INITIALIZING ----------------------------------------------- */
-		public function Egg(
+		internal function config(
 			larva : Larva,
 			props : Array,
 			types : Array,
 			ends : Array,
-			starts : Array
-		) 
+			starts : Array,
+			indexes : Object
+		) : Egg
 		{
-			var i : int;
-			
 			_nymph = new Nymph();
 			_larva = larva;
 			_props = props;
 			_types = types;
 			_ends = ends;
 			_starts = starts;
-			
-			for( i = 0; i < ends.length; i++ )
-				if( isNaN( _starts[ i ] ) )
-					_starts[ i ] = _get_start_value( _props[ i ] );
+			_indexes = indexes;
+			return this;
 		}
-
+		
+		public function init () : void
+		{
+			throw new Error( "You need to override this method in subclass!" );
+		}
+		
 		internal function _shoke(
 			duration : Number,
 			delay : Number,
@@ -72,14 +78,23 @@ package dragonfly.core
 			);
 			return this;
 		}
-
+		
 		private function _nymph_start() : void 
 		{
+			var i : int;
+			
+			_larva.kill_flying_properties( this, _props );
+			
+			for( i = 0; i < _ends.length; i++ )
+				if( isNaN( _starts[ i ] ) )
+					_starts[ i ] = _get_start_value( _props[ i ] );
+			
 			_active = true;
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
 				this[ "before_render" ]();
+			
 			_on_start();
 		}
 		
@@ -128,7 +143,26 @@ package dragonfly.core
 			_on_progress = undefined;
 			_on_complete = undefined;
 		}
-
+		
+		public function remove_properties( props : Array ) : void
+		{
+			var index : int;
+			var prop : String;
+			
+			for each( prop in props )
+			{
+				index = _indexes[ prop ];
+				
+				_indexes[ prop ] = null;
+				delete _indexes[ prop ];
+				
+				_props.splice( index, 1 );
+				_types.splice( index, 1 );
+				_ends.splice( index, 1 );
+				_starts.splice( index, 1 );
+			}
+		}
+		
 		public function get time_left() : Number 
 		{
 			return _nymph.time_left;

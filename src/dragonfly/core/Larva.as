@@ -104,6 +104,7 @@ package dragonfly.core
 		{
 			var laid : Object;
 			var key : String;
+			var index : int;
 			
 			key = String( klass );
 			
@@ -117,15 +118,23 @@ package dragonfly.core
 					props: [],
 					types: [],
 					starts: [],
-					ends: []
+					ends: [],
+					indexes: {}
 				};
 			}
 			
-			laid = _laid[ key ]; 
-			( laid[ "props" ] as Array ).push( prop );
-			( laid[ "types" ] as Array ).push( type || Nymph.NUMERIC );
-			( laid[ "starts" ] as Array ).push( start );
-			( laid[ "ends" ] as Array ).push( end );
+			laid = _laid[ key ];
+			
+			if( ( laid[ "indexes" ] as Object ).hasOwnProperty( prop ) )
+				index = laid[ "indexes" ][ prop ];
+			else
+				index = ( laid[ "props" ] as Array ).length;
+			
+			laid[ "indexes" ][ prop ] = index;
+			laid[ "props" ][ index ] = prop;
+			laid[ "types" ][ index ] = type || Nymph.NUMERIC;
+			laid[ "starts" ][ index ] = start;
+			laid[ "ends" ][ index ] = end;
 		}
 		
 		public function fly(
@@ -147,25 +156,39 @@ package dragonfly.core
 			
 			for each( item in _laid )
 			{
-				egg = new ( item[ "klass" ] )(
+				( egg = new ( item[ "klass" ] ) ).config(
 					this,
 					item[ "props" ],
 					item[ "types" ],
 					item[ "ends" ],
-					item[ "starts" ] 
-				);
+					item[ "starts" ],
+					item[ "indexes" ]
+				).init();
+				
+				_eggs[ egg ] = egg;
 				
 				flight._add_egg(
 					egg._shoke( duration, delay, equation, equation_args )
 				);
 				
-				_eggs[ egg ] = this;
 			}
 			
 			_laid = null;
 			return flight;
 		}
-
+		
+		internal function kill_flying_properties(
+			caller : Egg,
+			props : Array
+		) : void
+		{
+			var egg : Egg;
+			for each( egg in _eggs )
+				if( typeof( egg ) == typeof( caller ) && egg != caller )
+					if( egg.active )
+						egg.remove_properties( props );
+		}
+		
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;

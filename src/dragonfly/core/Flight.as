@@ -60,17 +60,18 @@ package dragonfly.core
 		{
 			var egg : Egg;
 			
-			if( ++_eggs_completed >= _eggs.length )
-			{
-				if( _on_complete == null ) return;
-				_on_complete.apply( _on_complete.prototype, _on_complete_params  );
-			}
+			if( ++_eggs_completed < _eggs.length )
+				return;
 			
 			for each( egg in _eggs )
 			{
 				egg.larva.eggs[ egg ] = null;
+				delete egg.larva.eggs[ egg ];
 				egg.destroy();
 			}
+			
+			if( _on_complete != null )
+				_on_complete.apply( _on_complete.prototype, _on_complete_params  );
 		}
 		
 		

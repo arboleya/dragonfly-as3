@@ -1,6 +1,7 @@
 package dragonfly.addons.color 
 {
 	import dragonfly.addons.color.lib.eggs.ColorEgg;
+	import dragonfly.addons.interfaces.ILarva;
 	import dragonfly.core.Larva;
 	import dragonfly.core.Nymph;
 
@@ -12,7 +13,7 @@ package dragonfly.addons.color
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class ColorLarva extends Larva
+	public class ColorLarva extends Larva implements ILarva
 	{
 		/* ----- TRANSFORM INSTANCE ----------------------------------------- */
 		public var transform : ColorTransform;

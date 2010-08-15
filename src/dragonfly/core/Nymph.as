@@ -37,7 +37,7 @@ package dragonfly.core
 		protected var _active : Boolean;
 		protected var _inititalized : Boolean;
 		/* ----- TIMING VARIABLES ------------------------------------------- */
-		protected var _timer : Number;
+		protected var _time : Number;
 		protected var _interval : int;
 		protected var _last_update_timer : Number;
 		/* ----- UTILS ------------------------------------------------------ */
@@ -66,8 +66,8 @@ package dragonfly.core
 			target : *,
 			props : Array,
 			types : Array,
-			start : Array,
-			end : Array,
+			starts : Array,
+			ends : Array,
 			duration : Number, 
 			delay : Number,
 			equation : Function,
@@ -79,8 +79,8 @@ package dragonfly.core
 			
 			_props = props;
 			_types = types;
-			_starts = start;
-			_ends = end;
+			_starts = starts;
+			_ends = ends;
 			
 			_duration = ( duration * 1000 );
 			_delay = ( delay * 1000 );
@@ -105,7 +105,7 @@ package dragonfly.core
 			}
 			
 			_interval = 0;
-			_timer = 0;
+			_time = 0;
 			
 			_init( );
 		}
@@ -122,7 +122,7 @@ package dragonfly.core
 		{
 			var i : int;
 			
-			_timer = _duration;
+			_time = _duration;
 			
 			if ( !_inititalized ) 
 			{
@@ -160,7 +160,7 @@ package dragonfly.core
 			_active = undefined;
 			_inititalized = undefined;
 			
-			_timer = undefined;
+			_time = undefined;
 			_interval = undefined;
 			_last_update_timer = undefined;
 			
@@ -225,8 +225,12 @@ package dragonfly.core
 			while( i < _props.length )
 				_on_progress( _props[ i ], _value( i++, factor ) );
 			
-			if ( _timer >= _duration )
+			if ( _time >= _duration )
 			{
+				i = 0;
+				while( i < _props.length )
+					_on_progress( _props[ i ], _ends[ i++ ] );
+				
 				if( _egg.flight.looping )
 				{
 					flag = ( _egg.flight.loop_times == 0 );
@@ -234,10 +238,7 @@ package dragonfly.core
 					 
 					if( flag )
 					{
-						_timer = 0;
-						i = 0;
-						while( i < _props.length )
-							_on_progress( _props[ i ], _ends[ i++ ] );
+						_time = 0;
 						return;
 					}
 				}
@@ -247,10 +248,10 @@ package dragonfly.core
 				return;
 			}
 			
-			_timer += ( _interval = ( getTimer( ) - _last_update_timer ) );
+			_time += ( _interval = ( getTimer( ) - _last_update_timer ) );
 			
-//			if( ( _duration - _timer ) < _interval )
-//				_timer = _duration;
+			if( Dragonfly.time_perfect && ( _duration - _time ) < _interval )
+				_time = _duration;
 			
 			_last_update_timer = getTimer( );
 		}
@@ -309,7 +310,7 @@ package dragonfly.core
 		{
 			var params : Array;
 			
-			params = [ _timer, 0, 1, _duration ];
+			params = [ _time, 0, 1, _duration ];
 			params = params.concat( _equation_args );
 			
 			return Number( _equation.apply( this, params ) );
@@ -319,7 +320,7 @@ package dragonfly.core
 		protected function _quantize() : * 
 		{
 			var index : Number;
-			index = ( ( _timer / _duration ) * _vitamin_capsules );
+			index = ( ( _time / _duration ) * _vitamin_capsules );
 			return _vitamin[ Math.floor( index ) ];
 		}
 
@@ -333,7 +334,7 @@ package dragonfly.core
 
 		public function get time_left() : Number 
 		{
-			return Math.max( 0, ( _duration - _timer ) );
+			return Math.max( 0, ( _duration - _time ) );
 		}
 		
 		

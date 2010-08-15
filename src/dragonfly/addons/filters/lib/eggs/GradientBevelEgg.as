@@ -2,7 +2,6 @@ package dragonfly.addons.filters.lib.eggs
 {
 	import dragonfly.addons.filters.lib.GradientBevelLarva;
 	import dragonfly.core.Egg;
-	import dragonfly.core.Larva;
 
 	
 	
@@ -23,15 +22,8 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		public function GradientBevelEgg(
-			larva : Larva,
-			props : Array,
-			types : Array,
-			ends : Array,
-			starts : Array
-		)
+		override public function init() : void
 		{
-			super( larva, props, types, ends, starts );
 			_prop_target = _gradient_bevel_larva.filter;
 		}
 

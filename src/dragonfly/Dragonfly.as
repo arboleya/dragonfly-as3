@@ -4,9 +4,9 @@ package dragonfly  {
 	 */
 	public class Dragonfly 
 	{
-		private static var _enabled : Boolean = true;
-		private static var _boost : Number = 0;
-		/**
+		private static var _boost : Number = 0;
+		private static var _enabled : Boolean = true;		private static var _time_perfect : Boolean = true;
+						/**
 		 * Constructor
 		 */
 		public function Dragonfly()
@@ -20,28 +20,30 @@ package dragonfly  {
 		 */
 		public static function get enabled() : Boolean 
 		{
-			return Dragonfly._enabled;
+			return _enabled;
 		}
 		/**
 		 * Enable the Dragonfly engine ( transition mode ON )
 		 */
 		public static function enable() : void 
 		{
-			Dragonfly._enabled = true;
+			_enabled = true;
 		}
 		/**
 		 * Disable the Dragonfly engine ( transition mode OFF )
 		 */
 		public static function disable() : void 
 		{
-			Dragonfly._enabled = false;
+			_enabled = false;
 		}		
 		public static function set boost( value : int ) : void 
-		{			if( ( Dragonfly._boost = value ) )				Vitamin.load( value );
-		}		
-		public static function get boost() : int
+		{			if( ( _boost = value ) )				Vitamin.load( value );						_time_perfect = ( _boost == 0 );
+		}		public static function get boost() : int
 		{
-			return Dragonfly._boost;
-		}
-	}
+			return _boost;
+		}		
+		public static function get time_perfect() : Boolean
+		{
+			return _time_perfect;
+		}	}
 }
