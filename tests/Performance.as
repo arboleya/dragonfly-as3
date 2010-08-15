@@ -23,7 +23,7 @@ package
 
 		public function Performance()
 		{
-			Dragonfly.boost = 40;
+			Dragonfly.boost = 100;
 			init( 1500 );
 		}
 		
