@@ -55,4 +55,18 @@ internal class Bundle
 	{
 		return _color;
 	}
+	
+	public function destroy () : void
+	{
+		_bundles[ this ] = null;
+		delete _bundles[ this ];
+		
+		_basic.destroy();
+		_filter.destroy();
+		_color.destroy( );
+		
+		_basic = null;
+		_filter = null;
+		_color = null;
+	}
 }

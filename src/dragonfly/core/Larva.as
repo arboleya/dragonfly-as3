@@ -65,10 +65,16 @@ package dragonfly.core
 				egg.unhold( );
 		}
 
-		public function reset() : void 
+		public function destroy() : void 
 		{
 			for each( var egg : Egg in _eggs )
 				egg.destroy( );
+			
+			_initialized = undefined;
+			_target = undefined;
+			_laid = undefined;
+			_larvas = undefined;
+			_eggs = undefined;
 		}
 
 		/**
