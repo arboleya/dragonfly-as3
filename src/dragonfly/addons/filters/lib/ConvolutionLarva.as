@@ -5,8 +5,6 @@ package dragonfly.addons.filters.lib
 
 	import flash.filters.ConvolutionFilter;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -15,8 +13,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : ConvolutionFilter;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**
@@ -24,7 +20,7 @@ package dragonfly.addons.filters.lib
 		 */
 		public function ConvolutionLarva( target : * )
 		{
-			super( target  );
+			super( target );
 			_filter = new ConvolutionFilter( 1, 1, [ 1 ], 1, 0 );
 		}
 

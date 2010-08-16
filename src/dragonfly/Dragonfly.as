@@ -1,12 +1,12 @@
 package dragonfly  {
-	import dragonfly.core.health.Vitamin;			/**
+	import dragonfly.core.health.Vitamin;	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class Dragonfly 
 	{
 		private static var _boost : Number = 0;
-		private static var _enabled : Boolean = true;		private static var _time_perfect : Boolean = true;
-						/**
+		private static var _enabled : Boolean = true;		private static var _time_perfect : Boolean = true;
+		/**
 		 * Constructor
 		 */
 		public function Dragonfly()
@@ -35,14 +35,12 @@ package dragonfly  {
 		public static function disable() : void 
 		{
 			_enabled = false;
-		}		
-		public static function set boost( value : int ) : void 
+		}		public static function set boost( value : int ) : void 
 		{			if( ( _boost = value ) )				Vitamin.load( value );						_time_perfect = ( _boost == 0 );
 		}		public static function get boost() : int
 		{
 			return _boost;
-		}		
-		public static function get time_perfect() : Boolean
+		}		public static function get time_perfect() : Boolean
 		{
 			return _time_perfect;
 		}	}

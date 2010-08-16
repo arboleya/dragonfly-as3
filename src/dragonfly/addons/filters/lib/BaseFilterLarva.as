@@ -11,8 +11,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		protected var _parent : FilterLarva;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */		
 		/**
 		 * TODO: write documentation

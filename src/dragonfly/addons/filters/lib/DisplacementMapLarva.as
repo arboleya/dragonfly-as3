@@ -6,8 +6,6 @@ package dragonfly.addons.filters.lib
 	import flash.filters.DisplacementMapFilter;
 	import flash.geom.Point;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -16,8 +14,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : DisplacementMapFilter;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

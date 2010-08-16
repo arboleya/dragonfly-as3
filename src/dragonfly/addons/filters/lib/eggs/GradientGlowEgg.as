@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.GradientGlowLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -12,9 +10,13 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const DISTANCE : String = "distance";
+
 		public static const ANGLE : String = "angle";
+
 		public static const BLUR_X : String = "blurX";
+
 		public static const BLUR_Y : String = "blurY";
+
 		public static const STRENGTH : String = "strength";
 
 		/* ----- INITIALIZING ----------------------------------------------- */

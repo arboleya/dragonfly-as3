@@ -5,8 +5,6 @@ package dragonfly.addons.filters.lib
 
 	import flash.filters.GlowFilter;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -15,8 +13,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : GlowFilter;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**
@@ -25,7 +21,7 @@ package dragonfly.addons.filters.lib
 		public function GlowLarva( target : * )
 		{
 			super( target );
-			_filter = new GlowFilter(0, 0, 0, 0, 0, 0, false, false);
+			_filter = new GlowFilter( 0, 0, 0, 0, 0, 0, false, false );
 		}
 
 		/* ----- FILTER GETTER ---------------------------------------------- */

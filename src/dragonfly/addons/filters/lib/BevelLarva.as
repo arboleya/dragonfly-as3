@@ -5,8 +5,6 @@ package dragonfly.addons.filters.lib
 
 	import flash.filters.BevelFilter;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -14,13 +12,14 @@ package dragonfly.addons.filters.lib
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : BevelFilter;
+
 		/* ----- FILTER PROPERTIES (non tweenable) -------------------------- */
 		private var _type : String;
+
 		private var _knockout : Boolean;
+
 		private var _quality : int;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

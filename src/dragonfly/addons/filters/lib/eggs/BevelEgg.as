@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.BevelLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -12,17 +10,23 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const DISTANCE : String = "distance";
+
 		public static const ANGLE : String = "angle";
+
 		public static const HIGHLIGHTCOLOR : String = "highlightColor";
+
 		public static const HIGHLIGHTALPHA : String = "highlightAlpha";
+
 		public static const SHADOWCOLOR : String = "shadowColor";
+
 		public static const SHADOWALPHA : String = "shadowAlpha";
+
 		public static const BLURX : String = "blurX";
+
 		public static const BLURY : String = "blurY";
+
 		public static const STRENGTH : String = "strength";
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**
@@ -53,7 +57,7 @@ package dragonfly.addons.filters.lib.eggs
 			_bevel_larva.filter[ prop ] = value;
 			_bevel_larva.close.refresh( );
 		}
-		
+
 		/* ----- START VALUE EVALUATION ------------------------------------- */
 		
 		/**

@@ -12,8 +12,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : GradientGlowFilter;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**
@@ -36,9 +34,6 @@ package dragonfly.addons.filters.lib
 		}
 
 		/* ----- CONFIGURATION VALUES --------------------------------------- */
-		
-		
-		
 		public function conf(
 			colors : Array,
 			alphas : Array,
@@ -56,9 +51,8 @@ package dragonfly.addons.filters.lib
 			_filter.quality = quality;
 			return this;
 		}
-		
+
 		/* ----- ANIMATIONS ------------------------------------------------- */
-		
 		public function distance(
 			end : Number,
 			start : Number = undefined
@@ -67,7 +61,7 @@ package dragonfly.addons.filters.lib
 			_lay( GradientGlowEgg, GradientGlowEgg.DISTANCE, end, start );
 			return this;
 		}
-		
+
 		public function angle(
 			end : Number,
 			start : Number = undefined
@@ -76,7 +70,7 @@ package dragonfly.addons.filters.lib
 			_lay( GradientGlowEgg, GradientGlowEgg.ANGLE, end, start );
 			return this;
 		}
-		
+
 		public function blur_x(
 			end : Number,
 			start : Number = undefined
@@ -85,7 +79,7 @@ package dragonfly.addons.filters.lib
 			_lay( GradientGlowEgg, GradientGlowEgg.BLUR_X, end, start );
 			return this;
 		}
-		
+
 		public function blur_y(
 			end : Number,
 			start : Number = undefined
@@ -94,7 +88,7 @@ package dragonfly.addons.filters.lib
 			_lay( GradientGlowEgg, GradientGlowEgg.BLUR_Y, end, start );
 			return this;
 		}
-		
+
 		public function blur_xy(
 			end_x : Number,
 			end_y : Number,
@@ -106,7 +100,7 @@ package dragonfly.addons.filters.lib
 			blur_y( end_y, start_y );
 			return this;
 		}
-		
+
 		public function strength(
 			end : Number,
 			start : Number = undefined

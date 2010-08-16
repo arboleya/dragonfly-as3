@@ -4,8 +4,6 @@ package dragonfly.addons.basic
 	import dragonfly.addons.interfaces.ILarva;
 	import dragonfly.core.Larva;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -34,7 +32,7 @@ package dragonfly.addons.basic
 			_lay( BasicEgg, BasicEgg.Y, end, start );
 			return this;
 		}
-		
+
 		public function xy(
 			end_x : Number,
 			end_y : Number,
@@ -46,6 +44,7 @@ package dragonfly.addons.basic
 			y( end_y, start_y );
 			return this;
 		}
+
 		public function z(
 			end : Number,
 			start : Number = undefined
@@ -54,7 +53,7 @@ package dragonfly.addons.basic
 			_lay( BasicEgg, BasicEgg.Z, end, start );
 			return this;
 		}
-		
+
 		/* ALPHA */
 		public function alpha(
 			end : Number,
@@ -83,7 +82,7 @@ package dragonfly.addons.basic
 			_lay( BasicEgg, BasicEgg.YSCALE, end, start );
 			return this;
 		}
-		
+
 		public function zscale(
 			end : Number,
 			start : Number = undefined

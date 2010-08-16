@@ -1,8 +1,6 @@
 package dragonfly.core 
 {
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -10,24 +8,31 @@ package dragonfly.core
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _active : Boolean;
-		
+
 		protected var _larva : Larva;
+
 		protected var __prop_target : *;
-		
+
 		protected var _indexes : Object;
+
 		protected var _types : Array;
+
 		public var _props : Array;
+
 		protected var _starts : Array;
+
 		public var _ends : Array;
-		
+
 		internal var _nymph : Nymph;
+
 		internal var _flight : Flight;
 
 		/* ----- CALLBACKS -------------------------------------------------- */
 		internal var _on_start : Function;
+
 		internal var _on_progress : Function;
+
 		internal var _on_complete : Function;
-		
 
 		/* ----- INITIALIZING ----------------------------------------------- */
 		internal function config(
@@ -39,7 +44,7 @@ package dragonfly.core
 			indexes : Object
 		) : Egg
 		{
-			_nymph = new Nymph();
+			_nymph = new Nymph( );
 			_larva = larva;
 			_props = props;
 			_types = types;
@@ -48,12 +53,12 @@ package dragonfly.core
 			_indexes = indexes;
 			return this;
 		}
-		
-		public function init () : void
+
+		public function init() : void
 		{
 			throw new Error( "You need to override this method in subclass!" );
 		}
-		
+
 		internal function _shoke(
 			duration : Number,
 			delay : Number,
@@ -64,21 +69,10 @@ package dragonfly.core
 			_nymph._on_start = _nymph_start;
 			_nymph._on_progress = _nymph_progress;
 			_nymph._on_complete = _nymph_complete;
-			_nymph.config(
-				this,
-				__prop_target,
-				_props,
-				_types,
-				_starts,
-				_ends,
-				duration,
-				delay,
-				equation,
-				equation_args
-			);
+			_nymph.config( this, __prop_target, _props, _types, _starts, _ends, duration, delay, equation, equation_args );
 			return this;
 		}
-		
+
 		private function _nymph_start() : void 
 		{
 			var i : int;
@@ -93,16 +87,16 @@ package dragonfly.core
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
-				this[ "before_render" ]();
+				this[ "before_render" ]( );
 			
-			_on_start();
+			_on_start( );
 		}
-		
+
 		private function _nymph_progress( prop : String, value : * ) : void 
 		{
 			if( hasOwnProperty( "render" ) )
 				this[ "render" ]( prop, value );
-			_on_progress();
+			_on_progress( );
 		}
 
 		private function _nymph_complete() : void 
@@ -110,11 +104,11 @@ package dragonfly.core
 			_active = false;
 			
 			if( hasOwnProperty( "after_render" ) )
-				this[ "after_render" ]();
+				this[ "after_render" ]( );
 			
-			_on_complete();
+			_on_complete( );
 		}
-		
+
 		public function hold() : Egg 
 		{
 			_nymph.hold( );
@@ -143,7 +137,7 @@ package dragonfly.core
 			_on_progress = undefined;
 			_on_complete = undefined;
 		}
-		
+
 		public function remove_properties( props : Array ) : void
 		{
 			var index : int;
@@ -162,7 +156,7 @@ package dragonfly.core
 				_starts.splice( index, 1 );
 			}
 		}
-		
+
 		public function get time_left() : Number 
 		{
 			return _nymph.time_left;
@@ -172,27 +166,27 @@ package dragonfly.core
 		{
 			return _active;
 		}
-		
+
 		protected function _get_start_value( prop : String ) : *
 		{
 			return _larva.target[ prop ];
 		}
-		
+
 		protected function get _prop_target() : *
 		{
 			return __prop_target;
 		}
-		
+
 		protected function set _prop_target( value : * ) : void
 		{
 			__prop_target = value;
 		}
-		
+
 		public function get flight() : Flight
 		{
 			return _flight;
 		}
-		
+
 		public function get larva() : Larva
 		{
 			return _larva;

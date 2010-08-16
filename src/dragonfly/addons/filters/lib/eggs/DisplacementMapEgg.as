@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.DisplacementMapLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -12,10 +10,9 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const SCALE_X : String = "scaleX" ;
+
 		public static const SCALE_Y : String = "scaleY";
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

@@ -21,17 +21,23 @@ package dragonfly.addons.filters
 	{
 		/* ----- FILTERS INSTANCES ------------------------------------------ */
 		private var _bevel : BevelLarva;
+
 		private var _blur : BlurLarva;
+
 		private var _convolution : ConvolutionLarva;
+
 		private var _displacement_map : DisplacementMapLarva;
+
 		private var _dropshadow : DropShadowLarva;
+
 		private var _glow : GlowLarva;
+
 		private var _gradient_bevel : GradientBevelLarva;
+
 		private var _gradient_glow : GradientGlowLarva;
+
 		private var _sub_larvas : Array;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function FilterLarva( target : * )
 		{
@@ -39,16 +45,14 @@ package dragonfly.addons.filters
 			
 			var larva : BaseFilterLarva; 
 			
-			_sub_larvas = [
-				_bevel = BevelLarva( _plug_larva( BevelLarva ) ),
+			_sub_larvas = [ _bevel = BevelLarva( _plug_larva( BevelLarva ) ),
 				_blur = BlurLarva( _plug_larva( BlurLarva ) ),
 				_convolution = ConvolutionLarva( _plug_larva( ConvolutionLarva ) ),
 				_displacement_map = DisplacementMapLarva( _plug_larva( DisplacementMapLarva ) ),
 				_dropshadow = DropShadowLarva( _plug_larva( DropShadowLarva ) ),
 				_glow = GlowLarva( _plug_larva( GlowLarva ) ),
 				_gradient_bevel = GradientBevelLarva( _plug_larva( GradientBevelLarva ) ),
-				_gradient_glow = GradientGlowLarva( _plug_larva( GradientGlowLarva ) )
-			];
+				_gradient_glow = GradientGlowLarva( _plug_larva( GradientGlowLarva ) ) ];
 			
 			for each( larva in _sub_larvas )
 				larva.parent = this;

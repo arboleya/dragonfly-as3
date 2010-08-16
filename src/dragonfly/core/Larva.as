@@ -5,21 +5,23 @@ package dragonfly.core
 	public class Larva
 	{
 		internal var _initialized : Boolean;
-		
+
 		private var _target : *;
-		
+
 		protected var _laid : Dictionary;
+
 		protected var _larvas : Dictionary;
+
 		protected var _eggs : Dictionary;
-		
+
 		public function Larva( target : * )
 		{
 			_target = target;
-			_larvas = new Dictionary();
-			_eggs = new Dictionary();
-			_laid = new Dictionary();
+			_larvas = new Dictionary( );
+			_eggs = new Dictionary( );
+			_laid = new Dictionary( );
 		}
-		
+
 		public function get eggs() : Dictionary 
 		{
 			return _eggs;
@@ -105,17 +107,12 @@ package dragonfly.core
 			key = String( klass );
 			
 			if( _laid == null )
-				_laid = new Dictionary();
+				_laid = new Dictionary( );
 			
-			if( ! _laid.hasOwnProperty( key ) )
+			if( !_laid.hasOwnProperty( key ) )
 			{
 				_laid[ key ] = {
-					klass:klass,
-					props: [],
-					types: [],
-					starts: [],
-					ends: [],
-					indexes: {}
+					klass:klass, props: [], types: [], starts: [], ends: [], indexes: {}
 				};
 			}
 			
@@ -132,7 +129,7 @@ package dragonfly.core
 			laid[ "starts" ][ index ] = start;
 			laid[ "ends" ][ index ] = end;
 		}
-		
+
 		public function fly(
 			duration : Number,
 			delay : Number = undefined,
@@ -152,27 +149,17 @@ package dragonfly.core
 			
 			for each( item in _laid )
 			{
-				( egg = new ( item[ "klass" ] ) ).config(
-					this,
-					item[ "props" ],
-					item[ "types" ],
-					item[ "ends" ],
-					item[ "starts" ],
-					item[ "indexes" ]
-				).init();
+				( egg = new ( item[ "klass" ] ) ).config( this, item[ "props" ], item[ "types" ], item[ "ends" ], item[ "starts" ], item[ "indexes" ] ).init( );
 				
 				_eggs[ egg ] = egg;
 				
-				flight._add_egg(
-					egg._shoke( duration, delay, equation, equation_args )
-				);
-				
+				flight._add_egg( egg._shoke( duration, delay, equation, equation_args ) );
 			}
 			
 			_laid = null;
 			return flight;
 		}
-		
+
 		internal function kill_flying_properties(
 			caller : Egg,
 			props : Array
@@ -184,7 +171,7 @@ package dragonfly.core
 					if( egg.active )
 						egg.remove_properties( props );
 		}
-		
+
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
@@ -197,7 +184,7 @@ package dragonfly.core
 			_larvas[ larva ] = null;
 			delete _larvas[ larva ];
 		}
-		
+
 		public function get initialized() : Boolean
 		{
 			return _initialized;

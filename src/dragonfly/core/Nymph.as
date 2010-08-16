@@ -7,8 +7,6 @@ package dragonfly.core
 
 	import flash.utils.getTimer;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -16,51 +14,71 @@ package dragonfly.core
 	{
 		/* ----- TYPES ------------------------------------------------------ */
 		public static const NUMERIC : String = "numeric";
+
 		public static const ARRAY : String = "array";
+
 		public static const HEXADECIMAL : String = "hexadecimal";
-		
+
 		/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
 		private static var _OEF : OEF;
-		
+
 		/* ----- TWEEN VARIABLES -------------------------------------------- */
 		protected var _props : Array;
+
 		protected var _types : Array;
+
 		protected var _starts : Array;
+
 		protected var _ends : Array;
+
 		protected var _duration : Number;
+
 		protected var _delay : Number;
+
 		protected var _is_color : Array;
+
 		protected var _equation : Function;
+
 		protected var _equation_args : Array;
+
 		/* ----- CONTROLS VARIABLES ----------------------------------------- */
 		protected var _target : *;
+
 		protected var _active : Boolean;
+
 		protected var _inititalized : Boolean;
+
 		/* ----- TIMING VARIABLES ------------------------------------------- */
 		protected var _time : Number;
+
 		protected var _interval : int;
+
 		protected var _last_update_timer : Number;
+
 		/* ----- UTILS ------------------------------------------------------ */
 		protected var _egg : Egg;
+
 		protected var _loop : Number;
+
 		/* ----- CACHE ------------------------------------------------------ */
 		protected var _vitamin : Array;
+
 		protected var _vitamin_capsules : int;
+
 		/* ----- CALLBACKS -------------------------------------------------- */
 		public var _on_start : Function;
+
 		public var _on_progress : Function;
+
 		public var _on_complete : Function;
-		
-		
-		
+
 		/* ----- INITIALIZING ----------------------------------------------- */
-		
 		public function Nymph() 
 		{
 			if( _OEF == null )
-				_OEF = new OEF();
+				_OEF = new OEF( );
 		}
-		
+
 		public function config(
 			egg : Egg,
 			target : *,
@@ -200,7 +218,7 @@ package dragonfly.core
 			
 			if( !Dragonfly.enabled )
 			{
-				kick();
+				kick( );
 				return;
 			}
 			
@@ -210,7 +228,7 @@ package dragonfly.core
 				_last_update_timer = getTimer( );
 				return; 
 			}
-			else if( ! _inititalized )
+			else if( !_inititalized )
 			{
 				_on_start( );
 				_inititalized = true;
@@ -325,20 +343,16 @@ package dragonfly.core
 		}
 
 		/* ----- UTILS ------------------------------------------------------ */
-		
 		public function get active() : Boolean 
 		{
 			return _active;
 		}
 
-
 		public function get time_left() : Number 
 		{
 			return Math.max( 0, ( _duration - _time ) );
 		}
-		
-		
-		
+
 		/* ----- HOLD / UNHOLD ---------------------------------------------- */
 		public function hold() : void 
 		{
@@ -349,8 +363,7 @@ package dragonfly.core
 		{
 			_start_updater( );
 		}
-		
-		
+
 		/* ----- HEXADECIMAL CONVERSIONS ------------------------------------ */
 		/**
 		 * Conversion functions (for hexa/color tweening).
@@ -361,7 +374,7 @@ package dragonfly.core
 		{
 			return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 		}
-	
+
 		/**
 		 * Conversion functions (for hexa/color tweening).
 		 * @param hex The hexadecimal to be converted.
@@ -378,17 +391,16 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.utils.Dictionary;
 
-
-
 internal class OEF
 {
 	private var _display : Sprite;
+
 	private var _listeners : Dictionary;
 
 	public function OEF() 
 	{
-		_listeners = new Dictionary();
-		_display = new Sprite();
+		_listeners = new Dictionary( );
+		_display = new Sprite( );
 		_display.addEventListener( Event.ENTER_FRAME, _dispatch );
 	}
 
@@ -396,14 +408,14 @@ internal class OEF
 	{
 		var listener : *;
 		for( listener in _listeners )
-			listener();
+			listener( );
 	}
-	
+
 	public function add( callback : Function ) : void
 	{
 		_listeners[ callback ] = this;
 	}
-	
+
 	public function rm( callback : Function ) : void
 	{
 		_listeners[ callback ] = null;

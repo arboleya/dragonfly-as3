@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.ConvolutionLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -12,11 +10,11 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const MATRIX : String = "matrix";
+
 		public static const DIVISOR : String = "divisor";
+
 		public static const BIAS : String = "bias";
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

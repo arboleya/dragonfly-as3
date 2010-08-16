@@ -1,5 +1,6 @@
 package dragonfly.core 
 {
+
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -7,30 +8,35 @@ package dragonfly.core
 	{
 		/* ----- LOOP ------------------------------------------------------- */
 		internal var _loop : Boolean;
+
 		internal var _loop_times : Number;
-		
+
 		/* ----- YOYO ------------------------------------------------------- */
 		private var _yoyo : Boolean;
+
 		private var _yoyo_back_equation : Function;
-		
+
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _started : Boolean;
+
 		private var _eggs : Array = [];
+
 		private var _eggs_completed : Number = 0;
-		
+
 		/* ----- CALLBACKS -------------------------------------------------- */
 		internal var _on_start : Function;
+
 		internal var _on_progress : Function;
+
 		internal var _on_complete : Function;
-		
+
 		internal var _on_start_params : Array = [];
+
 		internal var _on_progress_params : Array = [];
+
 		internal var _on_complete_params : Array = [];
-		
-		
-		
+
 		/* ----- INITIALIZING ----------------------------------------------- */
-		
 		internal function _add_egg( egg : Egg ) : Egg
 		{
 			_eggs.push( egg );
@@ -40,24 +46,22 @@ package dragonfly.core
 			egg._on_complete = _on_egg_complete;
 			return egg;
 		}
-		
-		
+
 		/* ----- HANDLING EGG EVENTS ---------------------------------------- */
-		
 		private function _on_egg_start() : void 
 		{
-			if( ! _started )
+			if( !_started )
 			{
 				_started = true;
 				if( _on_start == null ) return;
-				_on_start.apply( _on_start.prototype, _on_start_params  );
+				_on_start.apply( _on_start.prototype, _on_start_params );
 			}
 		}
 
 		private function _on_egg_progress() : void 
 		{
 			if( _on_progress == null  ) return;
-			_on_progress.apply( _on_progress.prototype, _on_progress_params  );
+			_on_progress.apply( _on_progress.prototype, _on_progress_params );
 		}
 
 		private function _on_egg_complete() : void 
@@ -71,17 +75,14 @@ package dragonfly.core
 			{
 				egg.larva.eggs[ egg ] = null;
 				delete egg.larva.eggs[ egg ];
-				egg.destroy();
+				egg.destroy( );
 			}
 			
 			if( _on_complete != null )
-				_on_complete.apply( _on_complete.prototype, _on_complete_params  );
+				_on_complete.apply( _on_complete.prototype, _on_complete_params );
 		}
-		
-		
-		
+
 		/* ----- AVAILABLE EVENT FOR LISTENING ------------------------------ */
-		
 		public function on_start(
 			callback : Function,
 			params : Array = null
@@ -91,7 +92,7 @@ package dragonfly.core
 			_on_start_params = params;
 			return this;
 		}
-		
+
 		public function on_progress(
 			callback : Function,
 			params : Array = null
@@ -101,7 +102,7 @@ package dragonfly.core
 			_on_progress_params = params;
 			return this;
 		}
-		
+
 		public function on_complete(
 			callback : Function,
 			params : Array = null
@@ -111,42 +112,36 @@ package dragonfly.core
 			_on_complete_params = params;
 			return this;
 		}
-		
-		
-		
+
 		/* ----- LOOPING FEATURE -------------------------------------------- */
-		
-		public function loop ( times : Number = 0 ) : void
+		public function loop( times : Number = 0 ) : void
 		{
 			_loop = true;
 			_loop_times = times;
 		}
-		
+
 		public function get is_loop() : Boolean
 		{
 			return _loop;
 		}
-		
+
 		public function get loop_times() : Number
 		{
 			return _loop_times;
 		}
-		
-		
-		
+
 		/* ----- YOYO FEATURE ----------------------------------------------- */
-		
-		public function yoyo ( back_equation : Function ) : void
+		public function yoyo( back_equation : Function ) : void
 		{
 			_yoyo = true;
 			_yoyo_back_equation = back_equation;
 		}
-		
+
 		public function get is_yoyo() : Boolean
 		{
 			return _loop;
 		}
-		
+
 		public function get yoyo_back_equation() : Function
 		{
 			return _yoyo_back_equation;

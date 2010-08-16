@@ -14,19 +14,16 @@ package dragonfly.core.health
 
 	import flash.utils.Dictionary;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
 	public class Vitamin
 	{
 		public static var VITAMINS : Dictionary;
-		
 		{
-			load( 100 );
+		load( 100 );
 		}
-		
+
 		public static function load( steps : Number = 100 ) : void
 		{
 			var klass : Class;
@@ -41,8 +38,7 @@ package dragonfly.core.health
 			VITAMINS = new Dictionary( );
 			decimal_stripper = /[0-9]+(\.*)[0-9]{0,3}/;
 			
-			for each( klass in [
-				Back,
+			for each( klass in [ Back,
 				Bounce,
 				Circ,
 				Cubic,
@@ -52,8 +48,7 @@ package dragonfly.core.health
 				Quad,
 				Quart,
 				Quint,
-				Sine
-			])
+				Sine ])
 			{
 				for each( type in [ "easeIn", "easeOut", "easeInOut" ])
 				{
@@ -72,7 +67,7 @@ package dragonfly.core.health
 				}
 			}
 		}
-		
+
 		public static function drop( equation : Function ) : Array
 		{
 			return VITAMINS[ equation ];

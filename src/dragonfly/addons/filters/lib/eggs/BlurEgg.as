@@ -3,8 +3,6 @@ package dragonfly.addons.filters.lib.eggs
 	import dragonfly.addons.filters.lib.BlurLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -12,11 +10,11 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const X : String = "blurX";
+
 		public static const Y : String = "blurY";
+
 		public static const QUALITY : String = "quality";
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

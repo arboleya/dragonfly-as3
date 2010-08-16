@@ -8,8 +8,6 @@ package dragonfly.addons.color
 	import flash.display.DisplayObject;
 	import flash.geom.ColorTransform;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
@@ -21,10 +19,10 @@ package dragonfly.addons.color
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function ColorLarva( target : * )
 		{
-			super( target);
+			super( target );
 			transform = ( target as DisplayObject ).transform.colorTransform;
 		}
-		
+
 		public function hex(
 			end : Number,
 			start : Number = undefined
@@ -35,7 +33,7 @@ package dragonfly.addons.color
 			
 			end_rgb = Nymph.hex2rgb( end );
 			if( isNaN( start ) )
-				start_rgb = [null, null, null];
+				start_rgb = [ null, null, null ];
 			else
 				start_rgb = Nymph.hex2rgb( start );
 			
@@ -45,8 +43,8 @@ package dragonfly.addons.color
 			
 			return this;
 		}
-		
-		public function refresh () : void
+
+		public function refresh() : void
 		{
 			( target as DisplayObject ).transform.colorTransform = transform;
 		}

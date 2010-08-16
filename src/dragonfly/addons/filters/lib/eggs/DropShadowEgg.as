@@ -10,15 +10,19 @@ package dragonfly.addons.filters.lib.eggs
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const DISTANCE : String = "distance";
+
 		public static const ANGLE : String = "angle";
+
 		public static const COLOR : String = "color";
+
 		public static const ALPHA : String = "alpha";
+
 		public static const BLUR_X : String = "blurX";
+
 		public static const BLUR_Y : String = "blurY";
+
 		public static const STRENGTH : String = "strength";
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**

@@ -1,8 +1,6 @@
 package dragonfly.addons.interfaces 
 {
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */

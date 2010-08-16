@@ -13,8 +13,6 @@ package dragonfly.addons.filters.lib
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : DropShadowFilter;
 
-		
-		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		
 		/**
