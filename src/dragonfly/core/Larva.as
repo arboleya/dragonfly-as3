@@ -1,11 +1,7 @@
 package dragonfly.core 
 {
-	import cocktail.utils.ArrayUtil;
-
 	import flash.utils.Dictionary;
 
-	
-	
 	public class Larva
 	{
 		internal var _initialized : Boolean;
@@ -13,13 +9,13 @@ package dragonfly.core
 		private var _target : *;
 		
 		protected var _laid : Dictionary;
-		protected var _larvas : Array;
+		protected var _larvas : Dictionary;
 		protected var _eggs : Dictionary;
 		
 		public function Larva( target : * )
 		{
 			_target = target;
-			_larvas = [];
+			_larvas = new Dictionary();
 			_eggs = new Dictionary();
 			_laid = new Dictionary();
 		}
@@ -34,7 +30,7 @@ package dragonfly.core
 			return _target;
 		}
 
-		public function get larvas() : Array 
+		public function get larvas() : Dictionary 
 		{
 			return _larvas;
 		} 
@@ -192,13 +188,14 @@ package dragonfly.core
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
-			_larvas.push( larva = new ( larva_class )( target ) );
+			_larvas[ larva = new ( larva_class )( target ) ] = larva;
 			return larva; 
 		}
 
 		protected function _unplug_larva( larva : Larva ) : void 
 		{
-			ArrayUtil.del( _larvas, larva );
+			_larvas[ larva ] = null;
+			delete _larvas[ larva ];
 		}
 		
 		public function get initialized() : Boolean
