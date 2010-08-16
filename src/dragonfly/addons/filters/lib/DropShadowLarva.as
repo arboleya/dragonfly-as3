@@ -1,16 +1,14 @@
 package dragonfly.addons.filters.lib 
 {
-	import dragonfly.addons.filters.lib.eggs.DropshadowEgg;
+	import dragonfly.addons.filters.lib.eggs.DropShadowEgg;
 	import dragonfly.core.Nymph;
 
 	import flash.filters.DropShadowFilter;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class DropshadowLarva extends BaseFilterLarva 
+	public class DropShadowLarva extends BaseFilterLarva 
 	{
 		/* ----- VARIABLES -------------------------------------------------- */
 		private var _filter : DropShadowFilter;
@@ -22,7 +20,7 @@ package dragonfly.addons.filters.lib
 		/**
 		 * TODO: write documentation
 		 */
-		public function DropshadowLarva( target : * )
+		public function DropShadowLarva( target : * )
 		{
 			super( target );
 			_filter = new DropShadowFilter( 0, 0, 0, 0, 0, 0, 0, 0 );
@@ -48,7 +46,7 @@ package dragonfly.addons.filters.lib
 			hide_object : Boolean,
 			inner : Boolean,
 			quality : Number
-		) : DropshadowLarva 
+		) : DropShadowLarva 
 		{
 			filter.knockout = knockout;
 			filter.hideObject = hide_object;
@@ -64,9 +62,9 @@ package dragonfly.addons.filters.lib
 		public function distance(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.DISTANCE, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.DISTANCE, end, start );
 			return this;
 		}
 
@@ -76,9 +74,9 @@ package dragonfly.addons.filters.lib
 		public function  angle(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.ANGLE, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.ANGLE, end, start );
 			return this;
 		}
 
@@ -88,9 +86,9 @@ package dragonfly.addons.filters.lib
 		public function  color(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.COLOR, end, start, Nymph.HEXADECIMAL );
+			_lay( DropShadowEgg, DropShadowEgg.COLOR, end, start, Nymph.HEXADECIMAL );
 			return this;
 		}
 
@@ -100,9 +98,9 @@ package dragonfly.addons.filters.lib
 		public function  alpha(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.ALPHA, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.ALPHA, end, start );
 			return this;
 		}
 
@@ -112,9 +110,9 @@ package dragonfly.addons.filters.lib
 		public function  blur_x(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.BLUR_X, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.BLUR_X, end, start );
 			return this;
 		}
 
@@ -124,9 +122,9 @@ package dragonfly.addons.filters.lib
 		public function  blur_y(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.BLUR_Y, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.BLUR_Y, end, start );
 			return this;
 		}
 
@@ -136,9 +134,9 @@ package dragonfly.addons.filters.lib
 		public function  strength(
 			end : Number,
 			start : Number = undefined
-		) : DropshadowLarva
+		) : DropShadowLarva
 		{
-			_lay( DropshadowEgg, DropshadowEgg.STRENGTH, end, start );
+			_lay( DropShadowEgg, DropShadowEgg.STRENGTH, end, start );
 			return this;
 		}
 	}

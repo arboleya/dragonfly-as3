@@ -1,14 +1,12 @@
 package dragonfly.addons.filters.lib.eggs 
 {
-	import dragonfly.addons.filters.lib.DropshadowLarva;
+	import dragonfly.addons.filters.lib.DropShadowLarva;
 	import dragonfly.core.Egg;
 
-	
-	
 	/**
 	 * @author nybras | nybras@codeine.it
 	 */
-	public class DropshadowEgg extends Egg 
+	public class DropShadowEgg extends Egg 
 	{
 		/* ----- FILTER PROPERTIES (tweenable) ------------------------------ */
 		public static const DISTANCE : String = "distance";
@@ -36,9 +34,9 @@ package dragonfly.addons.filters.lib.eggs
 		/**
 		 * TODO: write documentation
 		 */
-		private function get _dropshadow_larva() : DropshadowLarva
+		private function get _dropshadow_larva() : DropShadowLarva
 		{
-			return DropshadowLarva( _larva );
+			return DropShadowLarva( _larva );
 		}
 
 		/* ----- RENDERING -------------------------------------------------- */
