@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AS3Classpath>
+<AS3Classpath generateProblems="false" sdkBased="true" type="lib" useAsSharedCode="false">frameworks/libs/player/{playerVersion}/playerglobal.swc</AS3Classpath>
+<AS3Classpath generateProblems="false" sdkBased="true" type="lib" useAsSharedCode="false">frameworks/libs/flex.swc</AS3Classpath>
+<AS3Classpath generateProblems="true" sdkBased="false" type="source" useAsSharedCode="false">demos</AS3Classpath>
+<AS3Classpath generateProblems="true" sdkBased="false" type="source" useAsSharedCode="false">tests</AS3Classpath>
+<AS3Classpath generateProblems="true" sdkBased="false" type="source" useAsSharedCode="false">dragonfly/src</AS3Classpath>
+<AS3Classpath generateProblems="true" sdkBased="false" type="source" useAsSharedCode="false">dragonfly/vendors</AS3Classpath>
+</AS3Classpath>
