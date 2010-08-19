@@ -11,7 +11,7 @@ import com.robertpenner.easing.Linear;
  */
 class Nymph
 {
-	/* ----- TYPES ------------------------------------------------------ */
+	/* ----- TYPES ---------------------------------------------------------- */
 	/**
 	 * TODO: write docs
 	 */
@@ -27,13 +27,13 @@ class Nymph
 	 */
 	public static inline var HEXADECIMAL : String = "hexadecimal";
 
-	/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
+	/* ----- ON ENTER FRAME BROADCASTER ------------------------------------- */
 	/**
 	 * TODO: write docs
 	 */
 	private static var _OEF : OEF;
 
-	/* ----- TWEEN VARIABLES -------------------------------------------- */
+	/* ----- TWEEN VARIABLES ------------------------------------------------ */
 	/**
 	 * TODO: write docs
 	 */
@@ -75,7 +75,7 @@ class Nymph
 	 */
 	private var _equation_args : Array<Dynamic>;
 
-	/* ----- CONTROLS VARIABLES ----------------------------------------- */
+	/* ----- CONTROLS VARIABLES --------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -92,7 +92,7 @@ class Nymph
 	 */
 	private var _initialized : Bool;
 
-	/* ----- TIMING VARIABLES ------------------------------------------- */
+	/* ----- TIMING VARIABLES ----------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -109,7 +109,7 @@ class Nymph
 	 */
 	private var _last_update_timer : Float;
 
-	/* ----- UTILS ------------------------------------------------------ */
+	/* ----- UTILS ---------------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -121,7 +121,7 @@ class Nymph
 	 */
 	private var _loop : Float;
 
-	/* ----- CACHE ------------------------------------------------------ */
+	/* ----- CACHE ---------------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -133,7 +133,7 @@ class Nymph
 	 */
 	private var _vitamin_capsules : Int;
 
-	/* ----- CALLBACKS -------------------------------------------------- */
+	/* ----- CALLBACKS ------------------------------------------------------ */
 	
 	/**
 	 * TODO: write docs
@@ -150,7 +150,7 @@ class Nymph
 	 */
 	public var on_complete : Dynamic;
 
-	/* ----- INITIALIZING ----------------------------------------------- */
+	/* ----- INITIALIZING --------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -225,7 +225,7 @@ class Nymph
 		_active = true;
 	}
 
-	/* ----- KICK / DESTROY --------------------------------------------- */
+	/* ----- KICK / DESTROY ------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -292,7 +292,7 @@ class Nymph
 		on_complete = null;
 	}
 
-	/* ----- ON ENTER FRAME MANAGEMENT ---------------------------------- */
+	/* ----- ON ENTER FRAME MANAGEMENT -------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -315,7 +315,7 @@ class Nymph
 		_OEF.rm( _refresh );
 	}
 
-	/* ----- REFRESHING TWEEN ------------------------------------------- */
+	/* ----- REFRESHING TWEEN ----------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -384,7 +384,7 @@ class Nymph
 		_last_update_timer = flash.Lib.getTimer( );
 	}
 
-	/* ----- COMPUTES THE TWEEN CURRENT VALUE --------------------------- */
+	/* ----- COMPUTES THE TWEEN CURRENT VALUE ------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -440,7 +440,7 @@ class Nymph
 		return ( start + ( factor * ( end - start ) ) );
 	}
 
-	/* ----- CALCULATING & QUANTIZING ----------------------------------- */
+	/* ----- CALCULATING & QUANTIZING --------------------------------------- */
 	
 	/* Computes the tween by proccessing the equation math. */
 	
@@ -468,7 +468,7 @@ class Nymph
 		return _vitamin[ Math.floor( index ) ];
 	}
 
-	/* ----- UTILS ------------------------------------------------------ */
+	/* ----- UTILS ---------------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -493,7 +493,7 @@ class Nymph
 		return cast Math.max( 0, ( _duration - _time ) );
 	}
 	
-	/* ----- HOLD / UNHOLD ---------------------------------------------- */
+	/* ----- HOLD / UNHOLD -------------------------------------------------- */
 	
 	/**
 	 * TODO: write docs
@@ -511,7 +511,7 @@ class Nymph
 		_start_updater( );
 	}
 
-	/* ----- HEXADECIMAL CONVERSIONS ------------------------------------ */
+	/* ----- HEXADECIMAL CONVERSIONS ---------------------------------------- */
 	/**
 	 * Conversion functions (for hexa/color tweening).
 	 * @param rgb Array with the RGB (3 indexes: 0=R, 1=G, 2=B) to be
