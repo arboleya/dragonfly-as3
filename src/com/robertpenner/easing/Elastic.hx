@@ -1,12 +1,9 @@
 package com.robertpenner.easing;
 
-import dragonfly.core.health.Descriptor;
-
 class Elastic 
 {
 	public static function easeIn(t : Float, b : Float, c : Float, d : Float, a : Float = null, p : Float = 0 ) : Float 
 	{
-		Descriptor.describe();
 		var s : Dynamic;
 		if (t == 0) return b;  
 		if ((t /= d) == 1) return b + c;  
@@ -22,7 +19,6 @@ class Elastic
 
 	public static function easeOut(t : Float, b : Float, c : Float, d : Float, a : Float = 0 , p : Float = 0 ) : Float 
 	{
-		Descriptor.describe();
 		var s : Dynamic;
 		if (t == 0) return b;  
 		if ((t /= d) == 1) return b + c;  
@@ -38,7 +34,6 @@ class Elastic
 
 	public static function easeInOut(t : Float, b : Float, c : Float, d : Float, a : Float = 0 , p : Float = 0 ) : Float 
 	{
-		Descriptor.describe();
 		var s : Dynamic;
 		if (t == 0) return b;  
 		if ((t /= d / 2) == 2) return b + c;  

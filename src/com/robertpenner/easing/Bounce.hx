@@ -1,12 +1,9 @@
 package com.robertpenner.easing;
 
-import dragonfly.core.health.Descriptor;
-
 class Bounce 
 {
 	public static function easeOut(t : Float, b : Float, c : Float, d : Float) : Float 
 	{
-		Descriptor.describe();
 		if ((t /= d) < (1 / 2.75)) 
 		{
 			return c * (7.5625 * t * t) + b;
@@ -25,13 +22,11 @@ class Bounce
 
 	public static function easeIn(t : Float, b : Float, c : Float, d : Float) : Float 
 	{
-		Descriptor.describe();
 		return c - com.robertpenner.easing.Bounce.easeOut( d - t, 0, c, d ) + b;
 	}
 
 	public static function easeInOut(t : Float, b : Float, c : Float, d : Float) : Float 
 	{
-		Descriptor.describe();
 		if (t < d / 2) return com.robertpenner.easing.Bounce.easeIn( t * 2, 0, c, d ) * .5 + b;
 		else return com.robertpenner.easing.Bounce.easeOut( t * 2 - d, 0, c, d ) * .5 + c * .5 + b;
 	}

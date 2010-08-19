@@ -12,8 +12,7 @@ import com.robertpenner.easing.Quart;
 import com.robertpenner.easing.Quint;
 import com.robertpenner.easing.Sine;
 
-import dragonfly.core.health.Descriptor;
-
+import flash.utils.TypedDictionary;
 
 /**
  * @author nybras | nybras@codeine.it
@@ -38,7 +37,7 @@ class Vitamin
 		"easeIn", "easeOut", "easeInOut"
 	];
 	
-	public static var VITAMINS : Hash<Dynamic> = new Hash();
+	public static var VITAMINS : TypedDictionary<Dynamic,Array<Float>>;
 	
 	public static function load( steps : Float = 100 ) : Void
 	{
@@ -49,8 +48,9 @@ class Vitamin
 		var value : String;
 		var params : Array<Dynamic>;
 		var computed : Array<Float>;
-		var equation_id : Dynamic;
 		var index : Int;
+		
+		VITAMINS = new TypedDictionary();
 		
 		for( klass in _EQUATIONS )
 		{
@@ -71,27 +71,13 @@ class Vitamin
 					computed.push( Std.parseFloat( value ) );
 				}
 				
-				equation_id = klass.toString();
-				equation_id = equation_id.substr( 7, equation_id.length - 8 );
-				equation_id += "." + type; 
-				
-				VITAMINS.set( equation_id, computed );
+				VITAMINS.set( equation, computed );
 			}
 		}
 	}
 	
 	public static function drop( equation : Dynamic ) : Array<Float>
 	{
-		var id : String;
-		var pos : haxe.PosInfos;
-		
-		// Force the describe method in Descriptor class, in order to provide
-		// method access information.
-		equation( 0, 0, 0, 0 );
-		
-		pos = Descriptor.last_described;
-		id = pos.className.split( "." ).pop() + "." + pos.methodName;
-		
-		return VITAMINS.get( id );
+		return VITAMINS.get( equation );
 	}
 }
