@@ -54,11 +54,8 @@ class Vitamin
 		
 		for( klass in _EQUATIONS )
 		{
-			//trace( klass );
 			for( type in _TYPES )
 			{
-				//trace( type );
-				
 				time = 0;
 				computed = [];
 				equation = Reflect.field( klass, type );
@@ -89,7 +86,7 @@ class Vitamin
 		var pos : haxe.PosInfos;
 		
 		// Force the desctibe method in Descriptor class, in order to provide
-		// method access information
+		// method access information.
 		equation( 0, 0, 0, 0 );
 		
 		pos = Descriptor.last_described;
