@@ -1,0 +1,8 @@
+#Thu Aug 19 01:59:18 BRT 2010
+eclipse.preferences.version=1
+haxeOutputType=swf
+hxsrcFolders=src
+mainClass=Test
+outputPath=Test.swf
+sdkPath=/usr/lib/haxe
+sdkPathOverride=true
