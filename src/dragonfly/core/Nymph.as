@@ -39,72 +39,162 @@ package dragonfly.core
 	public class Nymph
 	{
 		/* ----- TYPES ------------------------------------------------------ */
+		/**
+		 * TODO: write docs
+		 */
 		public static const NUMERIC : String = "numeric";
 
+		/**
+		 * TODO: write docs
+		 */
 		public static const ARRAY : String = "array";
 
+		/**
+		 * TODO: write docs
+		 */
 		public static const HEXADECIMAL : String = "hexadecimal";
 
 		/* ----- ON ENTER FRAME BROADCASTER --------------------------------- */
+		/**
+		 * TODO: write docs
+		 */
 		private static var _OEF : OEF;
 
 		/* ----- TWEEN VARIABLES -------------------------------------------- */
+		/**
+		 * TODO: write docs
+		 */
 		protected var _props : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _types : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _starts : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _ends : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _duration : Number;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _delay : Number;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _is_color : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _equation : Function;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _equation_args : Array;
 
 		/* ----- CONTROLS VARIABLES ----------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected var _target : *;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _active : Boolean;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _inititalized : Boolean;
 
 		/* ----- TIMING VARIABLES ------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected var _time : Number;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _interval : int;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _last_update_timer : Number;
 
 		/* ----- UTILS ------------------------------------------------------ */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected var _egg : Egg;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _loop : Number;
 
 		/* ----- CACHE ------------------------------------------------------ */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected var _vitamin : Array;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _vitamin_capsules : int;
 
 		/* ----- CALLBACKS -------------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public var _on_start : Function;
 
+		/**
+		 * TODO: write docs
+		 */
 		public var _on_progress : Function;
 
+		/**
+		 * TODO: write docs
+		 */
 		public var _on_complete : Function;
 
 		/* ----- INITIALIZING ----------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function Nymph() 
 		{
 			if( _OEF == null )
 				_OEF = new OEF( );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function config(
 			egg : Egg,
 			target : *,
@@ -154,6 +244,9 @@ package dragonfly.core
 			_init( );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		private function _init() : void 
 		{
 			_last_update_timer = getTimer( );
@@ -162,6 +255,10 @@ package dragonfly.core
 		}
 
 		/* ----- KICK / DESTROY --------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function kick() : void 
 		{
 			var i : int;
@@ -186,6 +283,9 @@ package dragonfly.core
 			}
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function destroy() : void 
 		{
 			_stop_updater( );
@@ -220,12 +320,19 @@ package dragonfly.core
 		}
 
 		/* ----- ON ENTER FRAME MANAGEMENT ---------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		private function _start_updater() : void 
 		{
 			_active = true;
 			_OEF.add( _refresh );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		private function _stop_updater() : void 
 		{
 			if( !_active )
@@ -236,6 +343,10 @@ package dragonfly.core
 		}
 
 		/* ----- REFRESHING TWEEN ------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		private function _refresh() : void 
 		{
 			var flag : Boolean;
@@ -301,6 +412,10 @@ package dragonfly.core
 		}
 
 		/* ----- COMPUTES THE TWEEN CURRENT VALUE --------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected function _value( index : int, factor : Number ) : * 
 		{
 			var i : int;
@@ -338,6 +453,9 @@ package dragonfly.core
 			return _compute( start, end, factor );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		protected function _compute(
 			start : Number,
 			end : Number,
@@ -350,6 +468,10 @@ package dragonfly.core
 		/* ----- CALCULATING & QUANTIZING ----------------------------------- */
 		
 		/* Computes the tween by proccessing the equation math. */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected function _calculate() : *
 		{
 			var params : Array;
@@ -360,6 +482,9 @@ package dragonfly.core
 			return Number( _equation.apply( this, params ) );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		/* Computes the tween by quantizing the cached equation. */
 		protected function _quantize() : * 
 		{
@@ -369,22 +494,36 @@ package dragonfly.core
 		}
 
 		/* ----- UTILS ------------------------------------------------------ */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function get active() : Boolean 
 		{
 			return _active;
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function get time_left() : Number 
 		{
 			return Math.max( 0, ( _duration - _time ) );
 		}
 
 		/* ----- HOLD / UNHOLD ---------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function hold() : void 
 		{
 			_stop_updater( );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function unhold() : void 
 		{
 			_start_updater( );
@@ -393,7 +532,8 @@ package dragonfly.core
 		/* ----- HEXADECIMAL CONVERSIONS ------------------------------------ */
 		/**
 		 * Conversion functions (for hexa/color tweening).
-		 * @param rgb Array with the RGB (3 indexes: 0=R, 1=G, 2=B) to be converted.
+		 * @param rgb Array with the RGB (3 indexes: 0=R, 1=G, 2=B) to be
+		 * converted.
 		 * @return RGB into HEXADECIMAL.
 		 */
 		public static function rgb2hex(rgb : Array) : Number 
@@ -419,10 +559,19 @@ import flash.utils.Dictionary;
 
 internal class OEF
 {
+	/**
+	 * TODO: write docs
+	 */
 	private var _display : Sprite;
 
+	/**
+	 * TODO: write docs
+	 */
 	private var _listeners : Dictionary;
 
+	/**
+	 * TODO: write docs
+	 */
 	public function OEF() 
 	{
 		_listeners = new Dictionary( );
@@ -430,6 +579,9 @@ internal class OEF
 		_display.addEventListener( Event.ENTER_FRAME, _dispatch );
 	}
 
+	/**
+	 * TODO: write docs
+	 */
 	public function _dispatch( event : Event ) : void
 	{
 		var listener : *;
@@ -437,11 +589,17 @@ internal class OEF
 			listener( );
 	}
 
+	/**
+	 * TODO: write docs
+	 */
 	public function add( callback : Function ) : void
 	{
 		_listeners[ callback ] = this;
 	}
 
+	/**
+	 * TODO: write docs
+	 */
 	public function rm( callback : Function ) : void
 	{
 		_listeners[ callback ] = null;
