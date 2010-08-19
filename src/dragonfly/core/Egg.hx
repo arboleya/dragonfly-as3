@@ -10,7 +10,7 @@ class Egg
 	/* ----- VARIABLES -------------------------------------------------- */
 	private var _active : Bool;
 
-	private var _larva : Larva;
+	public var larva : Larva;
 
 	private var __prop_target : Dynamic;
 
@@ -26,7 +26,7 @@ class Egg
 
 	private var _nymph : Nymph;
 
-	private var _flight : Flight;
+	public var flight : Flight;
 
 	/* ----- CALLBACKS -------------------------------------------------- */
 	public var on_start : Dynamic;
@@ -51,7 +51,7 @@ class Egg
 	) : Egg
 	{
 		_nymph = new Nymph( );
-		_larva = larva;
+		this.larva = larva;
 		_props = props;
 		_types = types;
 		_ends = ends;
@@ -109,14 +109,14 @@ class Egg
 		var i : Int;
 		var method : Dynamic;
 		
-		_larva.kill_flying_properties( this, _props );
+		larva.kill_flying_properties( this, _props );
 		
 		for( i in 0..._ends.length )
 			if( Math.isNaN( _starts[ i ] ) )
 				_starts[ i ] = _get_start_value( _props[ i ] );
 		
 		_active = true;
-		_larva._initialized = true;
+		larva._initialized = true;
 		
 		_propagate( "before_render" );
 		on_start( );
@@ -154,14 +154,14 @@ class Egg
 	{
 		_nymph.destroy( );
 		_active = false;
-		_larva = null;
+		larva = null;
 		__prop_target = null;
 		_types = null;
 		_props = null;
 		_starts = null;
 		_ends = null;
 		_nymph = null;
-		_flight = null;
+		flight = null;
 		on_start = null;
 		on_progress = null;
 		on_complete = null;
@@ -200,7 +200,7 @@ class Egg
 
 	private function _get_start_value( prop : String ) : Dynamic
 	{
-		return Reflect.field( _larva.target, prop );
+		return Reflect.field( larva.target, prop );
 	}
 
 	private function _prop_target(get_prop_target,set_prop_target) : Dynamic;
@@ -212,17 +212,5 @@ class Egg
 	private function set_prop_target( value : Dynamic ) : Void
 	{
 		__prop_target = value;
-	}
-
-	public var flight(get_flight,never) : Flight;
-	public function get_flight() : Flight
-	{
-		return _flight;
-	}
-
-	public function larva(get_larva,never) : Void;
-	public function get_larva() : Larva
-	{
-		return _larva;
 	}
 }

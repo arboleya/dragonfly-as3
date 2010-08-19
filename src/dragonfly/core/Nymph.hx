@@ -356,6 +356,7 @@ class Nymph
 			while( i < _props.length )
 				on_progress( _props[ i ], _ends[ i++ ] );
 			
+			/*
 			if( _egg.flight.is_loop )
 			{
 				flag = ( _egg.flight.loop_times == 0 );
@@ -367,6 +368,7 @@ class Nymph
 					return;
 				}
 			}
+			*/
 			
 			_stop_updater( );
 			on_complete( );
