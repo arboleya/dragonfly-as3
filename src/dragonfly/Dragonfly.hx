@@ -33,11 +33,11 @@ class Dragonfly
 	/**
 	 * Dragonfly is a static class and should'n be instantiated!
 	 */
-	public function new()
+	private function new()
 	{
-		var msg : String;
-		msg = "Dragonfly is a static class and should not be instantiated.";
-		trace( msg );
+		/**
+		 * So here is a private constuctor.
+		 */
 	}
 
 	/* ----- GETTERS / SETTERS ------------------------------------------ */
