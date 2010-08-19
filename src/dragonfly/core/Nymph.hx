@@ -102,7 +102,7 @@ class Nymph
 	/**
 	 * TODO: write docs
 	 */
-	private var _interval : Int;
+	private var _interval : Float;
 
 	/**
 	 * TODO: write docs
@@ -376,7 +376,7 @@ class Nymph
 			return;
 		}
 		
-		_time += ( _interval = cast ( flash.Lib.getTimer( ) - _last_update_timer ) );
+		_time += ( _interval = ( flash.Lib.getTimer( ) - _last_update_timer ) );
 		
 		if( Dragonfly.time_perfect && ( _duration - _time ) < _interval )
 			_time = _duration;
