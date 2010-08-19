@@ -30,16 +30,37 @@ package dragonfly.core
 
 	public class Larva
 	{
+		/* ----- VARIABLES -------------------------------------------------- */
+		/**
+		 * TODO: write docs
+		 */
 		internal var _initialized : Boolean;
 
+		/**
+		 * TODO: write docs
+		 */
 		private var _target : *;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _laid : Dictionary;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _larvas : Dictionary;
 
+		/**
+		 * TODO: write docs
+		 */
 		protected var _eggs : Dictionary;
 
+		/* ----- INITIALIZING ----------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function Larva( target : * )
 		{
 			_target = target;
@@ -48,16 +69,27 @@ package dragonfly.core
 			_laid = new Dictionary( );
 		}
 
+		/* ----- GETTERS ---------------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function get eggs() : Dictionary 
 		{
 			return _eggs;
-		} 
+		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function get target() : * 
 		{
 			return _target;
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function get larvas() : Dictionary 
 		{
 			return _larvas;
@@ -79,18 +111,38 @@ package dragonfly.core
 			return time_left;
 		}
 
+		/**
+		 * TODO: write docs
+		 */
+		public function get initialized() : Boolean
+		{
+			return _initialized;
+		}
+
+		/* ----- CONTROLS --------------------------------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		public function hold() : void 
 		{
 			for each( var egg : Egg in _eggs )
 				egg.hold( );
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function unhold() : void 
 		{
 			for each( var egg : Egg in _eggs )
 				egg.unhold( );
 		}
 
+		/* ----- GC --------------------------------------------------------- */
+		/**
+		 * TODO: write docs
+		 */
 		public function destroy() : void 
 		{
 			for each( var egg : Egg in _eggs )
@@ -104,9 +156,9 @@ package dragonfly.core
 		}
 
 		/**
-		 * Returns the larva's status.
-		 * 
-		 * @return The larva's status.
+		 * Returns the larva's activity status.
+		 * @return <code>true</code> it the larva is active (tweening something)
+		 * or <code>false</false> otherwise.
 		 */
 		public function get active() : Number 
 		{
@@ -124,6 +176,11 @@ package dragonfly.core
 			return active_eggs;
 		}
 
+		/* ----- LAYING EGGS and MAKING THEM TO FLY ------------------------- */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected function _lay(
 			klass : Class,
 			prop : String,
@@ -162,6 +219,9 @@ package dragonfly.core
 			laid[ "ends" ][ index ] = end;
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		public function fly(
 			duration : Number,
 			delay : Number = undefined,
@@ -185,13 +245,19 @@ package dragonfly.core
 				
 				_eggs[ egg ] = egg;
 				
-				flight._add_egg( egg._shoke( duration, delay, equation, equation_args ) );
+				egg._shoke( duration, delay, equation, equation_args );
+				flight._add_egg( egg );
 			}
 			
 			_laid = null;
 			return flight;
 		}
 
+		/* ----- KILL IDENTICAL EGGS PREVIOUSLY LAID ------------------------ */
+		
+		/**
+		 * TODO: write docs
+		 */
 		internal function kill_flying_properties(
 			caller : Egg,
 			props : Array
@@ -204,6 +270,11 @@ package dragonfly.core
 						egg.remove_properties( props );
 		}
 
+		/* ----- PLUG and UNPLUG of SUB-LARVAS ------------------------------ */
+		
+		/**
+		 * TODO: write docs
+		 */
 		protected function _plug_larva( larva_class : Class ) : Larva 
 		{
 			var larva : Larva;
@@ -211,15 +282,13 @@ package dragonfly.core
 			return larva; 
 		}
 
+		/**
+		 * TODO: write docs
+		 */
 		protected function _unplug_larva( larva : Larva ) : void 
 		{
 			_larvas[ larva ] = null;
 			delete _larvas[ larva ];
-		}
-
-		public function get initialized() : Boolean
-		{
-			return _initialized;
 		}
 	}
 }
