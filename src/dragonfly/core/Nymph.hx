@@ -67,7 +67,6 @@ class Nymph
 	/**
 	 * TODO: write docs
 	 */
-	private var _klass : Dynamic;
 	private var _equation : Dynamic;
 
 	/**
@@ -173,7 +172,6 @@ class Nymph
 		ends : Array<Dynamic>,
 		duration : Float, 
 		delay : Float,
-		klass : Dynamic,
 		equation : Dynamic,
 		equation_args : Array<Dynamic>
 	) : Void
@@ -189,7 +187,6 @@ class Nymph
 		_duration = ( duration * 1000 );
 		_delay = ( delay * 1000 );
 		
-		_klass = klass;
 		_equation = equation;
 		_loop = 0;
 		
@@ -376,6 +373,7 @@ class Nymph
 			return;
 		}
 		
+		
 		_time += ( _interval = ( flash.Lib.getTimer( ) - _last_update_timer ) );
 		
 		if( Dragonfly.time_perfect && ( _duration - _time ) < _interval )
@@ -487,11 +485,17 @@ class Nymph
 	/**
 	 * TODO: write docs
 	 */
-	public function time_left(get_time_left,never) : Void; 
-	public function get_time_left() : Float 
-	{
-		return cast Math.max( 0, ( _duration - _time ) );
-	}
+	//public function time_left(get_time_left,set_time_left) : Float; 
+	//public function get_time_left() : Float 
+	//{
+	//	return cast Math.max( 0, ( _duration - _time ) );
+	//}
+	//public function set_time_left( v : Dynamic ) : Float 
+	//{
+	//	return cast Math.max( 0, ( _duration - _time ) );
+	//}
+	
+	
 	
 	/* ----- HOLD / UNHOLD -------------------------------------------------- */
 	
@@ -590,6 +594,9 @@ private class OEF
 		var i : Int;
 		for( i in 0..._listeners.length )
 			if( _listeners[ i ] == callback_action )
+			{
 				_listeners.splice( i, 1 );
+				return;
+			}
 	}
 }
