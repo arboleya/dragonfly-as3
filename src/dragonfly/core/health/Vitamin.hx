@@ -85,7 +85,7 @@ class Vitamin
 		var id : String;
 		var pos : haxe.PosInfos;
 		
-		// Force the desctibe method in Descriptor class, in order to provide
+		// Force the describe method in Descriptor class, in order to provide
 		// method access information.
 		equation( 0, 0, 0, 0 );
 		
