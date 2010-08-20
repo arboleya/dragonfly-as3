@@ -1,0 +1,27 @@
+
+
+Dragonfly - Animation Suite
+
+Usage:
+
+dragon( _rect ).
+	basic
+		.x( 500 )
+		.y( 100 )
+		.xyscale( 1.5, 1.5 )
+		.rotation( 90 )
+	.fly( .3, 1, Expo.easeOut )
+	.on_start( _start ).on_progress( _progress ).on_complete( _complete );
+
+AS3 -> Haxe porting status:
+
+1. (OK) - com.robertpenner.easing.*
+2. (OK) - dragonfly.Dragonfly
+3. (OK) - dragonfly.core.health.Vitamin
+4. (ADDED) - dragonfly.core.health.Descriptor
+5. (OK) - dragonfly.core.Nymph
+6. (OK) - dragonfly.core.Egg
+6. (OK) - dragonfly.core.Larva
+7. (OK) - dragonfly.core.Flight
+8. (NOT-OK) - dragonfly.addons.*
+9. (NOT-OK) - dragonfly.shorcuts.*
