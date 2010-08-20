@@ -1,5 +1,0 @@
--cp src
--swf9 Test.swf
--swf-version 10
--swf-header 600:1000:30:FFFFFF
--main Test
