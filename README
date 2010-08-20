@@ -23,7 +23,8 @@ AS3 to HaXe porting status
 05. (OK) - dragonfly.core.Egg
 06. (OK) - dragonfly.core.Larva
 07. (OK) - dragonfly.core.Flight
-08. (OK) - dragonfly.addons.basic.*
-09. (NOT-OK) - dragonfly.addons.color.*
-10. (NOT-OK) - dragonfly.addons.filters.*
-11. (NOT-OK) - dragonfly.shorcuts.*
+08. (OK) - dragonfly.addons.basic.lib.eggs.BasicEgg
+09. (OK) - dragonfly.addons.basic.BasicLarva
+10. (NOT-OK) - dragonfly.addons.color.*
+11. (NOT-OK) - dragonfly.addons.filters.*
+12. (NOT-OK) - dragonfly.shorcuts.*
