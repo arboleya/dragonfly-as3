@@ -19,9 +19,8 @@ AS3 to HaXe porting status
 01. (OK) - com.robertpenner.easing.*
 02. (OK) - dragonfly.Dragonfly
 03. (OK) - dragonfly.core.health.Vitamin
-04. (ADDED) - dragonfly.core.health.Descriptor
-05. (OK) - dragonfly.core.Nymph
-06. (OK) - dragonfly.core.Egg
+04. (OK) - dragonfly.core.Nymph
+05. (OK) - dragonfly.core.Egg
 06. (OK) - dragonfly.core.Larva
 07. (OK) - dragonfly.core.Flight
 08. (OK) - dragonfly.addons.basic.*
