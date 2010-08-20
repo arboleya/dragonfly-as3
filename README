@@ -4,11 +4,11 @@ Dragonfly - Animation Suite
 
 Usage:
 
-dragon( _rect )
-	.basic
-		.xy( 500, 100 )
-		.xyscale( 1.5, 1.5 )
-		.rotation( 90 )
+var larva : BasicLarva = new BasicLarva( target );
+larva
+	.xy( 500, 100 )
+	.xyscale( 1.5, 1.5 )
+	.rotation( 90 )
 	.fly( .3, 1, Expo.easeOut )
 	.on_start( _start ).on_progress( _progress ).on_complete( _complete );
 
