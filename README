@@ -5,6 +5,8 @@ Dragonfly - Animation Suite
 USAGE
 --------------------------------------------------------------------------------
 
+import dragonfly.addons.BasicLarva;
+
 var larva : BasicLarva = new BasicLarva( target );
 larva.x( 500 ).y( 100 ).fly( .3, 1, Expo.easeOut ).on_complete( _complete );
 
