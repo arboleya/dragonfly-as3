@@ -4,10 +4,9 @@ Dragonfly - Animation Suite
 
 Usage:
 
-dragon( _rect ).
-	basic
-		.x( 500 )
-		.y( 100 )
+dragon( _rect )
+	.basic
+		.xy( 500, 100 )
 		.xyscale( 1.5, 1.5 )
 		.rotation( 90 )
 	.fly( .3, 1, Expo.easeOut )
