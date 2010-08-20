@@ -47,7 +47,7 @@ class Egg
 		types : Array<String>,
 		ends : Array<Dynamic>,
 		starts : Array<Dynamic>,
-		indexes : Hash<Dynamic>
+		indexes : Dynamic
 	) : Egg
 	{
 		_nymph = new Nymph( );
@@ -60,7 +60,7 @@ class Egg
 		return this;
 	}
 
-	public function init() : Void
+	dynamic function init() : Void
 	{
 		trace( "You need to override this method in subclass!" );
 	}
@@ -116,7 +116,7 @@ class Egg
 				_starts[ i ] = _get_start_value( _props[ i ] );
 		
 		_active = true;
-		larva._initialized = true;
+		larva.initialized = true;
 		
 		_propagate( "before_render" );
 		on_start( );
@@ -192,8 +192,8 @@ class Egg
 	//	return _nymph.time_left;
 	//}
 	
-	public function active(get_active,never) : Void; 
-	public function get_active() : Bool 
+	public var active(_get_active,never) : Bool; 
+	private function _get_active() : Bool 
 	{
 		return _active;
 	}
@@ -203,13 +203,12 @@ class Egg
 		return Reflect.field( larva.target, prop );
 	}
 
-	private function _prop_target(get_prop_target,set_prop_target) : Dynamic;
-	private function get_prop_target() : Dynamic
+	private var _prop_target(_get_prop_target,_set_prop_target) : Dynamic;
+	private function _get_prop_target() : Dynamic
 	{
 		return __prop_target;
 	}
-
-	private function set_prop_target( value : Dynamic ) : Void
+	private function _set_prop_target( value : Dynamic ) : Void
 	{
 		__prop_target = value;
 	}
