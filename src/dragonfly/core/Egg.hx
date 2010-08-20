@@ -113,7 +113,7 @@ class Egg
 		
 		for( i in 0..._ends.length )
 			if( Math.isNaN( _starts[ i ] ) )
-				_starts[ i ] = _get_start_value( _props[ i ] );
+				_starts[ i ] = get_start_value( _props[ i ] );
 		
 		_active = true;
 		larva.initialized = true;
@@ -198,7 +198,7 @@ class Egg
 		return _active;
 	}
 
-	private function _get_start_value( prop : String ) : Dynamic
+	dynamic function get_start_value( prop : String ) : Dynamic
 	{
 		return Reflect.field( larva.target, prop );
 	}
