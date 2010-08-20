@@ -40,6 +40,16 @@ class Dragonfly
 		 */
 	}
 
+	/* ----- MORPHING ---------------------------------------------------- */
+	/*
+	public static function morph(
+		target : Dynamic
+	) : Bundle
+	{
+		return Bundle.init( target );
+	}
+	*/
+	
 	/* ----- GETTERS / SETTERS ------------------------------------------ */
 	
 	/* ENABLE / DISABLE */
@@ -79,7 +89,7 @@ class Dragonfly
 	/**
 	 * Boost the Dragonfly by using cached equations and quantization
 	 * instead of computing the equation every tween Interaction.
-	 * @param value	Number of steps to cache / use, keep in mind that the
+	 * @param value	Int of steps to cache / use, keep in mind that the
 	 * number of steps should be something around your tween avarage
 	 * duration divided by something about 50ms.
 	 * 
@@ -122,3 +132,71 @@ class Dragonfly
 		return _time_perfect = value;
 	}
 }
+
+
+/*
+
+
+import dragonfly.addons.basic.BasicLarva;
+import dragonfly.addons.color.ColorLarva;
+import dragonfly.addons.filters.FilterLarva;
+
+import flash.utils.TypedDictionary;
+
+private class Bundle
+{
+	private static var _bundles : TypedDictionary<Dynamic,Bundle> = new TypedDictionary( );
+
+	public static function init( target : Dynamic ) : Bundle
+	{
+		if( !_bundles.exists( target ) )
+			_bundles.set( target, new Bundle( target ) );
+		return _bundles.get( target );
+	}
+
+	private var _basic : BasicLarva;
+
+	private var _filter : FilterLarva;
+
+	private var _color : ColorLarva;
+
+	public function new( target : Dynamic  ) 
+	{
+		_basic = new BasicLarva( target );
+		_filter = new FilterLarva( target );
+		_color = new ColorLarva( target );
+	}
+
+	public var basic( _get_basic, never ) : BasicLarva;
+	private function _get_basic() : BasicLarva
+	{
+		return _basic;
+	}
+
+	public var filter( _get_filter, never ) : FilterLarva;
+	private function _get_filter() : FilterLarva
+	{
+		return _filter;
+	}
+
+	public var color( _get_color, never ) : ColorLarva;
+	private function _get_color() : ColorLarva
+	{
+		return _color;
+	}
+
+	public function destroy() : Void
+	{
+		_bundles.delete( this );
+		
+		_basic.destroy( );
+		_filter.destroy( );
+		_color.destroy( );
+		
+		_basic = null;
+		_filter = null;
+		_color = null;
+	}
+}
+
+*/
