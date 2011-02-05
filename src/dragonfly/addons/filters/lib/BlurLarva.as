@@ -107,7 +107,7 @@ package dragonfly.addons.filters.lib
 		) : BlurLarva
 		{
 			x( end_x, start_x );
-			x( end_y, start_y );
+			y( end_y, start_y );
 			return this;
 		}
 	}
