@@ -39,8 +39,8 @@ package dragonfly.addons.basic
 		{
 			super( target );
 		}
-
-		public function prop( 
+		
+		public function to( 
 			prop: String, 
 			end: Number, 
 			start: Number = undefined 
