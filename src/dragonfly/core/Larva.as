@@ -44,7 +44,7 @@ package dragonfly.core
 		/**
 		 * TODO: write docs
 		 */
-		protected var _laid : Dictionary;
+		protected var _laid : Object;
 
 		/**
 		 * TODO: write docs
@@ -66,7 +66,6 @@ package dragonfly.core
 			_target = target;
 			_larvas = new Dictionary( );
 			_eggs = new Dictionary( );
-			_laid = new Dictionary( );
 		}
 
 		/* ----- GETTERS ---------------------------------------------------- */
@@ -196,12 +195,17 @@ package dragonfly.core
 			key = String( klass );
 			
 			if( _laid == null )
-				_laid = new Dictionary( );
+				_laid = new Object( );
 			
 			if( !_laid.hasOwnProperty( key ) )
 			{
 				_laid[ key ] = {
-					klass:klass, props: [], types: [], starts: [], ends: [], indexes: {}
+					klass:klass,
+					props: [],
+					types: [],
+					starts: [],
+					ends: [],
+					indexes: {}
 				};
 			}
 			
@@ -241,7 +245,14 @@ package dragonfly.core
 			
 			for each( item in _laid )
 			{
-				( egg = new ( item[ "klass" ] ) ).config( this, item[ "props" ], item[ "types" ], item[ "ends" ], item[ "starts" ], item[ "indexes" ] ).init( );
+				( egg = new ( item[ "klass" ] ) ).config(
+					this,
+					item[ "props" ],
+					item[ "types" ],
+					item[ "ends" ],
+					item[ "starts" ],
+					item[ "indexes" ]
+				).init( );
 				
 				_eggs[ egg ] = egg;
 				
@@ -264,10 +275,17 @@ package dragonfly.core
 		) : void
 		{
 			var egg : Egg;
+			var egg_id : String;
+			var caller_id : String;
+			
+			caller_id = String( caller );
 			for each( egg in _eggs )
-				if( typeof( egg ) == typeof( caller ) && egg != caller )
+			{
+				egg_id = String( egg );
+				if( egg_id == caller_id && egg != caller )
 					if( egg.active )
 						egg.remove_properties( props );
+			}
 		}
 
 		/* ----- PLUG and UNPLUG of SUB-LARVAS ------------------------------ */
