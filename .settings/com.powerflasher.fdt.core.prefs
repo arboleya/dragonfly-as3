@@ -1,4 +1,4 @@
-#Mon Aug 16 10:53:30 BRT 2010
+#Sat Feb 05 17:05:32 BRST 2011
 =false
 com.powerflasher.fdt.core.CompilerArguments=-target-player\={playerVersion}\n-library-path {flexSDK}/frameworks/locale/en_US\n-default-background-color \#FFFFFF
 com.powerflasher.fdt.core.DefaultOutputFolder=bin
@@ -6,8 +6,8 @@ com.powerflasher.fdt.core.Language=AS3
 com.powerflasher.fdt.core.PassClasspath=true
 com.powerflasher.fdt.core.PassMainclass=true
 com.powerflasher.fdt.core.PassSwcs=true
-com.powerflasher.fdt.core.PlayerVersion=10
+com.powerflasher.fdt.core.PlayerVersion=10.0
 com.powerflasher.fdt.core.ProjectTypeHint=AS 3
 com.powerflasher.fdt.core.Runtime=Flash_Player
-com.powerflasher.fdt.core.SdkName=Flex 3.3
+com.powerflasher.fdt.core.SdkName=Flex 4.0
 eclipse.preferences.version=1
