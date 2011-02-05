@@ -40,6 +40,16 @@ package dragonfly.addons.basic
 			super( target );
 		}
 
+		public function prop( 
+			prop: String, 
+			end: Number, 
+			start: Number = undefined 
+		): BasicLarva
+		{
+			_lay( BasicEgg, prop, end, start );
+			return this;
+		}
+		
 		/* XYZ */
 		public function x(
 			end : Number,
