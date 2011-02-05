@@ -36,7 +36,6 @@ package dragonfly.shortcut
 		return Bundle.init( target );
 	}
 }
-
 import dragonfly.addons.basic.BasicLarva;
 import dragonfly.addons.color.ColorLarva;
 import dragonfly.addons.filters.FilterLarva;
@@ -49,11 +48,14 @@ internal class Bundle
 
 	internal static function init( target : * ) : Bundle
 	{
-		if( !_bundles.hasOwnProperty( target ) )
+		if( !_bundles[ target ] )
 			_bundles[ target ] = new Bundle( target );
+		
 		return _bundles[ target ];
 	}
-
+	
+	private var _target : *;
+	
 	private var _basic : BasicLarva;
 
 	private var _filter : FilterLarva;
@@ -62,6 +64,7 @@ internal class Bundle
 
 	public function Bundle( target : *  ) 
 	{
+		_target = target;
 		_basic = new BasicLarva( target );
 		_filter = new FilterLarva( target );
 		_color = new ColorLarva( target );
@@ -84,8 +87,8 @@ internal class Bundle
 
 	public function destroy() : void
 	{
-		_bundles[ this ] = null;
-		delete _bundles[ this ];
+		_bundles[ _target ] = null;
+		delete _bundles[ _target];
 		
 		_basic.destroy( );
 		_filter.destroy( );
