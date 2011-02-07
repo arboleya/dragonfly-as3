@@ -245,7 +245,7 @@ package dragonfly.core
 			
 			for each( item in _laid )
 			{
-				( egg = new ( item[ "klass" ] ) ).config(
+				Egg( egg = new ( item[ "klass" ] ) ).config(
 					this,
 					item[ "props" ],
 					item[ "types" ],
