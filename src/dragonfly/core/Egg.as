@@ -96,6 +96,11 @@ package dragonfly.core
 			_nymph._on_progress = _nymph_progress;
 			_nymph._on_complete = _nymph_complete;
 			_nymph.config( this, __prop_target, _props, _types, _starts, _ends, duration, delay, equation, equation_args );
+			
+			// setting _active since shoke, otherwise delayed nymphs
+			// wont be destroyed when doing fast changes
+			_active = true;
+			_larva.kill_flying_properties( this, _props );
 			return this;
 		}
 
@@ -103,13 +108,13 @@ package dragonfly.core
 		{
 			var i : int;
 			
-			_larva.kill_flying_properties( this, _props );
+			// _larva.kill_flying_properties( this, _props );
 			
 			for( i = 0; i < _ends.length; i++ )
 				if( isNaN( _starts[ i ] ) )
 					_starts[ i ] = _get_start_value( _props[ i ] );
 			
-			_active = true;
+			// _active = true;
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
