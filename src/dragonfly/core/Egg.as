@@ -92,15 +92,16 @@ package dragonfly.core
 			equation_args : *
 		) : Egg
 		{
+			// setting _active since shoke, otherwise delayed nymphs
+			// wont be destroyed when doing fast changes
+			_active = true;
+			_larva.kill_flying_properties( this, _props );
+			
 			_nymph._on_start = _nymph_start;
 			_nymph._on_progress = _nymph_progress;
 			_nymph._on_complete = _nymph_complete;
 			_nymph.config( this, __prop_target, _props, _types, _starts, _ends, duration, delay, equation, equation_args );
 			
-			// setting _active since shoke, otherwise delayed nymphs
-			// wont be destroyed when doing fast changes
-			_active = true;
-			_larva.kill_flying_properties( this, _props );
 			return this;
 		}
 
