@@ -109,7 +109,7 @@ package dragonfly.core
 		{
 			var i : int;
 			
-			// _larva.kill_flying_properties( this, _props );
+			//_larva.kill_flying_properties( this, _props );
 			
 			for( i = 0; i < _ends.length; i++ )
 				if( isNaN( _starts[ i ] ) )
@@ -155,7 +155,9 @@ package dragonfly.core
 
 		public function destroy() : void 
 		{
-			_nymph.destroy( );
+			if( !_nymph )
+				_nymph.destroy( );
+			
 			_active = undefined;
 			_larva = undefined;
 			__prop_target = undefined;
