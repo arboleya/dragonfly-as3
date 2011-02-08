@@ -288,6 +288,17 @@ package dragonfly.core
 			}
 		}
 
+		public function kill_all(): Larva
+		{
+			var egg : Egg;
+			
+			for each( egg in _eggs ) egg.destroy();
+			
+			_laid = {};
+			
+			return this;
+		}
+		
 		/* ----- PLUG and UNPLUG of SUB-LARVAS ------------------------------ */
 		
 		/**
