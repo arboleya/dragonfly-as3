@@ -288,6 +288,8 @@ package dragonfly.core
 			}
 		}
 
+		// TODO: fix this method, and test it with freaking back/forwad actions
+		
 		public function kill_all(): Larva
 		{
 			var egg : Egg;

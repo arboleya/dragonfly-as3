@@ -96,6 +96,9 @@ package dragonfly.core
 			// wont be destroyed when doing fast changes
 			_active = true;
 			_larva.kill_flying_properties( this, _props );
+			//
+			// tried to avoid this hack using Larva::kill_all(), but than
+			// i started to have problems on _nymph_start
 			
 			_nymph._on_start = _nymph_start;
 			_nymph._on_progress = _nymph_progress;
@@ -115,7 +118,7 @@ package dragonfly.core
 				if( isNaN( _starts[ i ] ) )
 					_starts[ i ] = _get_start_value( _props[ i ] );
 			
-			// _active = true;
+			//_active = true;
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
@@ -128,6 +131,7 @@ package dragonfly.core
 		{
 			if( hasOwnProperty( "render" ) )
 				this[ "render" ]( prop, value );
+				
 			_on_progress( );
 		}
 
