@@ -47,7 +47,7 @@ package dragonfly.core.health
 	{
 		public static var VITAMINS : Dictionary;
 		{
-		load( 100 );
+			load( 100 );
 		}
 
 		public static function load( steps : Number = 100 ) : void
@@ -74,7 +74,7 @@ package dragonfly.core.health
 				Quad,
 				Quart,
 				Quint,
-				Sine ])
+				Sine ] )
 			{
 				for each( type in [ "easeIn", "easeOut", "easeInOut" ])
 				{
