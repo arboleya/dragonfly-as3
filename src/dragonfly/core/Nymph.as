@@ -335,9 +335,6 @@ package dragonfly.core
 		 */
 		private function _stop_updater() : void 
 		{
-			if( !_active )
-				return;
-			
 			_active = false;
 			_OEF.rm( _refresh );
 		}
