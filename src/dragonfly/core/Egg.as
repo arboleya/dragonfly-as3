@@ -48,7 +48,7 @@ package dragonfly.core
 		protected var _starts : Array;
 
 		public var _ends : Array;
-
+		
 		internal var _nymph : Nymph;
 
 		internal var _flight : Flight;
@@ -59,7 +59,7 @@ package dragonfly.core
 		internal var _on_progress : Function;
 
 		internal var _on_complete : Function;
-
+		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		internal function config(
 			larva : Larva,
@@ -92,14 +92,6 @@ package dragonfly.core
 			equation_args : *
 		) : Egg
 		{
-			// setting _active since shoke, otherwise delayed nymphs
-			// wont be destroyed when doing fast changes
-			_active = true;
-			_larva.kill_flying_properties( this, _props );
-			//
-			// tried to avoid this hack using Larva::kill_all(), but than
-			// i started to have problems on _nymph_start
-			
 			_nymph._on_start = _nymph_start;
 			_nymph._on_progress = _nymph_progress;
 			_nymph._on_complete = _nymph_complete;
@@ -112,13 +104,13 @@ package dragonfly.core
 		{
 			var i : int;
 			
-			//_larva.kill_flying_properties( this, _props );
+			_larva.kill_flying_properties( this, _props );
 			
 			for( i = 0; i < _ends.length; i++ )
 				if( isNaN( _starts[ i ] ) )
 					_starts[ i ] = _get_start_value( _props[ i ] );
 			
-			//_active = true;
+			_active = true;
 			_larva._initialized = true;
 			
 			if( hasOwnProperty( "before_render" ) )
@@ -156,10 +148,10 @@ package dragonfly.core
 			_nymph.unhold( );
 			return this;
 		}
-
+		
 		public function destroy() : void 
 		{
-			if( !_nymph )
+			if( _nymph )
 				_nymph.destroy( );
 			
 			_active = undefined;
@@ -192,7 +184,12 @@ package dragonfly.core
 				_types.splice( index, 1 );
 				_ends.splice( index, 1 );
 				_starts.splice( index, 1 );
+				
+				_nymph._remove_property_by_index( index );
 			}
+			
+			if( ! _props.length )
+				destroy();
 		}
 
 		public function get time_left() : Number 

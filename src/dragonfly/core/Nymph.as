@@ -243,7 +243,7 @@ package dragonfly.core
 			
 			_init( );
 		}
-
+		
 		/**
 		 * TODO: write docs
 		 */
@@ -253,7 +253,19 @@ package dragonfly.core
 			_start_updater( );
 			_active = true;
 		}
-
+		
+		
+		/* ----- REMOVING PROPERTIES ON THE FLY ----------------------------- */
+		
+		internal function _remove_property_by_index( index : int ) : void
+		{
+			_props.splice( index, 1 );
+			_types.splice( index, 1 );
+			_ends.splice( index, 1 );
+			_starts.splice( index, 1 );
+		}
+		
+		
 		/* ----- KICK / DESTROY --------------------------------------------- */
 		
 		/**
@@ -549,7 +561,6 @@ package dragonfly.core
 		}
 	}
 }
-
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.utils.Dictionary;
