@@ -17,7 +17,6 @@ package
 
 		public function TimingTest()
 		{
-//			Dragonfly.boost = 30;
 			_dragonfly( );
 		}
 		

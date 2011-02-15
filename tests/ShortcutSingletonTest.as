@@ -2,9 +2,10 @@ package
 {
 	import dragonfly.shortcut.dragon;
 
+	import com.robertpenner.easing.Expo;
+
 	import flash.display.Sprite;
-	import flash.events.KeyboardEvent;
-	import flash.ui.Keyboard;
+	import flash.events.MouseEvent;
 
 	
 	
@@ -17,14 +18,12 @@ package
 		private var _rect1 : Sprite;
 		private var _rect2 : Sprite;
 		private var _rect3 : Sprite;
-		
+		private var _circle : Sprite;
 		
 		
 		/* ----- INITIALIZING ----------------------------------------------- */
 		public function ShortcutSingletonTest()
 		{
-			stage.addEventListener( KeyboardEvent.KEY_DOWN, _mount_unmount );
-			
 			_rect1 = new Sprite( );
 			_rect1.graphics.beginFill( Math.random( ) * 0xFFFFFF );
 			_rect1.graphics.drawRect( 0, 0, 50, 50 );
@@ -41,39 +40,40 @@ package
 			_rect3.graphics.drawRect( 0, 0, 50, 50 );
 			_rect3.y = 100;
 			addChild( _rect3 );
+			
+			
+			_circle = new Sprite();
+			_circle.graphics.beginFill( 0 );
+			_circle.graphics.drawCircle( 200, 200, 30);
+			_circle.graphics.endFill();
+			addChild( _circle );
+			
+			_circle.addEventListener( MouseEvent.ROLL_OVER, _over );
+			_circle.addEventListener( MouseEvent.ROLL_OUT, _out );
 		}
 
-		private function _mount_unmount( event : KeyboardEvent ) : void
-		{
-			switch( event.keyCode )
-			{
-				case Keyboard.RIGHT: _right(); break;
-				case Keyboard.LEFT: _left(); break;
-			}
-		}
-
-		private function _left() : void
-		{
-			dragon( _rect1 ).basic
-				.x( 0 ).fly( .25, 0 );
-				
-			dragon( _rect2 ).basic
-				.x( 0 ).fly( .25, 0 );
-				
-			dragon( _rect3 ).basic
-				.x( 0 ).fly( .25, 0 );
-		}
-
-		private function _right() : void
+		private function _out( event : MouseEvent ) : void
 		{
 			dragon( _rect1 ).basic
-				.x( 350 ).fly( .25, 0 );
-				
+				.x( 0 ).fly( .5, 0, Expo.easeOut );
+			
 			dragon( _rect2 ).basic
-				.x( 350 ).fly( .25, 0 );
-				
+				.x( 0 ).fly( .5, 0, Expo.easeOut );
+			
 			dragon( _rect3 ).basic
-				.x( 350 ).fly( .25, 0 );
+				.x( 0 ).fly( .5, 0, Expo.easeOut );
+		}
+
+		private function _over( event : MouseEvent ) : void
+		{
+			dragon( _rect1 ).basic
+				.x( 350 ).fly( .5, 0, Expo.easeOut );
+			
+			dragon( _rect2 ).basic
+				.x( 350 ).fly( .5, 0, Expo.easeOut );
+			
+			dragon( _rect3 ).basic
+				.x( 350 ).fly( .5, 0, Expo.easeOut );
 		}
 	}
 }
