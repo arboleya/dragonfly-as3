@@ -275,26 +275,29 @@ package dragonfly.core
 		) : void
 		{
 			var egg : Egg;
-			var egg_id : String;
-			var caller_id : String;
+			var egg_type : String;
+			var caller_type : String;
 			
-			caller_id = String( caller );
+			caller_type = String( caller );
 			for each( egg in _eggs )
 			{
-				egg_id = String( egg );
-				if( egg_id == caller_id && egg != caller )
+				egg_type = String( egg );
+				if ( egg_type == caller_type && egg != caller )
 					if( egg.active )
 						egg.remove_properties( props );
 			}
 		}
-
-		// TODO: fix this method, and test it with freaking back/forwad actions
 		
 		public function kill_all(): Larva
 		{
 			var egg : Egg;
+			var larva : Larva;
 			
-			for each( egg in _eggs ) egg.destroy();
+			for each( larva in _larvas )
+				larva.kill_all();
+			
+			for each( egg in _eggs )
+				egg.destroy();
 			
 			_laid = {};
 			
