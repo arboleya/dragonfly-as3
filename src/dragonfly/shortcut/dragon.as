@@ -33,6 +33,8 @@ package dragonfly.shortcut
 		target : Object
 	) : Bundle
 	{
+		if( target == null ) return null;
+		
 		return Bundle.init( target );
 	}
 }
@@ -40,6 +42,7 @@ import dragonfly.addons.basic.BasicLarva;
 import dragonfly.addons.color.ColorLarva;
 import dragonfly.addons.filters.FilterLarva;
 
+import flash.display.DisplayObject;
 import flash.utils.Dictionary;
 
 internal class Bundle
@@ -67,7 +70,9 @@ internal class Bundle
 		_target = target;
 		_basic = new BasicLarva( target );
 		_filter = new FilterLarva( target );
-		_color = new ColorLarva( target );
+		
+		if( target is DisplayObject )
+			_color = new ColorLarva( target );
 	}
 
 	public function get basic() : BasicLarva
